@@ -14,6 +14,21 @@ to use for commercial purposes under the [Pexels License](https://www.pexels.com
 | `food-sandwich.jpg` | https://www.pexels.com/photo/top-view-of-a-sandwich-with-tomato-and-parsley-on-wooden-chopping-board-13063293/ |
 | `food-coffee.jpg` | https://www.pexels.com/photo/minimalist-coffee-cup-on-wooden-table-top-view-28593519/ |
 
-Logo, app icon, phone-mockup frame, store badges, and all other icons/illustrations
-on this site are original, drawn as inline SVG/JSX — not sourced from Apple, Google,
-or any competitor.
+Logo, app icon, phone-mockup frame, and all other icons/illustrations on this site
+are original, drawn as inline SVG/JSX — not sourced from Apple, Google, or any
+competitor.
+
+## Store badges
+
+`public/images/badges/app-store-badge.svg` and `google-play-badge.png` are the
+real, official marketing badges, downloaded directly from Apple's and Google's
+own asset hosts:
+
+- Apple: https://developer.apple.com/app-store/marketing/guidelines/ (unmodified,
+  black RGB "Download on the App Store" SVG)
+- Google: https://play.google.com/intl/en_us/badges/ (unmodified "Get it on
+  Google Play" PNG)
+
+Both are shown unmodified per their brand guidelines, wrapped in a "Soon" tag
+and linked to `#waitlist` instead of a live store page, since neither listing
+exists yet. Swap the `href`s to the real store URLs the moment the app is live.
