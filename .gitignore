@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# waitlist data (local dev store — never commit real emails)
+data/waitlist.json

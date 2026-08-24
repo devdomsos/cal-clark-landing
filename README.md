@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cal Clark — landing page
 
-## Getting Started
+Pre-launch marketing / waitlist site for Cal Clark, a photo calorie tracker.
+Positioning: **fast, local, honest, and it remembers** — that's how people
+actually hit their daily budget. Copy is pulled from the locked marketing
+docs in the main app repo (`docs/marketing/01-angles-and-copy.md` and
+`docs/plans/06-landing-page.md` in `cal-clark-ai`), EN variant only.
 
-First, run the development server:
+Standalone repo, separate git history from the Expo app. Do not merge this
+into the app repo or share its CI/release cycle.
+
+## Run it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`npm run build` / `npm run start` for a production build. `npm run lint` for
+ESLint.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Stack
 
-## Learn More
+Next.js (App Router) + TypeScript + Tailwind CSS v4 + Framer Motion +
+lucide-react. No CMS, no i18n library, no analytics — single-locale English
+MVP by design, so it ships fast and stays easy to audit.
 
-To learn more about Next.js, take a look at the following resources:
+## What's real vs. stubbed
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Real:** all 7 food photos in `public/images/` (downloaded from Pexels,
+  see `CREDITS.md`), the animated camera → result phone mockup
+  (`src/components/PhoneMock.tsx`), the waitlist form and its server action.
+- **Stubbed — needs a real value before launch:**
+  - `src/app/actions/waitlist.ts` writes emails to a local
+    `data/waitlist.json` file (gitignored) so the demo works with zero
+    config. Swap this for a real ESP (Resend / Loops / Buttondown) once an
+    API key exists.
+  - `src/components/StoreBadges.tsx` badges are disabled placeholders
+    labelled "Coming soon" — replace the `href="#"` with real App Store /
+    Google Play listing URLs when they exist.
+  - Pricing section deliberately has no dollar figure (the only locked price
+    is 129 zł/year on the Polish store, which doesn't translate cleanly to
+    USD/EN). Add the real price once App Store Connect / Play Console pricing
+    is finalized for this market.
+  - `/privacy` and `/terms` are honest stubs, not the legally reviewed
+    versions — replace before this goes near a real store listing.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Brand
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Colors are pulled straight from the app's design tokens
+(`lib/ui/getColor.ts` in `cal-clark-ai`): primary blue `#3B82F6`, protein
+`#ef4444`, carb `#eab308`, fat `#10b981`. Logomark, app icon, phone frame,
+and store badges are original SVGs drawn for this site — nothing copied from
+Apple, Google, or any competitor's marketing page.
