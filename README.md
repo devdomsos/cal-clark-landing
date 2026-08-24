@@ -16,7 +16,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000.
+Open http://localhost:7777.
 
 `npm run build` / `npm run start` for a production build. `npm run lint` for
 ESLint.
