@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Check } from "lucide-react";
 import { Section, Reveal } from "./Section";
 
 const CHIPS = [
@@ -16,12 +17,13 @@ export function ProofStrip() {
   return (
     <Section className="border-y border-border/70 bg-surface py-14">
       <div className="mx-auto max-w-6xl px-5">
-        <div className="mb-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+        <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
           {CLAIMS.map((claim) => (
             <span
               key={claim}
-              className="text-xs font-semibold uppercase tracking-wide text-muted-foreground"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3.5 py-1.5 text-xs font-semibold text-foreground shadow-[0_1px_2px_rgba(3,7,18,0.04)]"
             >
+              <Check className="h-3.5 w-3.5 text-fat" strokeWidth={3} />
               {claim}
             </span>
           ))}
@@ -30,7 +32,7 @@ export function ProofStrip() {
         <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
           {CHIPS.map((chip, i) => (
             <Reveal key={chip.name} delay={i * 0.06}>
-              <div className="group relative aspect-square overflow-hidden rounded-2xl">
+              <div className="group relative aspect-square overflow-hidden rounded-2xl shadow-[0_4px_16px_-4px_rgba(3,7,18,0.15)] ring-1 ring-black/5">
                 <Image
                   src={chip.src}
                   alt={`${chip.name}, an example plate Cal Clark can log`}

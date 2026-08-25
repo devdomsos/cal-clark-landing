@@ -22,7 +22,7 @@ export function Pricing() {
           <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
             Pricing
           </p>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
             3 free scans. Then one honest price.
           </h2>
           <p className="mt-4 text-muted-foreground">
@@ -32,7 +32,7 @@ export function Pricing() {
         </Reveal>
 
         <div className="grid gap-5 sm:grid-cols-2">
-          <Reveal className="rounded-2xl border border-border bg-background p-7">
+          <Reveal className="rounded-2xl border border-border bg-background p-7 shadow-[0_1px_2px_rgba(3,7,18,0.04)]">
             <h3 className="text-lg font-semibold text-foreground">Free</h3>
             <p className="mt-1 text-sm text-muted-foreground">
               Try it before you commit
@@ -49,7 +49,7 @@ export function Pricing() {
 
           <Reveal
             delay={0.1}
-            className="relative rounded-2xl border-2 border-primary bg-background p-7"
+            className="relative rounded-2xl border-2 border-primary bg-background p-7 shadow-[0_20px_40px_-16px_rgba(59,130,246,0.3)]"
           >
             <span className="absolute -top-3 right-6 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white">
               Best value

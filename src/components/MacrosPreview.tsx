@@ -46,7 +46,7 @@ export function MacrosPreview() {
           <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
             On your home screen
           </p>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
             Calories and macros. That&apos;s the whole list.
           </h2>
           <p className="mt-4 max-w-md text-muted-foreground">

@@ -34,7 +34,7 @@ export function HowItWorks() {
           <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
             How it works
           </p>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
             Photo. Draft. Confirm.
           </h2>
         </Reveal>
@@ -42,7 +42,7 @@ export function HowItWorks() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((step, i) => (
             <Reveal key={step.title} delay={i * 0.1} className="relative">
-              <div className="relative rounded-2xl border border-border bg-background p-6">
+              <div className="relative rounded-2xl border border-border bg-background p-6 shadow-[0_1px_2px_rgba(3,7,18,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_-12px_rgba(3,7,18,0.12)]">
                 <span className="absolute -top-3 -left-1 text-6xl font-black text-muted/70 select-none">
                   {i + 1}
                 </span>

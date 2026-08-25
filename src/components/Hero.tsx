@@ -21,7 +21,7 @@ export function Hero() {
           <p className="mb-4 inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
             Photo calorie tracker
           </p>
-          <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.4rem] lg:leading-[1.05]">
+          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-[3.4rem] lg:leading-[1.05]">
             Snap once. Correct once.
             <br />
             Cal Clark remembers.

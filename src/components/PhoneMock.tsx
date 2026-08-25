@@ -47,6 +47,10 @@ function MacroBar({
 export function PhoneMock() {
   return (
     <div className="relative mx-auto w-full max-w-[300px] select-none">
+      <div
+        className="pointer-events-none absolute inset-x-6 bottom-[-2.5rem] h-16 rounded-full bg-black/25 blur-2xl"
+        aria-hidden="true"
+      />
       <div className="relative aspect-[9/19] w-full overflow-hidden rounded-[2.75rem] border-[6px] border-neutral-900 bg-neutral-900 shadow-2xl shadow-black/30">
         {/* screen */}
         <div className="relative h-full w-full overflow-hidden rounded-[2.2rem]">

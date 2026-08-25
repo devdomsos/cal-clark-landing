@@ -91,7 +91,7 @@ export function Faq() {
         <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
           FAQ
         </p>
-        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+        <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
           Honest answers
         </h2>
       </Reveal>

@@ -18,7 +18,7 @@ export function LocalFood() {
           <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
             Local plates
           </p>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
             Understands real plates
           </h2>
           <p className="mt-4 max-w-md text-muted-foreground">
@@ -30,7 +30,7 @@ export function LocalFood() {
         <div className="grid grid-cols-3 gap-3">
           {DISHES.map((dish, i) => (
             <Reveal key={dish.name} delay={i * 0.05}>
-              <div className="group relative aspect-square overflow-hidden rounded-2xl border border-border">
+              <div className="group relative aspect-square overflow-hidden rounded-2xl shadow-[0_4px_16px_-4px_rgba(3,7,18,0.15)] ring-1 ring-black/5">
                 <Image
                   src={dish.src}
                   alt={dish.name}

@@ -43,7 +43,7 @@ export function WhyCalClark() {
         <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
           Why Cal Clark
         </p>
-        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+        <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
           This is how people actually hit their budget
         </h2>
         <p className="mt-4 text-muted-foreground">
@@ -55,9 +55,9 @@ export function WhyCalClark() {
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {PILLARS.map((pillar, i) => (
           <Reveal key={pillar.title} delay={i * 0.08}>
-            <div className="h-full rounded-2xl border border-border bg-surface p-6 transition-shadow hover:shadow-lg hover:shadow-black/5">
+            <div className="h-full rounded-2xl border border-border bg-surface p-6 shadow-[0_1px_2px_rgba(3,7,18,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-border/60 hover:shadow-[0_16px_32px_-12px_rgba(3,7,18,0.12)]">
               <div
-                className={`mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl ${pillar.bg}`}
+                className={`mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl ring-1 ring-inset ring-black/[0.03] ${pillar.bg}`}
               >
                 <pillar.icon
                   className="h-5 w-5"

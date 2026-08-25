@@ -11,7 +11,7 @@ export function FinalCta() {
       />
       <div className="relative mx-auto max-w-3xl px-5 text-center">
         <Reveal>
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             Snap once. Correct once. It remembers.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-white/70">
