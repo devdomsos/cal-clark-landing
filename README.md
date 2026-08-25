@@ -54,3 +54,36 @@ Colors are pulled straight from the app's design tokens
 `#ef4444`, carb `#eab308`, fat `#10b981`. Logomark, app icon, phone frame,
 and store badges are original SVGs drawn for this site — nothing copied from
 Apple, Google, or any competitor's marketing page.
+
+
+
+# Workspace kit
+
+Copy the **contents** of this folder into a project root. That is the whole setup.
+
+```text
+your-new-project/
+  AGENTS.md          ← Cursor + Claude read this
+  CLAUDE.md          ← Claude Code entry (points at AGENTS.md)
+  .gitignore         ← grind runtime (merge if you already have one)
+  .cursor/           ← Cursor rules, skills, grind hooks
+  .claude/skills/    ← same skills for Claude Code (already copied)
+  scripts/           ← optional: re-copy skills Cursor → Claude after you edit them
+```
+
+Finder / desktop: open this folder, select everything inside it, paste into the new repo root.
+Terminal:
+
+```bash
+cp -R /path/to/workspace-kit/. /path/to/new-project/
+```
+
+Hidden folders (`.cursor`, `.claude`) must come along. Then:
+
+1. Edit `.cursor/rules/project.mdc` (stack, typecheck command)
+2. Edit `.cursor/skills/feature-workflow/entry-points.md` (real paths)
+3. Restart Cursor once so hooks load
+4. `@` a plan under `.cursor/plans/` to start the grind loop
+
+Do not copy this into Jastado. Jastado already has its own rules.
+

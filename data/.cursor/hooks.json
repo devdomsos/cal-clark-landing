@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": "node .cursor/hooks/grind-session-start.mjs"
+      }
+    ],
+    "beforeSubmitPrompt": [
+      {
+        "command": "node .cursor/hooks/grind-before-submit.mjs"
+      }
+    ],
+    "beforeReadFile": [
+      {
+        "command": "node .cursor/hooks/grind-touch-plan.mjs"
+      }
+    ],
+    "afterFileEdit": [
+      {
+        "command": "node .cursor/hooks/grind-touch-plan.mjs"
+      }
+    ],
+    "stop": [
+      {
+        "command": "node .cursor/hooks/grind.mjs",
+        "loop_limit": 6
+      }
+    ]
+  }
+}

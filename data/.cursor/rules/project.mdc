@@ -1,0 +1,38 @@
+---
+description: Stack-specific overlay for this repo. Fill on first install. Always loaded.
+alwaysApply: true
+---
+
+# This project
+
+Replace every `TODO` before expecting good agent behavior.
+
+## Stack
+
+- Language / runtime: TODO (e.g. TypeScript 5, Node 22, Python 3.12)
+- Apps: TODO (e.g. `apps/web` Next.js, `apps/api` Express)
+- Package manager: TODO (`pnpm` / `npm` / `bun`)
+- Typecheck command(s): TODO (e.g. `pnpm typecheck`, `pnpm --filter web typecheck`)
+
+## Servers
+
+- Who starts the dev server: **the user** (default) / the agent
+- Do not start: TODO (e.g. `pnpm dev`, `docker compose up`)
+- Preview URL if already running: TODO
+
+## Tokens / UI
+
+- Design tokens live in: TODO (file or package)
+- Do not invent a second palette
+- Visual QA: browser on TODO port / native simulator / both
+
+## Architecture
+
+- Source of truth for business rules: TODO (server / Convex / etc.)
+- Shared contracts package (if any): TODO
+- Never send client-forged user ids for authz: TODO yes/no
+
+## Copy / i18n
+
+- Locales: TODO (single locale / `packages/i18n`)
+- If copy changes, update every locale

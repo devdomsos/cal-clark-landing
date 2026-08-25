@@ -1,0 +1,10 @@
+---
+description: ASCII hyphen; product language in UI; native translations
+alwaysApply: true
+---
+
+# Writing
+
+- Never use the em dash. ASCII hyphen `-`, comma, semicolon, or a sentence break.
+- User-facing copy is product language, not intern-speak (`payload`, `DTO`, `schema`).
+- Translations (if the project has locales) must be native, not word-for-word, without losing meaning.

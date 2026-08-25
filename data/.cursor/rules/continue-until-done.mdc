@@ -1,0 +1,46 @@
+---
+description: Finish the asked task; close gates; do not end early while work remains
+alwaysApply: true
+---
+
+# Continue until the task is done
+
+## What "continue" / "done" means
+
+Whether or not there is a `.cursor/plans/...` file:
+
+1. Implement what the user asked (next unfinished plan todo when a plan exists)
+2. **Close gates before claiming done** - typecheck fan-out; i18n if copy changed; visual QA if UI changed (content on screen, click new controls, not HTTP 200)
+3. If a plan exists, update its YAML todos when a slice finishes
+
+Do **not** stop after a partial win with a wrap-up that invites the user to ask again. Context remaining is not a reason to stop.
+
+## No plan (small / chat-only tasks)
+
+Same gates. A missing plan does **not** skip typecheck or visual QA.
+
+- User names the work in chat → implement → close applicable gates → done
+- Do **not** invent a plan file or scratchpad checklist for small tasks
+- Grind / stop-hook looping only applies when a plan is bound; for no-plan work, finish gates in the same run
+
+## With a plan
+
+When the user points at a plan with open todos, keep implementing until those todos are clear (or blocked). See `.cursor/grind/README.md`.
+
+## Valid reasons to stop mid-task
+
+Stop and ask only when:
+
+- A product decision is **not locked** - load grilling and wait for shared understanding
+- You need permission for a **new dependency**
+- Visual QA env is unavailable and you cannot proceed honestly
+- You hit a true blocker (auth, missing secrets, broken local env)
+
+## Anti-patterns
+
+- Ending with "next I'd do X" while X is still in scope and unblocked
+- Skipping typecheck or visual QA because it was a small change or there was no plan
+- Treating HTTP 200 or a typecheck pass as visual QA
+- Screenshot of a new modal without tapping Done / Cancel / Remove
+- Marking plan todos `completed` before gates pass
+- Writing `DONE` because the turn felt long

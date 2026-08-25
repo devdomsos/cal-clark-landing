@@ -42,3 +42,10 @@ next-env.d.ts
 
 # waitlist data (local dev store — never commit real emails)
 data/waitlist.json
+
+
+# Workspace kit (Cursor grind runtime)
+.cursor/scratchpad.md
+.cursor/grind/conversations/
+.cursor/grind/**/*.json
+!.cursor/grind/README.md

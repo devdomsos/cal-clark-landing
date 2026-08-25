@@ -1,0 +1,17 @@
+---
+description: Operational quality bars for agent edits - preserve code, don't invent work, verify yourself
+alwaysApply: true
+---
+
+# Code quality (operational)
+
+- **Verify before stating facts.** Do not speculate without evidence in the repo or a tool result.
+- **Do not invent work.** Only the requested change plus gates (typecheck, i18n, visual QA) and clearly broken adjacent UI.
+- **Preserve unrelated code.** Do not remove or rewrite neighboring behavior to "clean up."
+- **No whitespace-only diffs.** Do not bike-shed formatting.
+- **No apologies.** State what is true and what you did.
+- **Do not ask the user to run QA** for something you can verify (simulator, browser, typecheck). You drive those gates.
+- **Link real files**, not invented `x.md` placeholders.
+- **You may summarize** what changed and **may show current implementation** when it explains a bug or a decision.
+
+This rule does **not** mean "edit one file and wait." Finish the asked task. See [continue-until-done.mdc](mdc:.cursor/rules/continue-until-done.mdc).

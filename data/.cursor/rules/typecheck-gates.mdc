@@ -1,0 +1,31 @@
+---
+description: Typecheck every touched package and shared-contract consumers before claiming done
+alwaysApply: true
+---
+
+# Typecheck gates
+
+Bundlers and fast refresh often **do not** typecheck. Missing imports and wrong props show up at runtime unless `tsc` (or the project's equivalent) runs.
+
+## Before marking work complete
+
+1. Typecheck **every package you touched**
+2. If you changed a shared contract / types package, typecheck **consumers** too
+3. Unsure or multi-package: run the root typecheck command from [project.mdc](mdc:.cursor/rules/project.mdc)
+
+Do not claim TypeScript work is done until those commands exit 0.
+
+## Fan-out (the failure mode)
+
+Adding a field on a shared DTO and only typechecking one app is **not** done.
+Fixtures, other apps, and generated clients break here.
+
+```typescript
+// ❌ Undeclared identifier - runtime crash
+resetKey={transactionId} // never defined
+
+// ❌ Shared type grew; other packages not updated
+export const FIXTURE: SharedDto = { /* missing newField */ }
+```
+
+Fill the exact commands in `project.mdc`. This rule does not assume `pnpm` or a monorepo.

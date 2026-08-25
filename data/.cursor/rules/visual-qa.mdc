@@ -1,0 +1,33 @@
+---
+description: Verify user-visible UI yourself. HTTP 200 is not enough. Click every new control.
+alwaysApply: true
+---
+
+# Visual QA
+
+If you edit, add, or restyle **user-visible UI**, verify it before claiming done.
+Do this yourself. Do not ask the user to screenshot or "tell me if it works."
+
+## Loop
+
+1. Open the **exact surface you changed**
+2. Confirm **visible content** - real text/controls, not a blank or white-on-white page
+3. Console / runtime log has no uncaught errors or failed module loads
+4. **Click or tap every new control** (primary, dismiss, submit, remove). Capture after dismiss
+5. Check ~390px width: no horizontal overflow; tap targets ≥ 44px
+6. Run the [ui-visual-craft](mdc:.cursor/skills/ui-visual-craft/SKILL.md) screenshot rubric
+7. Taste / tokens: [design-ui](mdc:.cursor/skills/design-ui/SKILL.md)
+
+A typecheck pass or an HTTP 200 is **not** this gate.
+
+## Tools
+
+Use whatever this environment has: Cursor browser tools, Playwright, iOS Simulator MCP, Android emulator.
+If none are available, say so and **do not** claim visual QA passed.
+
+## Interaction
+
+A still frame of an open modal is not done. If you added Done and Remove, exercise both.
+Destructive: open the confirm, then Cancel unless deleting is the test.
+
+Save captures under a gitignored path (for example `testing/agent-evidence/`). Never commit agent screenshots unless the project asks.
