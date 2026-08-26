@@ -26,9 +26,13 @@ own asset hosts:
 
 - Apple: https://developer.apple.com/app-store/marketing/guidelines/ (unmodified,
   black RGB "Download on the App Store" SVG)
-- Google: https://play.google.com/intl/en_us/badges/ (unmodified "Get it on
-  Google Play" PNG)
+- Google: https://play.google.com/intl/en_us/badges/ ("Get it on Google Play"
+  PNG, losslessly cropped to its opaque pixels — Google's source file ships
+  with ~41px of transparent clear-space baked in on every side, which made it
+  look noticeably smaller than Apple's edge-to-edge badge at the same height.
+  The pill artwork itself is untouched, only the surrounding transparent
+  canvas was trimmed.)
 
-Both are shown unmodified per their brand guidelines, wrapped in a "Soon" tag
-and linked to `#waitlist` instead of a live store page, since neither listing
-exists yet. Swap the `href`s to the real store URLs the moment the app is live.
+Both are wrapped in a "Soon" tag and linked to `#waitlist` instead of a live
+store page, since neither listing exists yet. Swap the `href`s to the real
+store URLs the moment the app is live.

@@ -54,7 +54,7 @@ export function StoreBadges({
         href="#waitlist"
         src="/images/badges/google-play-badge.png"
         alt="Get it on Google Play"
-        width={103}
+        width={134}
         height={40}
       />
     </div>
