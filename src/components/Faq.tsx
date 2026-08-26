@@ -31,7 +31,7 @@ const ITEMS = [
   },
   {
     q: "How much does it cost?",
-    a: "3 free AI scans, then one honest yearly plan. Priced and billed through Apple or Google, shown before you pay — no surprise charge.",
+    a: "3 free AI scans a week, then one honest yearly plan. Priced and billed through Apple or Google, shown before you pay — no surprise charge.",
   },
   {
     q: "Do you sell my food photos?",

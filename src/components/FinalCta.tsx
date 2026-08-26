@@ -1,5 +1,4 @@
 import { Section, Reveal } from "./Section";
-import { StoreBadges } from "./StoreBadges";
 import { WaitlistForm } from "./WaitlistForm";
 
 export function FinalCta() {
@@ -21,10 +20,6 @@ export function FinalCta() {
 
           <div className="mx-auto mt-8 max-w-md">
             <WaitlistForm id="waitlist-final" />
-          </div>
-
-          <div className="mt-6 flex justify-center">
-            <StoreBadges variant="light" />
           </div>
         </Reveal>
       </div>

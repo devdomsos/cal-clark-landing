@@ -3,7 +3,7 @@ import { Section, Reveal } from "./Section";
 import { WaitlistForm } from "./WaitlistForm";
 
 const FREE_POINTS = [
-  "3 AI photo scans, no card required",
+  "3 AI photo scans per week, no card required",
   "Recents and usual meals, unlimited",
   "Edit grams on any log, anytime",
 ];
@@ -23,7 +23,7 @@ export function Pricing() {
             Pricing
           </p>
           <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            3 free scans. Then one honest price.
+            3 free scans a week. Then one honest price.
           </h2>
           <p className="mt-4 text-muted-foreground">
             Price is shown in the app at checkout via Apple or Google. Cancel

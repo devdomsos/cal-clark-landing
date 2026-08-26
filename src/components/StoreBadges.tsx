@@ -35,12 +35,7 @@ function Badge({
   );
 }
 
-export function StoreBadges({
-  className = "",
-}: {
-  variant?: "light" | "dark";
-  className?: string;
-}) {
+export function StoreBadges({ className = "" }: { className?: string }) {
   return (
     <div className={`flex flex-wrap items-center gap-3 ${className}`}>
       <Badge

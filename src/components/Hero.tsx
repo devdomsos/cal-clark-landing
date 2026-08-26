@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { PhoneMock } from "./PhoneMock";
-import { StoreBadges } from "./StoreBadges";
 import { WaitlistForm } from "./WaitlistForm";
 
 export function Hero() {
@@ -28,18 +27,14 @@ export function Hero() {
           </h1>
           <p className="mt-5 max-w-xl text-lg text-muted-foreground">
             Calories and macros from the plate. An estimate, not a lab. 3 free
-            scans, then a yearly plan. No ads.
+            scans per week, then a yearly plan. No ads.
           </p>
 
           <div className="mt-8 max-w-md">
             <WaitlistForm id="waitlist-hero" />
             <p className="mt-3 text-xs text-muted-foreground">
-              3 free scans. Then a yearly plan. No ads.
+              3 free scans per week. Then a yearly plan. No ads.
             </p>
-          </div>
-
-          <div className="mt-6">
-            <StoreBadges variant="dark" />
           </div>
         </motion.div>
 
