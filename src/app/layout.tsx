@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
   title: "Cal Clark — Snap once. Correct once. It remembers.",
   description:
-    "A photo calorie tracker that drafts your log from a picture, learns your usual meals, and never claims lab-exact numbers. Fast, local, honest, and it remembers.",
+    "Photo calorie and macro tracking that drafts your log, learns your meals, and stays honest about estimates. Calories, protein, carbs, and fat — nothing else.",
   metadataBase: new URL("https://calclark.app"),
   openGraph: {
     title: "Cal Clark — Snap once. Correct once. It remembers.",
     description:
-      "Calories and macros from the plate. An estimate, not a lab. 3 free scans, then a yearly plan. No ads.",
+      "A photo-first calorie tracker. Draft from a plate, confirm once, and reuse saved meals. Focused on calories and macros — no ads, no clutter.",
     url: "https://calclark.app",
     siteName: "Cal Clark",
     type: "website",
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${jakarta.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         {children}
       </body>

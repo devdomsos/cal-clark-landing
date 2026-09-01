@@ -4,12 +4,12 @@ import { Logo } from "./Logo";
 export function Footer() {
   return (
     <footer className="mt-auto border-t border-border bg-surface">
-      <div className="mx-auto max-w-6xl px-5 py-10">
+      <div className="mx-auto max-w-6xl px-5 py-12">
         <div className="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
           <div>
             <Logo />
-            <p className="mt-2 max-w-xs text-sm text-muted-foreground">
-              Snap once. Correct once. Cal Clark remembers.
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
+              Photo calorie tracking — honest estimates, saved meals, no ads.
             </p>
           </div>
 
@@ -32,9 +32,9 @@ export function Footer() {
           </nav>
         </div>
 
-        <p className="mt-8 text-xs text-muted-foreground">
-          © 2026 Cal Clark. Estimates, not medical advice. Not a substitute
-          for a dietitian.
+        <p className="mt-10 border-t border-border/60 pt-6 text-xs text-muted-foreground">
+          © 2026 Cal Clark. Estimates, not medical advice. Not a substitute for
+          a dietitian.
         </p>
       </div>
     </footer>
