@@ -16,7 +16,7 @@ function Badge({
   return (
     <a
       href={href}
-      className="group relative inline-flex min-h-[44px] shrink-0 items-center rounded-xl transition-transform hover:scale-[1.02]"
+      className="group relative inline-flex shrink-0 items-center rounded-xl transition-transform hover:scale-[1.03]"
       aria-label={`${alt} — coming soon, join the waitlist instead`}
     >
       <Image
@@ -28,7 +28,7 @@ function Badge({
         className="h-10 w-auto select-none"
         draggable={false}
       />
-      <span className="absolute -top-2 -right-2 rounded-full bg-primary px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-white shadow-[var(--shadow-sm)]">
+      <span className="absolute -top-2 -right-2 rounded-full bg-primary px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-white shadow-sm">
         Soon
       </span>
     </a>

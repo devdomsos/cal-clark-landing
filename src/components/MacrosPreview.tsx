@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Section, Reveal, SectionHeader } from "./Section";
+import { Section, Reveal, TextLine, TextReveal } from "./Section";
 
 const RADIUS = 70;
 const CIRC = 2 * Math.PI * RADIUS;
-const PROGRESS = 0.64;
+const PROGRESS = 0.64; // 64% of the daily budget used
 
 function MacroRow({
   label,
@@ -20,7 +20,7 @@ function MacroRow({
 }) {
   return (
     <div>
-      <div className="mb-2 flex items-center justify-between text-xs">
+      <div className="mb-1.5 flex items-center justify-between text-xs">
         <span className="font-semibold text-foreground">{label}</span>
         <span className="text-muted-foreground">{grams}</span>
       </div>
@@ -40,21 +40,32 @@ function MacroRow({
 
 export function MacrosPreview() {
   return (
-    <Section className="border-y border-border/60 bg-surface py-24 lg:py-28">
-      <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 lg:grid-cols-2 lg:gap-16">
-        <Reveal>
-          <SectionHeader
-            align="left"
-            eyebrow="On your home screen"
-            title="Calories and macros. That is the whole app."
-            description="One ring for what is left today. Three bars for protein, carbs, and fat. No water logs, no forty micronutrients, no recipe builder — by design."
-            className="mb-0 max-w-lg"
-          />
-        </Reveal>
+    <Section className="bg-surface py-20">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-2">
+        <TextReveal>
+          <TextLine>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
+              On your home screen
+            </p>
+          </TextLine>
+          <TextLine>
+            <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+              Calories and macros. That&apos;s the whole list.
+            </h2>
+          </TextLine>
+          <TextLine>
+            <p className="mt-4 max-w-md text-muted-foreground">
+              We deliberately skip forty micronutrients, water logs, and recipe
+              boxes. One ring for what&apos;s left today, three bars for protein,
+              carbs, and fat. If you want lab-grade micros, this is the wrong
+              app.
+            </p>
+          </TextLine>
+        </TextReveal>
 
-        <Reveal delay={0.1} className="mx-auto w-full max-w-sm lg:mx-0 lg:justify-self-end">
-          <div className="card overflow-hidden p-8 shadow-[var(--shadow-lg)]">
-            <div className="mb-7 flex items-center justify-center">
+        <Reveal delay={0.1} className="mx-auto w-full max-w-sm">
+          <div className="rounded-3xl border border-border bg-background p-7 shadow-sm">
+            <div className="mb-6 flex items-center justify-center">
               <div className="relative h-44 w-44">
                 <svg viewBox="0 0 160 160" className="h-full w-full -rotate-90">
                   <circle
@@ -63,7 +74,7 @@ export function MacrosPreview() {
                     r={RADIUS}
                     fill="none"
                     stroke="var(--color-muted)"
-                    strokeWidth="11"
+                    strokeWidth="12"
                   />
                   <motion.circle
                     cx="80"
@@ -71,7 +82,7 @@ export function MacrosPreview() {
                     r={RADIUS}
                     fill="none"
                     stroke="var(--color-primary)"
-                    strokeWidth="11"
+                    strokeWidth="12"
                     strokeLinecap="round"
                     strokeDasharray={CIRC}
                     initial={{ strokeDashoffset: CIRC }}
@@ -81,7 +92,7 @@ export function MacrosPreview() {
                   />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-3xl font-bold tracking-tight text-foreground">
+                  <span className="text-2xl font-bold text-foreground">
                     740
                   </span>
                   <span className="text-xs text-muted-foreground">
@@ -92,24 +103,9 @@ export function MacrosPreview() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <MacroRow
-                label="Protein"
-                color="var(--color-protein)"
-                value={58}
-                grams="88 / 150 g"
-              />
-              <MacroRow
-                label="Carbs"
-                color="var(--color-carb)"
-                value={41}
-                grams="120 / 290 g"
-              />
-              <MacroRow
-                label="Fat"
-                color="var(--color-fat)"
-                value={72}
-                grams="52 / 72 g"
-              />
+              <MacroRow label="Protein" color="#ef4444" value={58} grams="88 / 150 g" />
+              <MacroRow label="Carbs" color="#eab308" value={41} grams="120 / 290 g" />
+              <MacroRow label="Fat" color="#10b981" value={72} grams="52 / 72 g" />
             </div>
           </div>
         </Reveal>

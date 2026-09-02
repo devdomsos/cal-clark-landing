@@ -1,25 +1,30 @@
-import { Section, Reveal } from "./Section";
+import { Section, Reveal, TextLine, TextReveal } from "./Section";
 import { WaitlistForm } from "./WaitlistForm";
 
 export function FinalCta() {
   return (
-    <Section className="relative overflow-hidden bg-foreground py-24 lg:py-28">
+    <Section className="relative overflow-hidden bg-foreground py-20">
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_30%_0%,rgba(26,86,219,0.35),transparent_55%),radial-gradient(ellipse_50%_50%_at_90%_20%,rgba(5,150,105,0.2),transparent_50%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.35),transparent_45%),radial-gradient(circle_at_80%_0%,rgba(16,185,129,0.25),transparent_40%)]"
         aria-hidden="true"
       />
-      <div className="relative mx-auto max-w-2xl px-5 text-center">
-        <Reveal>
-          <p className="eyebrow mb-4 text-primary-light">Early access</p>
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Be first when Cal Clark ships
-          </h2>
-          <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-white/65">
-            Photo logging that gets faster every week. Join the waitlist for
-            launch-day download links and pricing.
-          </p>
+      <div className="relative mx-auto max-w-3xl px-5 text-center">
+        <TextReveal>
+          <TextLine>
+            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Snap once. Correct once. It remembers.
+            </h2>
+          </TextLine>
+          <TextLine>
+            <p className="mx-auto mt-4 max-w-xl text-white/70">
+              Fast, local, honest, and it remembers — that&apos;s how you actually
+              hit your budget. Join the list and be first in when we launch.
+            </p>
+          </TextLine>
+        </TextReveal>
 
-          <div className="mx-auto mt-9 max-w-md">
+        <Reveal delay={0.15}>
+          <div className="mx-auto mt-8 max-w-md">
             <WaitlistForm id="waitlist-final" />
           </div>
         </Reveal>

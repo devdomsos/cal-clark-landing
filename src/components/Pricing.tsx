@@ -1,42 +1,53 @@
 import { Check } from "lucide-react";
-import { Section, Reveal, SectionHeader } from "./Section";
+import { Section, Reveal, TextLine, TextReveal } from "./Section";
 import { WaitlistForm } from "./WaitlistForm";
 
 const FREE_POINTS = [
   "3 AI photo scans per week, no card required",
-  "Unlimited recents and saved meals",
-  "Edit grams on any entry, anytime",
+  "Recents and usual meals, unlimited",
+  "Edit grams on any log, anytime",
 ];
 
 const PLAN_POINTS = [
   "Unlimited AI photo scans",
-  "One yearly plan — billed once through your app store",
-  "Price shown at checkout before you pay",
+  "One clear yearly plan — billed once a year",
+  "Never disguised as pennies a day",
 ];
 
 export function Pricing() {
   return (
-    <Section id="pricing" className="border-t border-border/60 bg-muted/30 py-24 lg:py-28">
+    <Section id="pricing" className="bg-surface py-20">
       <div className="mx-auto max-w-5xl px-5">
-        <Reveal>
-          <SectionHeader
-            eyebrow="Pricing"
-            title="Try it free. Upgrade when you are ready."
-            description="Three AI photo scans per week on the house. After that, one straightforward yearly plan — no ads, no surprise charges. Exact price shown in the App Store or Play Store at checkout."
-          />
-        </Reveal>
+        <TextReveal className="mx-auto mb-12 max-w-2xl text-center">
+          <TextLine>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
+              Pricing
+            </p>
+          </TextLine>
+          <TextLine>
+            <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+              3 free scans a week. Then one honest price.
+            </h2>
+          </TextLine>
+          <TextLine>
+            <p className="mt-4 text-muted-foreground">
+              Price is shown in the app at checkout via Apple or Google. Cancel
+              anytime in your store settings.
+            </p>
+          </TextLine>
+        </TextReveal>
 
-        <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
-          <Reveal className="card bg-background p-7 sm:p-8">
+        <div className="grid gap-5 sm:grid-cols-2">
+          <Reveal className="rounded-2xl border border-border bg-background p-7 shadow-[0_1px_2px_rgba(3,7,18,0.04)]">
             <h3 className="text-lg font-semibold text-foreground">Free</h3>
             <p className="mt-1 text-sm text-muted-foreground">
-              Enough to learn the workflow
+              Try it before you commit
             </p>
-            <ul className="mt-7 flex flex-col gap-3.5">
+            <ul className="mt-6 flex flex-col gap-3">
               {FREE_POINTS.map((p) => (
                 <li key={p} className="flex items-start gap-2.5 text-sm">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-fat" />
-                  <span className="leading-relaxed text-foreground">{p}</span>
+                  <span className="text-foreground">{p}</span>
                 </li>
               ))}
             </ul>
@@ -44,30 +55,29 @@ export function Pricing() {
 
           <Reveal
             delay={0.1}
-            className="relative overflow-hidden rounded-2xl border-2 border-primary/30 bg-surface p-7 shadow-[0_20px_48px_-16px_rgba(26,86,219,0.2)] sm:p-8"
+            className="relative rounded-2xl border-2 border-primary bg-background p-7 shadow-[0_20px_40px_-16px_rgba(59,130,246,0.3)]"
           >
-            <span className="absolute right-6 top-0 -translate-y-1/2 rounded-full bg-primary px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-white">
-              Full access
+            <span className="absolute -top-3 right-6 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white">
+              Best value
             </span>
             <h3 className="text-lg font-semibold text-foreground">Yearly</h3>
             <p className="mt-1 text-sm text-muted-foreground">
               For everyday logging
             </p>
-            <ul className="mt-7 flex flex-col gap-3.5">
+            <ul className="mt-6 flex flex-col gap-3">
               {PLAN_POINTS.map((p) => (
                 <li key={p} className="flex items-start gap-2.5 text-sm">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                  <span className="leading-relaxed text-foreground">{p}</span>
+                  <span className="text-foreground">{p}</span>
                 </li>
               ))}
             </ul>
           </Reveal>
         </div>
 
-        <Reveal delay={0.15} className="mx-auto mt-12 max-w-md text-center">
-          <p className="mb-4 text-sm font-medium text-foreground">
-            Not live yet — join the waitlist for launch day pricing and download
-            links.
+        <Reveal delay={0.15} className="mx-auto mt-10 max-w-md text-center">
+          <p className="mb-3 text-sm font-medium text-foreground">
+            Not live yet — get the price and the download link the day it ships.
           </p>
           <WaitlistForm id="waitlist-pricing" />
         </Reveal>

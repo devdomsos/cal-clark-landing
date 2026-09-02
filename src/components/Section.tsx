@@ -1,7 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
+
+const ease = "easeOut" as const;
 
 export function Section({
   id,
@@ -12,13 +14,15 @@ export function Section({
   className?: string;
   children: ReactNode;
 }) {
+  const reduced = useReducedMotion();
+
   return (
     <motion.section
       id={id}
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.08 }}
-      transition={{ duration: 0.45, ease: "easeOut" }}
+      initial={reduced ? false : { opacity: 0, y: 16 }}
+      whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.4, ease }}
       className={className}
     >
       {children}
@@ -35,12 +39,14 @@ export function Reveal({
   delay?: number;
   children: ReactNode;
 }) {
+  const reduced = useReducedMotion();
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={reduced ? false : { opacity: 0, y: 10 }}
+      whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.4, ease: "easeOut", delay }}
+      transition={{ duration: 0.35, ease, delay }}
       className={className}
     >
       {children}
@@ -48,26 +54,64 @@ export function Reveal({
   );
 }
 
-export function SectionHeader({
-  eyebrow,
-  title,
-  description,
-  align = "center",
+const textContainer = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.04 },
+  },
+};
+
+const textChild = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease },
+  },
+};
+
+export function TextReveal({
   className = "",
+  children,
 }: {
-  eyebrow: string;
-  title: string;
-  description?: string;
-  align?: "center" | "left";
   className?: string;
+  children: ReactNode;
 }) {
-  const alignClass = align === "center" ? "text-center mx-auto" : "text-left";
+  const reduced = useReducedMotion();
+
+  if (reduced) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
-    <div className={`mb-12 max-w-2xl lg:mb-14 ${alignClass} ${className}`}>
-      <p className="eyebrow mb-3">{eyebrow}</p>
-      <h2 className="section-heading">{title}</h2>
-      {description && <p className="section-subhead">{description}</p>}
-    </div>
+    <motion.div
+      className={className}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.25 }}
+      variants={textContainer}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function TextLine({
+  className = "",
+  children,
+}: {
+  className?: string;
+  children: ReactNode;
+}) {
+  const reduced = useReducedMotion();
+
+  if (reduced) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <motion.div className={className} variants={textChild}>
+      {children}
+    </motion.div>
   );
 }
