@@ -1,5 +1,5 @@
 import { Zap, MapPin, ShieldCheck, RotateCcw } from "lucide-react";
-import { Section, Reveal } from "./Section";
+import { Section, Reveal, TextLine, TextReveal } from "./Section";
 
 const PILLARS = [
   {
@@ -39,18 +39,24 @@ const PILLARS = [
 export function WhyCalClark() {
   return (
     <Section id="why" className="mx-auto max-w-6xl px-5 py-20">
-      <Reveal className="mx-auto mb-12 max-w-2xl text-center">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
-          Why Cal Clark
-        </p>
-        <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-          This is how people actually hit their budget
-        </h2>
-        <p className="mt-4 text-muted-foreground">
-          Not another 40-nutrient database. A log that stays honest and gets
-          faster the more you use it.
-        </p>
-      </Reveal>
+      <TextReveal className="mx-auto mb-12 max-w-2xl text-center">
+        <TextLine>
+          <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
+            Why Cal Clark
+          </p>
+        </TextLine>
+        <TextLine>
+          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+            This is how people actually hit their budget
+          </h2>
+        </TextLine>
+        <TextLine>
+          <p className="mt-4 text-muted-foreground">
+            Not another 40-nutrient database. A log that stays honest and gets
+            faster the more you use it.
+          </p>
+        </TextLine>
+      </TextReveal>
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {PILLARS.map((pillar, i) => (

@@ -1,5 +1,5 @@
 import { Check } from "lucide-react";
-import { Section, Reveal } from "./Section";
+import { Section, Reveal, TextLine, TextReveal } from "./Section";
 import { WaitlistForm } from "./WaitlistForm";
 
 const FREE_POINTS = [
@@ -18,18 +18,24 @@ export function Pricing() {
   return (
     <Section id="pricing" className="bg-surface py-20">
       <div className="mx-auto max-w-5xl px-5">
-        <Reveal className="mx-auto mb-12 max-w-2xl text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
-            Pricing
-          </p>
-          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            3 free scans a week. Then one honest price.
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Price is shown in the app at checkout via Apple or Google. Cancel
-            anytime in your store settings.
-          </p>
-        </Reveal>
+        <TextReveal className="mx-auto mb-12 max-w-2xl text-center">
+          <TextLine>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
+              Pricing
+            </p>
+          </TextLine>
+          <TextLine>
+            <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+              3 free scans a week. Then one honest price.
+            </h2>
+          </TextLine>
+          <TextLine>
+            <p className="mt-4 text-muted-foreground">
+              Price is shown in the app at checkout via Apple or Google. Cancel
+              anytime in your store settings.
+            </p>
+          </TextLine>
+        </TextReveal>
 
         <div className="grid gap-5 sm:grid-cols-2">
           <Reveal className="rounded-2xl border border-border bg-background p-7 shadow-[0_1px_2px_rgba(3,7,18,0.04)]">

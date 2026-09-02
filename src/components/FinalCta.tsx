@@ -1,4 +1,4 @@
-import { Section, Reveal } from "./Section";
+import { Section, Reveal, TextLine, TextReveal } from "./Section";
 import { WaitlistForm } from "./WaitlistForm";
 
 export function FinalCta() {
@@ -9,15 +9,21 @@ export function FinalCta() {
         aria-hidden="true"
       />
       <div className="relative mx-auto max-w-3xl px-5 text-center">
-        <Reveal>
-          <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-            Snap once. Correct once. It remembers.
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/70">
-            Fast, local, honest, and it remembers — that&apos;s how you actually
-            hit your budget. Join the list and be first in when we launch.
-          </p>
+        <TextReveal>
+          <TextLine>
+            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Snap once. Correct once. It remembers.
+            </h2>
+          </TextLine>
+          <TextLine>
+            <p className="mx-auto mt-4 max-w-xl text-white/70">
+              Fast, local, honest, and it remembers — that&apos;s how you actually
+              hit your budget. Join the list and be first in when we launch.
+            </p>
+          </TextLine>
+        </TextReveal>
 
+        <Reveal delay={0.15}>
           <div className="mx-auto mt-8 max-w-md">
             <WaitlistForm id="waitlist-final" />
           </div>

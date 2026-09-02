@@ -18,14 +18,13 @@ export function ProofStrip() {
     <Section className="border-y border-border/70 bg-surface py-14">
       <div className="mx-auto max-w-6xl px-5">
         <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
-          {CLAIMS.map((claim) => (
-            <span
-              key={claim}
-              className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3.5 py-1.5 text-xs font-semibold text-foreground shadow-[0_1px_2px_rgba(3,7,18,0.04)]"
-            >
-              <Check className="h-3.5 w-3.5 text-fat" strokeWidth={3} />
-              {claim}
-            </span>
+          {CLAIMS.map((claim, i) => (
+            <Reveal key={claim} delay={i * 0.06}>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3.5 py-1.5 text-xs font-semibold text-foreground shadow-[0_1px_2px_rgba(3,7,18,0.04)]">
+                <Check className="h-3.5 w-3.5 text-fat" strokeWidth={3} />
+                {claim}
+              </span>
+            </Reveal>
           ))}
         </div>
 

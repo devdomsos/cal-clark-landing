@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Section, Reveal } from "./Section";
+import { Section, Reveal, TextLine, TextReveal } from "./Section";
 
 const DISHES = [
   { src: "/images/food-pierogi.jpg", name: "Pierogi" },
@@ -14,18 +14,24 @@ export function LocalFood() {
   return (
     <Section className="mx-auto max-w-6xl px-5 py-20">
       <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-        <Reveal>
-          <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
-            Local plates
-          </p>
-          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            Understands real plates
-          </h2>
-          <p className="mt-4 max-w-md text-muted-foreground">
-            Not only chicken breast and avocado toast. Home-cooked dinners,
-            bakery counters, and whatever&apos;s actually in the fridge.
-          </p>
-        </Reveal>
+        <TextReveal>
+          <TextLine>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
+              Local plates
+            </p>
+          </TextLine>
+          <TextLine>
+            <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+              Understands real plates
+            </h2>
+          </TextLine>
+          <TextLine>
+            <p className="mt-4 max-w-md text-muted-foreground">
+              Not only chicken breast and avocado toast. Home-cooked dinners,
+              bakery counters, and whatever&apos;s actually in the fridge.
+            </p>
+          </TextLine>
+        </TextReveal>
 
         <div className="grid grid-cols-3 gap-3">
           {DISHES.map((dish, i) => (

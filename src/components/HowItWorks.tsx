@@ -1,5 +1,5 @@
 import { Camera, Sparkles, CheckCheck, RotateCcw } from "lucide-react";
-import { Section, Reveal } from "./Section";
+import { Section, Reveal, TextLine, TextReveal } from "./Section";
 
 const STEPS = [
   {
@@ -30,14 +30,18 @@ export function HowItWorks() {
   return (
     <Section id="how-it-works" className="bg-surface py-20">
       <div className="mx-auto max-w-6xl px-5">
-        <Reveal className="mx-auto mb-14 max-w-2xl text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
-            How it works
-          </p>
-          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            Photo. Draft. Confirm.
-          </h2>
-        </Reveal>
+        <TextReveal className="mx-auto mb-14 max-w-2xl text-center">
+          <TextLine>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
+              How it works
+            </p>
+          </TextLine>
+          <TextLine>
+            <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+              Photo. Draft. Confirm.
+            </h2>
+          </TextLine>
+        </TextReveal>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((step, i) => (

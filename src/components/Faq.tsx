@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { Section, Reveal } from "./Section";
+import { Section, Reveal, TextLine, TextReveal } from "./Section";
 
 const ITEMS = [
   {
@@ -87,14 +87,18 @@ export function Faq() {
 
   return (
     <Section id="faq" className="mx-auto max-w-3xl px-5 py-20">
-      <Reveal className="mb-10 text-center">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
-          FAQ
-        </p>
-        <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-          Honest answers
-        </h2>
-      </Reveal>
+      <TextReveal className="mb-10 text-center">
+        <TextLine>
+          <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
+            FAQ
+          </p>
+        </TextLine>
+        <TextLine>
+          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+            Honest answers
+          </h2>
+        </TextLine>
+      </TextReveal>
 
       <Reveal>
         <div>

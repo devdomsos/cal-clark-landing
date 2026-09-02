@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Section, Reveal } from "./Section";
+import { Section, Reveal, TextLine, TextReveal } from "./Section";
 
 const RADIUS = 70;
 const CIRC = 2 * Math.PI * RADIUS;
@@ -42,20 +42,26 @@ export function MacrosPreview() {
   return (
     <Section className="bg-surface py-20">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-2">
-        <Reveal>
-          <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
-            On your home screen
-          </p>
-          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            Calories and macros. That&apos;s the whole list.
-          </h2>
-          <p className="mt-4 max-w-md text-muted-foreground">
-            We deliberately skip forty micronutrients, water logs, and recipe
-            boxes. One ring for what&apos;s left today, three bars for protein,
-            carbs, and fat. If you want lab-grade micros, this is the wrong
-            app.
-          </p>
-        </Reveal>
+        <TextReveal>
+          <TextLine>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
+              On your home screen
+            </p>
+          </TextLine>
+          <TextLine>
+            <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+              Calories and macros. That&apos;s the whole list.
+            </h2>
+          </TextLine>
+          <TextLine>
+            <p className="mt-4 max-w-md text-muted-foreground">
+              We deliberately skip forty micronutrients, water logs, and recipe
+              boxes. One ring for what&apos;s left today, three bars for protein,
+              carbs, and fat. If you want lab-grade micros, this is the wrong
+              app.
+            </p>
+          </TextLine>
+        </TextReveal>
 
         <Reveal delay={0.1} className="mx-auto w-full max-w-sm">
           <div className="rounded-3xl border border-border bg-background p-7 shadow-sm">

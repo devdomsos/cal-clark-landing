@@ -1,5 +1,5 @@
 import { X, Check } from "lucide-react";
-import { Section, Reveal } from "./Section";
+import { Section, Reveal, TextLine, TextReveal } from "./Section";
 
 const ROWS = [
   {
@@ -17,14 +17,18 @@ const ROWS = [
 export function Compare() {
   return (
     <Section className="mx-auto max-w-5xl px-5 py-20">
-      <Reveal className="mx-auto mb-12 max-w-2xl text-center">
-        <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
-          The difference
-        </p>
-        <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-          Database trackers vs. Cal Clark
-        </h2>
-      </Reveal>
+      <TextReveal className="mx-auto mb-12 max-w-2xl text-center">
+        <TextLine>
+          <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
+            The difference
+          </p>
+        </TextLine>
+        <TextLine>
+          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+            Database trackers vs. Cal Clark
+          </h2>
+        </TextLine>
+      </TextReveal>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <Reveal className="rounded-2xl border border-border bg-surface/60 p-6 sm:p-7">
