@@ -49,11 +49,11 @@ MVP by design, so it ships fast and stays easy to audit.
 
 ## Brand
 
-Colors are pulled straight from the app's design tokens
-(`lib/ui/getColor.ts` in `cal-clark-ai`): primary blue `#3B82F6`, protein
-`#ef4444`, carb `#eab308`, fat `#10b981`. Logomark, app icon, phone frame,
-and store badges are original SVGs drawn for this site — nothing copied from
-Apple, Google, or any competitor's marketing page.
+The header mark is the same pear-in-ring lockup as the Expo app icon
+(`assets/brand/app/icon.svg` in cal-clark-ai). Favicons, apple-touch icon, and
+`public/og-image.png` are generated from that artwork. Colors stay on the app
+tokens (`lib/ui/getColor.ts`): primary blue `#3B82F6`, protein `#ef4444`, carb
+`#eab308`, fat `#10b981`.
 
 
 

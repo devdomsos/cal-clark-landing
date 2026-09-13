@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Check } from "lucide-react";
+import type { Locale } from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/messages";
 
 const CYCLE = 7; // seconds
 const CORNER_TIMES = [0, 0.18, 0.28, 0.85, 0.95, 1];
@@ -44,7 +46,15 @@ function MacroBar({
   );
 }
 
-export function PhoneMock() {
+export function PhoneMock({ locale }: { locale: Locale }) {
+  const t = getMessages(locale);
+  const reduceMotion = useReducedMotion();
+  const cornerMotion = reduceMotion
+    ? { opacity: 0 }
+    : { opacity: CORNER_OPACITY };
+  const cardMotion = reduceMotion
+    ? { y: "0%", opacity: 1 }
+    : { y: CARD_Y, opacity: CARD_OPACITY };
   return (
     <div className="relative mx-auto w-full max-w-[300px] select-none">
       <div
@@ -56,7 +66,7 @@ export function PhoneMock() {
         <div className="relative h-full w-full overflow-hidden rounded-[2.2rem]">
           <Image
             src="/images/hero-plate.jpg"
-            alt="A plated meal, ready to be logged in Cal Clark"
+            alt={t.phone.plateAlt}
             fill
             sizes="300px"
             className="object-cover"
@@ -67,13 +77,17 @@ export function PhoneMock() {
           {/* viewfinder corners */}
           <motion.div
             className="absolute inset-6"
-            animate={{ opacity: CORNER_OPACITY }}
-            transition={{
-              duration: CYCLE,
-              times: CORNER_TIMES,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+            animate={cornerMotion}
+            transition={
+              reduceMotion
+                ? { duration: 0 }
+                : {
+                    duration: CYCLE,
+                    times: CORNER_TIMES,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }
+            }
           >
             <Corner className="left-0 top-0 border-l-[3px] border-t-[3px] rounded-tl-lg" />
             <Corner className="right-0 top-0 border-r-[3px] border-t-[3px] rounded-tr-lg" />
@@ -89,18 +103,22 @@ export function PhoneMock() {
           {/* result card */}
           <motion.div
             className="absolute inset-x-3 bottom-3 rounded-2xl border border-white/10 bg-black/55 p-3.5 backdrop-blur-md"
-            animate={{ y: CARD_Y, opacity: CARD_OPACITY }}
-            transition={{
-              duration: CYCLE,
-              times: CARD_TIMES,
-              repeat: Infinity,
-              ease: "easeOut",
-            }}
+            animate={cardMotion}
+            transition={
+              reduceMotion
+                ? { duration: 0 }
+                : {
+                    duration: CYCLE,
+                    times: CARD_TIMES,
+                    repeat: Infinity,
+                    ease: "easeOut",
+                  }
+            }
           >
             <div className="mb-2 flex items-center justify-between">
               <div>
                 <p className="text-[10px] font-medium uppercase tracking-wide text-white/60">
-                  Estimated
+                  {t.phone.estimated}
                 </p>
                 <p className="text-xl font-bold leading-tight text-white">
                   620 kcal

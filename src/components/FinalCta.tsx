@@ -1,7 +1,10 @@
 import { Section, Reveal } from "./Section";
 import { WaitlistForm } from "./WaitlistForm";
+import type { Locale } from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/messages";
 
-export function FinalCta() {
+export function FinalCta({ locale }: { locale: Locale }) {
+  const t = getMessages(locale);
   return (
     <Section className="relative overflow-hidden bg-foreground py-20">
       <div
@@ -11,15 +14,12 @@ export function FinalCta() {
       <div className="relative mx-auto max-w-3xl px-5 text-center">
         <Reveal>
           <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-            Snap once. Correct once. It remembers.
+            {t.final.title}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/70">
-            Fast, local, honest, and it remembers — that&apos;s how you actually
-            hit your budget. Join the list and be first in when we launch.
-          </p>
+          <p className="mx-auto mt-4 max-w-xl text-white/70">{t.final.sub}</p>
 
           <div className="mx-auto mt-8 max-w-md">
-            <WaitlistForm id="waitlist-final" />
+            <WaitlistForm id="waitlist-final" locale={locale} />
           </div>
         </Reveal>
       </div>

@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Section, Reveal } from "./Section";
+import type { Locale } from "@/lib/i18n/config";
+import { getMessages } from "@/lib/i18n/messages";
 
 const RADIUS = 70;
 const CIRC = 2 * Math.PI * RADIUS;
@@ -38,22 +40,20 @@ function MacroRow({
   );
 }
 
-export function MacrosPreview() {
+export function MacrosPreview({ locale }: { locale: Locale }) {
+  const t = getMessages(locale);
   return (
     <Section className="bg-surface py-20">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-2">
         <Reveal>
           <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
-            On your home screen
+            {t.macros.eyebrow}
           </p>
           <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            Calories and macros. That&apos;s the whole list.
+            {t.macros.title}
           </h2>
           <p className="mt-4 max-w-md text-muted-foreground">
-            We deliberately skip forty micronutrients, water logs, and recipe
-            boxes. One ring for what&apos;s left today, three bars for protein,
-            carbs, and fat. If you want lab-grade micros, this is the wrong
-            app.
+            {t.macros.body}
           </p>
         </Reveal>
 
@@ -90,16 +90,16 @@ export function MacrosPreview() {
                     740
                   </span>
                   <span className="text-xs text-muted-foreground">
-                    kcal left today
+                    {t.macros.leftToday}
                   </span>
                 </div>
               </div>
             </div>
 
             <div className="flex flex-col gap-4">
-              <MacroRow label="Protein" color="#ef4444" value={58} grams="88 / 150 g" />
-              <MacroRow label="Carbs" color="#eab308" value={41} grams="120 / 290 g" />
-              <MacroRow label="Fat" color="#10b981" value={72} grams="52 / 72 g" />
+              <MacroRow label={t.macros.protein} color="#ef4444" value={58} grams="88 / 150 g" />
+              <MacroRow label={t.macros.carbs} color="#eab308" value={41} grams="120 / 290 g" />
+              <MacroRow label={t.macros.fat} color="#10b981" value={72} grams="52 / 72 g" />
             </div>
           </div>
         </Reveal>

@@ -44,6 +44,12 @@ body {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto;
+  }
+}
+
 ::selection {
   background: var(--primary-light);
   color: var(--foreground);
