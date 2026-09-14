@@ -1,6 +1,4 @@
-"use client";
-
-import { PhoneMock } from "./PhoneMock";
+import { HeroDemo } from "./phone/HeroDemo";
 import { WaitlistForm } from "./WaitlistForm";
 import type { Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
@@ -8,31 +6,33 @@ import { getMessages } from "@/lib/i18n/messages";
 export function Hero({ locale }: { locale: Locale }) {
   const t = getMessages(locale);
   return (
-    <div className="relative overflow-hidden">
+    <section className="relative overflow-hidden">
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px] bg-gradient-to-b from-primary-light/40 via-primary-light/10 to-transparent"
+        className="pointer-events-none absolute -top-40 right-[-20%] -z-10 h-[780px] w-[780px] rounded-full bg-[radial-gradient(circle,rgba(191,219,254,0.7),rgba(245,243,238,0)_65%)] lg:right-[-5%]"
         aria-hidden="true"
       />
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:pb-24 lg:pt-20">
-        <div>
-          <p className="mb-4 inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
+      <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 pb-20 pt-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 lg:px-8 lg:pb-28 lg:pt-14">
+        <div className="max-w-2xl">
+          <p className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-foreground/70">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-fat opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-fat" />
+            </span>
             {t.hero.eyebrow}
           </p>
-          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-[3.4rem] lg:leading-[1.05]">
-            {t.hero.h1Line1}
-            <br />
-            {t.hero.h1Line2}
+          <h1 className="display text-[2.6rem] text-foreground sm:text-6xl lg:text-[4.6rem]">
+            {t.hero.h1Line1} <span className="text-foreground/40">{t.hero.h1Line2}</span>
           </h1>
-          <p className="mt-5 max-w-xl text-lg text-muted-foreground">{t.hero.sub}</p>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/70 sm:text-xl">{t.hero.sub}</p>
 
-          <div className="mt-8 max-w-md">
+          <div className="mt-9 max-w-lg">
             <WaitlistForm id="waitlist" locale={locale} />
-            <p className="mt-3 text-xs text-muted-foreground">{t.hero.micro}</p>
+            <p className="mt-3 pl-1 text-sm text-muted-foreground">{t.hero.micro}</p>
           </div>
         </div>
 
-        <PhoneMock locale={locale} />
+        <HeroDemo locale={locale} />
       </div>
-    </div>
+    </section>
   );
 }

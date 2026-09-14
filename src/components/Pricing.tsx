@@ -1,63 +1,45 @@
 import { Check } from "lucide-react";
-import { Section, Reveal } from "./Section";
-import { WaitlistForm } from "./WaitlistForm";
+import { Reveal } from "./Section";
 import type { Locale } from "@/lib/i18n/config";
+import { homePath } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
 
 export function Pricing({ locale }: { locale: Locale }) {
   const t = getMessages(locale);
   return (
-    <Section id="pricing" className="bg-surface py-20">
-      <div className="mx-auto max-w-5xl px-5">
-        <Reveal className="mx-auto mb-12 max-w-2xl text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
-            {t.pricing.eyebrow}
-          </p>
-          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            {t.pricing.title}
-          </h2>
-          <p className="mt-4 text-muted-foreground">{t.pricing.sub}</p>
-        </Reveal>
-
-        <div className="grid gap-5 sm:grid-cols-2">
-          <Reveal className="rounded-2xl border border-border bg-background p-7 shadow-[0_1px_2px_rgba(3,7,18,0.04)]">
-            <h3 className="text-lg font-semibold text-foreground">{t.pricing.freeTitle}</h3>
-            <p className="mt-1 text-sm text-muted-foreground">{t.pricing.freeSub}</p>
-            <ul className="mt-6 flex flex-col gap-3">
-              {t.pricing.freePoints.map((p) => (
-                <li key={p} className="flex items-start gap-2.5 text-sm">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-fat" />
-                  <span className="text-foreground">{p}</span>
-                </li>
-              ))}
-            </ul>
+    <section id="pricing" className="scroll-mt-16 px-3 lg:px-4">
+      <div className="relative overflow-hidden rounded-[32px] bg-surface lg:rounded-[40px]">
+        <div
+          className="pointer-events-none absolute -right-40 -top-40 h-[560px] w-[560px] rounded-full bg-[radial-gradient(circle,rgba(16,185,129,0.14),transparent_65%)]"
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-8 lg:py-28">
+          <Reveal>
+            <p className="mb-4 text-sm font-medium text-foreground/60">{t.pricing.eyebrow}</p>
+            <h2 className="display text-5xl text-foreground sm:text-7xl">{t.pricing.title}</h2>
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-foreground/70">{t.pricing.sub}</p>
+            <a
+              href={`${homePath(locale)}#join`}
+              className="focus-ring mt-9 inline-flex h-14 items-center rounded-full bg-ink px-8 text-base font-semibold text-white transition-transform hover:scale-[1.02] active:scale-[0.98]"
+            >
+              {t.nav.waitlist}
+            </a>
           </Reveal>
 
-          <Reveal
-            delay={0.1}
-            className="relative rounded-2xl border-2 border-primary bg-background p-7 shadow-[0_20px_40px_-16px_rgba(59,130,246,0.3)]"
-          >
-            <span className="absolute -top-3 right-6 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white">
-              {t.pricing.planBadge}
-            </span>
-            <h3 className="text-lg font-semibold text-foreground">{t.pricing.planTitle}</h3>
-            <p className="mt-1 text-sm text-muted-foreground">{t.pricing.planSub}</p>
-            <ul className="mt-6 flex flex-col gap-3">
-              {t.pricing.planPoints.map((p) => (
-                <li key={p} className="flex items-start gap-2.5 text-sm">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                  <span className="text-foreground">{p}</span>
+          <Reveal delay={0.1}>
+            <ul className="divide-y divide-foreground/10">
+              {t.pricing.points.map((point) => (
+                <li key={point} className="flex items-center gap-4 py-5">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-ink">
+                    <Check className="h-4 w-4 text-white" strokeWidth={3} />
+                  </span>
+                  <span className="text-lg font-medium text-foreground sm:text-xl">{point}</span>
                 </li>
               ))}
             </ul>
           </Reveal>
         </div>
-
-        <Reveal delay={0.15} className="mx-auto mt-10 max-w-md text-center">
-          <p className="mb-3 text-sm font-medium text-foreground">{t.pricing.waitlistLead}</p>
-          <WaitlistForm id="waitlist-pricing" locale={locale} />
-        </Reveal>
       </div>
-    </Section>
+    </section>
   );
 }

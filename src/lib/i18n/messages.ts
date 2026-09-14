@@ -1,15 +1,16 @@
 import type { Locale } from "./config";
 import { DEFAULT_LOCALE } from "./config";
 
+type Item = { title: string; body: string };
+
 export interface Messages {
   meta: {
     title: string;
     description: string;
   };
   nav: {
-    why: string;
     how: string;
-    sources: string;
+    goals: string;
     pricing: string;
     faq: string;
     waitlist: string;
@@ -17,6 +18,7 @@ export interface Messages {
     menuClose: string;
     primary: string;
     mobile: string;
+    soon: string;
   };
   lang: {
     ariaSelect: string;
@@ -29,8 +31,28 @@ export interface Messages {
     sub: string;
     micro: string;
   };
-  phone: {
-    estimated: string;
+  /** Strings drawn inside the phone. Copied from the app's own i18n bundles. */
+  app: {
+    diary: string;
+    progress: string;
+    profile: string;
+    calories: string;
+    left: string;
+    weeklyBudget: string;
+    weeklyLeft: string;
+    carbs: string;
+    protein: string;
+    fats: string;
+    recentlyLogged: string;
+    analyzing: string;
+    ingredients: string;
+    addMore: string;
+    fix: string;
+    looksRight: string;
+    photo: string;
+    mealName: string;
+    ingredientNames: [string, string, string, string];
+    earlierMeal: string;
     plateAlt: string;
   };
   waitlist: {
@@ -42,937 +64,896 @@ export interface Messages {
     invalid: string;
     error: string;
   };
-  proof: {
-    claims: [string, string, string];
-    chips: { name: string; kcal: string; alt: string }[];
-  };
-  why: {
+  plates: {
     eyebrow: string;
     title: string;
     sub: string;
-    pillars: { title: string; body: string }[];
+    dishes: [string, string, string, string, string, string, string, string, string, string, string, string];
   };
   how: {
     eyebrow: string;
     title: string;
-    steps: { title: string; body: string }[];
-    footnote: string;
+    steps: [Item, Item, Item];
+    alt: string;
+    sourcesNote: string;
     sourcesLink: string;
   };
-  compare: {
+  goals: {
     eyebrow: string;
     title: string;
-    oldLabel: string;
-    newLabel: string;
-    rows: { old: string; next: string }[];
+    sub: string;
+    items: [Item, Item, Item, Item];
+    alts: [string, string, string, string];
   };
-  macros: {
-    eyebrow: string;
+  life: {
     title: string;
-    body: string;
-    leftToday: string;
-    protein: string;
-    carbs: string;
-    fat: string;
+    sub: string;
+    alt: string;
+    cardName: string;
   };
-  local: {
+  trust: {
     eyebrow: string;
     title: string;
-    body: string;
-    dishes: string[];
+    claims: [string, string, string];
+    link: string;
   };
   pricing: {
     eyebrow: string;
     title: string;
     sub: string;
-    freeTitle: string;
-    freeSub: string;
-    freePoints: [string, string, string];
-    planTitle: string;
-    planSub: string;
-    planBadge: string;
-    planPoints: [string, string, string];
-    waitlistLead: string;
+    points: [string, string, string, string, string];
   };
   faq: {
     eyebrow: string;
     title: string;
+    subPrefix: string;
     items: { q: string; a: string }[];
   };
   final: {
     title: string;
     sub: string;
+    alt: string;
   };
   footer: {
     tagline: string;
     legal: string;
     copyright: string;
   };
-  store: {
-    appStore: string;
-    play: string;
-    soon: string;
-    coming: string;
-  };
 }
 
 const EN: Messages = {
   meta: {
-    title: "Cal Clark - Photo calorie tracker for real plates",
+    title: "Cal Clark - Simple calorie tracking for every goal",
     description:
-      "Lose weight, gain mass or stay healthy. Simple calorie tracking from Cal Clark. 3-day free trial. No ads.",
+      "Take a photo of your meal and see calories and macros in seconds. Lose weight, gain mass or stay healthy with Cal Clark. 3-day free trial. No ads.",
   },
   nav: {
-    why: "Why Cal Clark",
     how: "How it works",
-    sources: "Sources",
+    goals: "Goals",
     pricing: "Pricing",
     faq: "FAQ",
-    waitlist: "Join waitlist",
+    waitlist: "Join the waitlist",
     menuOpen: "Open menu",
     menuClose: "Close menu",
     primary: "Primary",
     mobile: "Mobile",
+    soon: "Coming soon to iOS and Android",
   },
   lang: {
     ariaSelect: "Choose language",
     label: "Language",
   },
   hero: {
-    eyebrow: "Photo calorie tracker",
+    eyebrow: "Coming soon to iOS and Android",
     h1Line1: "Simple calorie tracking",
     h1Line2: "designed to help you stay on track.",
     sub: "Lose weight, gain mass or stay healthy - whatever your goal is - Cal Clark will help.",
     micro: "3-day free trial. No ads.",
   },
-  phone: {
-    estimated: "Estimated",
-    plateAlt: "A plated meal, ready to be logged in Cal Clark",
+  app: {
+    diary: "Diary",
+    progress: "Progress",
+    profile: "Profile",
+    calories: "Calories",
+    left: "left",
+    weeklyBudget: "Weekly budget",
+    weeklyLeft: "{calories} kcal left",
+    carbs: "Carbs",
+    protein: "Protein",
+    fats: "Fats",
+    recentlyLogged: "Recently logged",
+    analyzing: "Analyzing...",
+    ingredients: "Ingredients",
+    addMore: "Add more",
+    fix: "Fix",
+    looksRight: "Looks right",
+    photo: "Photo",
+    mealName: "Salmon, rice and avocado",
+    ingredientNames: ["Salmon fillet", "Jasmine rice", "Avocado", "Broccolini and tomatoes"],
+    earlierMeal: "Yogurt with granola",
+    plateAlt: "Salmon with rice, avocado and broccolini, photographed in Cal Clark",
   },
   waitlist: {
     emailLabel: "Email address",
     placeholder: "you@email.com",
     submit: "Join the waitlist",
     pending: "Joining…",
-    success: "You're on the list. We'll email you the second it's live.",
+    success: "You're on the list. We'll email you as soon as Cal Clark is live.",
     invalid: "That doesn't look like a valid email.",
     error: "Something went wrong on our end. Try again in a moment.",
   },
-  proof: {
-    claims: ["Testing on real phones", "No ads, ever", "Built for real plates"],
-    chips: [
-      { name: "Pierogi", kcal: "≈ 340 kcal", alt: "Pierogi, an example plate Cal Clark can log" },
-      { name: "Cutlet and fries", kcal: "≈ 610 kcal", alt: "Breaded cutlet with fries" },
-      { name: "Chicken salad", kcal: "≈ 380 kcal", alt: "Chicken salad" },
-      { name: "Berry oatmeal", kcal: "≈ 290 kcal", alt: "Oatmeal with berries" },
-      { name: "Open sandwich", kcal: "≈ 260 kcal", alt: "Open sandwich" },
-      { name: "Coffee, black", kcal: "≈ 5 kcal", alt: "Black coffee" },
-    ],
-  },
-  why: {
-    eyebrow: "Why Cal Clark",
-    title: "This is how people actually hit their budget",
-    sub: "Not another 40-nutrient database. A log that stays honest and gets faster the more you use it.",
-    pillars: [
-      {
-        title: "Fast",
-        body: 'A photo, not a database search. No hunting through forty near-duplicate results just to find "chicken cutlet."',
-      },
-      {
-        title: "Local",
-        body: "Understands real plates - pierogi, schnitzel, everyday supermarket food. Not only chicken breast and avocado toast.",
-      },
-      {
-        title: "Honest",
-        body: "You confirm the draft. No ads, no fake urgency, no weekly price dressed up to look small.",
-      },
-      {
-        title: "Remembers",
-        body: "Correct a meal once. Next time it's one tap. Tracking gets shorter over time - not longer.",
-      },
+  plates: {
+    eyebrow: "Every meal",
+    title: "Breakfast to dinner. Home or out.",
+    sub: "Take a photo of whatever is on your plate and see the calories and macros in seconds.",
+    dishes: [
+      "Avocado toast with eggs",
+      "Yogurt, granola and berries",
+      "Poke bowl",
+      "Pierogi",
+      "Schnitzel and potato salad",
+      "Tortilla and pan con tomate",
+      "Pesto pasta with chicken",
+      "Steak and potatoes",
+      "Sushi set",
+      "Burger and fries",
+      "Smoothie and oats",
+      "Chicken, rice and sweet potato",
     ],
   },
   how: {
     eyebrow: "How it works",
-    title: "Photo. Draft. Confirm.",
+    title: "From plate to progress.",
     steps: [
-      { title: "Snap", body: "Plate, leftovers, lunch out. In frame is enough." },
       {
-        title: "We draft",
-        body: "Calories plus protein, carbs, fat. If we guessed oil or size, we say so.",
+        title: "Take a photo",
+        body: "Point your camera at your plate. Cal Clark does the rest.",
       },
       {
-        title: "You finish",
-        body: "Looks right - or one tap: bigger, fried, sauce. Grams if you want.",
+        title: "See what's on your plate",
+        body: "Every ingredient with its calories, protein, carbs and fat. Change a portion with one tap.",
       },
       {
-        title: "It remembers",
-        body: "Same breakfast tomorrow: one tap. No second guess.",
+        title: "Stay on track all day",
+        body: "See what you've eaten and what's left for today, with calories and macros side by side.",
       },
     ],
-    footnote:
-      "A photo is drafted with AI, then checked against published nutrition tables. Packaged barcodes use public product catalogs.",
+    alt: "No photo? Describe your meal, scan a barcode or pick a saved meal.",
+    sourcesNote: "Nutrition values are checked against published food composition tables.",
     sourcesLink: "Where the numbers come from",
   },
-  compare: {
-    eyebrow: "The difference",
-    title: "Database trackers vs. Cal Clark",
-    oldLabel: "Database trackers",
-    newLabel: "Cal Clark",
-    rows: [
-      { old: 'Search "chicken cutlet", pick among duplicates', next: "Photo of the plate" },
-      { old: "Ads after every save", next: "No ads" },
-      { old: "Same typing every morning", next: "Usual breakfast, one tap" },
+  goals: {
+    eyebrow: "Your goal",
+    title: "Your goal. Your way.",
+    sub: "Cal Clark sets calorie and macro targets for the goal you choose, then helps you reach them day after day.",
+    items: [
       {
-        old: "Exact-looking number, no idea what was guessed",
-        next: "A draft you can actually finish",
+        title: "Lose weight",
+        body: "A clear daily calorie budget that still leaves room for the food you love.",
+      },
+      {
+        title: "Gain mass",
+        body: "Eat enough, every day. Keep calories and protein in view while you build.",
+      },
+      {
+        title: "Fuel your training",
+        body: "Hit your protein on training days and recover with the right numbers.",
+      },
+      {
+        title: "Stay healthy",
+        body: "Understand what you eat and keep a balance that feels easy to maintain.",
       },
     ],
-  },
-  macros: {
-    eyebrow: "On your home screen",
-    title: "Calories and macros. That's the whole list.",
-    body: "We deliberately skip forty micronutrients, water logs, and recipe boxes. One ring for what's left today, three bars for protein, carbs, and fat. If you want a micronutrient panel, this is the wrong app.",
-    leftToday: "kcal left today",
-    protein: "Protein",
-    carbs: "Carbs",
-    fat: "Fat",
-  },
-  local: {
-    eyebrow: "Local plates",
-    title: "Understands real plates",
-    body: "Not only chicken breast and avocado toast. Home-cooked dinners, bakery counters, and whatever's actually in the fridge.",
-    dishes: [
-      "Pierogi",
-      "Breaded cutlet",
-      "Porridge and berries",
-      "Weeknight salad",
-      "Open sandwich",
-      "Coffee, black",
+    alts: [
+      "Woman photographing her lunch bowl after a morning run",
+      "Man eating a meal-prep lunch at the gym",
+      "Woman resting between sets at the gym",
+      "Couple cooking a healthy dinner together",
     ],
+  },
+  life: {
+    title: "Made for the way you really eat.",
+    sub: "Breakfast at home, lunch at your desk, dinner with friends. Log it in seconds and get back to the moment.",
+    alt: "Friends sharing dinner at a neighborhood restaurant",
+    cardName: "Pasta night",
+  },
+  trust: {
+    eyebrow: "Privacy",
+    title: "Your diary stays yours.",
+    claims: ["No ads", "We never sell your meal photos", "Delete your account any time"],
+    link: "Read our privacy policy",
   },
   pricing: {
     eyebrow: "Pricing",
-    title: "3-day free trial. No ads.",
-    sub: "Price is shown in the app at checkout via Apple or Google. Cancel anytime in your store settings.",
-    freeTitle: "Free",
-    freeSub: "Try it before you commit",
-    freePoints: [
-      "3 days to try photo logging",
-      "Recents and usual meals, unlimited",
-      "Edit grams on any log, anytime",
+    title: "Try everything free for 3 days.",
+    sub: "Then one yearly plan, billed through the App Store or Google Play. Cancel any time in your store settings.",
+    points: [
+      "Unlimited photo logging",
+      "Barcode scan and meal descriptions",
+      "Personal calorie and macro targets",
+      "Saved meals and daily progress",
+      "English, Polish, German and Spanish",
     ],
-    planTitle: "Yearly",
-    planSub: "For everyday logging",
-    planBadge: "Best value",
-    planPoints: [
-      "Unlimited AI photo scans",
-      "One clear yearly plan - billed once a year",
-      "Never disguised as pennies a day",
-    ],
-    waitlistLead: "Not live yet - get the price and the download link the day it ships.",
   },
   faq: {
     eyebrow: "FAQ",
-    title: "Honest answers",
+    title: "Questions, answered.",
+    subPrefix: "Anything else? Write to",
     items: [
       {
-        q: "Where do the calorie numbers come from?",
-        a: "A photo or description is drafted with AI, then we check food names against published US government nutrition tables on our servers. Packaged barcodes use public product catalogs. You can edit grams. The full walk-through is on Where the numbers come from.",
+        q: "How does Cal Clark work out the calories?",
+        a: "Cal Clark recognizes the food in your photo or description with AI, then matches each ingredient to published nutrition tables. Packaged food comes from barcode product catalogs. The details are on the Where the numbers come from page.",
       },
       {
-        q: "Is the photo exact?",
-        a: "No. A photo can't see how much oil is in a sauce. We draft the log - you confirm it or tap the one thing you know. Saved meals use your number next time, no hedging.",
+        q: "How accurate is a photo?",
+        a: "A photo gives you a strong starting point. Portions and hidden ingredients like oil are hard to see, so you can adjust grams or ingredients with a tap. Meals you save keep your numbers for next time.",
       },
       {
-        q: "Why not just type everything?",
-        a: "A draft that's sometimes off is still faster than a blank diary. Repeat meals shouldn't need a new scan every single day.",
+        q: "Can I log without a photo?",
+        a: "Yes. Describe a meal in your own words, scan a barcode, search for a food or pick a saved meal.",
       },
       {
-        q: "Do I need a buddy or friends to use it?",
-        a: "No. Your log is private. There's no feed, no invite, no one grading your dinner.",
+        q: "Is Cal Clark right for my goal?",
+        a: "Whether you want to lose weight, gain mass or keep your weight steady, Cal Clark sets calorie and macro targets for your goal when you sign up. You can change your goal later in Settings.",
       },
       {
-        q: "Are there ads?",
-        a: "None. Not during the trial, not after you save a meal.",
-      },
-      {
-        q: "What languages does it support?",
-        a: "Polish, German, Spanish, and English, with dish recognition tuned per market - not just US chicken-and-rice photos.",
-      },
-      {
-        q: "When can I download it?",
-        a: "We're finishing testing now. Join the list and we'll email you the moment it's live on iOS and Android.",
+        q: "Which languages does it support?",
+        a: "The app is available in English, Polish, German and Spanish.",
       },
       {
         q: "How much does it cost?",
-        a: "3-day free trial, then a plan billed through Apple or Google. The price on the payment screen is the billed amount, not a weekly equivalent. Cancel in your phone's store settings; deleting the app does not cancel. Walk-through is on Support.",
+        a: "Every account starts with a 3-day free trial. After that, Cal Clark is a yearly plan billed through Apple or Google. The price on the payment screen is the amount you pay. Cancel in your phone's store settings; deleting the app does not cancel. More on the Support page.",
       },
       {
-        q: "Do you sell my food photos?",
-        a: "No. Meal photos stay under your account. Details are on the privacy page.",
+        q: "Are there ads?",
+        a: "No. Cal Clark has no ads and no ad networks.",
+      },
+      {
+        q: "Is my data private?",
+        a: "Your food diary is private to your account. We never sell your meal photos or your profile, and you can delete your account at any time. Details are in our privacy policy.",
+      },
+      {
+        q: "When can I download it?",
+        a: "Join the waitlist and we'll email you as soon as Cal Clark is live on iOS and Android.",
       },
     ],
   },
   final: {
-    title: "Photograph the plate. We'll fill in the log.",
-    sub: "You confirm. Tomorrow that breakfast is one tap. Join the list and be first in when we launch.",
+    title: "Start with your next meal.",
+    sub: "Join the waitlist and be one of the first to try Cal Clark on iOS and Android.",
+    alt: "A dinner table full of shared dishes",
   },
   footer: {
-    tagline: "Photo calorie tracker for real plates. It remembers your meals.",
+    tagline: "Simple calorie tracking designed to help you stay on track.",
     legal: "Legal",
     copyright: "© 2026 Cal Clark. Not medical advice. Not a substitute for a dietitian.",
-  },
-  store: {
-    appStore: "Download on the App Store",
-    play: "Get it on Google Play",
-    soon: "Soon",
-    coming: "coming soon, join the waitlist instead",
   },
 };
 
 const PL: Messages = {
   meta: {
-    title: "Cal Clark - Licznik kalorii ze zdjęcia",
+    title: "Cal Clark - Prosty licznik kalorii na każdy cel",
     description:
-      "Schudnij, nabierz masy albo utrzymaj wagę. Prosty licznik kalorii od Cal Clark. 3 dni za darmo. Bez reklam.",
+      "Zrób zdjęcie posiłku i zobacz kalorie oraz makro w kilka sekund. Schudnij, nabierz masy albo utrzymaj wagę z Cal Clark. 3 dni za darmo. Bez reklam.",
   },
   nav: {
-    why: "Dlaczego Cal Clark",
     how: "Jak to działa",
-    sources: "Źródła",
-    pricing: "Ceny",
+    goals: "Cele",
+    pricing: "Cena",
     faq: "FAQ",
-    waitlist: "Lista oczekujących",
+    waitlist: "Zapisz się na listę",
     menuOpen: "Otwórz menu",
     menuClose: "Zamknij menu",
     primary: "Główne",
     mobile: "Mobilne",
+    soon: "Wkrótce na iOS i Androida",
   },
   lang: {
     ariaSelect: "Wybierz język",
     label: "Język",
   },
   hero: {
-    eyebrow: "Licznik kalorii ze zdjęcia",
+    eyebrow: "Wkrótce na iOS i Androida",
     h1Line1: "Prosty licznik kalorii,",
     h1Line2: "który pomaga trzymać się planu.",
     sub: "Schudnij, nabierz masy albo utrzymaj wagę - cokolwiek jest Twoim celem - Cal Clark w tym pomoże.",
     micro: "3 dni za darmo. Bez reklam.",
   },
-  phone: {
-    estimated: "Szkic",
-    plateAlt: "Talerz gotowy do zapisania w Cal Clark",
+  app: {
+    diary: "Dziennik",
+    progress: "Postępy",
+    profile: "Profil",
+    calories: "Kalorie",
+    left: "zostało",
+    weeklyBudget: "Budżet tygodniowy",
+    weeklyLeft: "pozostało {calories} kcal",
+    carbs: "Węgle",
+    protein: "Białko",
+    fats: "Tłuszcze",
+    recentlyLogged: "Ostatnio dodane",
+    analyzing: "Analizuję...",
+    ingredients: "Składniki",
+    addMore: "Dodaj więcej",
+    fix: "Popraw",
+    looksRight: "Pasuje",
+    photo: "Zdjęcie",
+    mealName: "Łosoś, ryż i awokado",
+    ingredientNames: ["Filet z łososia", "Ryż jaśminowy", "Awokado", "Brokuły i pomidorki"],
+    earlierMeal: "Jogurt z granolą",
+    plateAlt: "Łosoś z ryżem, awokado i brokułami sfotografowany w Cal Clark",
   },
   waitlist: {
     emailLabel: "Adres e-mail",
     placeholder: "ty@email.com",
     submit: "Zapisz się na listę",
     pending: "Zapisuję…",
-    success: "Jesteś na liście. Napiszemy, gdy aplikacja wejdzie do sklepów.",
+    success: "Jesteś na liście. Napiszemy, gdy Cal Clark będzie dostępny.",
     invalid: "To nie wygląda na poprawny e-mail.",
     error: "Coś poszło nie tak u nas. Spróbuj za chwilę.",
   },
-  proof: {
-    claims: ["Testy na prawdziwych telefonach", "Bez reklam", "Pod prawdziwe talerze"],
-    chips: [
-      { name: "Pierogi", kcal: "≈ 340 kcal", alt: "Pierogi - przykład talerza, który Cal Clark może zapisać" },
-      { name: "Schabowy z frytkami", kcal: "≈ 610 kcal", alt: "Kotlet schabowy z frytkami" },
-      { name: "Sałatka z kurczakiem", kcal: "≈ 380 kcal", alt: "Sałatka z kurczakiem" },
-      { name: "Owsianka z owocami", kcal: "≈ 290 kcal", alt: "Owsianka z owocami" },
-      { name: "Kanapka", kcal: "≈ 260 kcal", alt: "Kanapka" },
-      { name: "Czarna kawa", kcal: "≈ 5 kcal", alt: "Czarna kawa" },
-    ],
-  },
-  why: {
-    eyebrow: "Dlaczego Cal Clark",
-    title: "Tak naprawdę trafia się w budżet",
-    sub: "Nie kolejna baza 40 składników. Dziennik, który zostaje uczciwy i z każdym dniem robi się szybszy.",
-    pillars: [
-      {
-        title: "Szybko",
-        body: "Zdjęcie, nie szukanie w bazie. Żadnego przekopywania czterdziestu podobnych wyników, żeby znaleźć schabowego.",
-      },
-      {
-        title: "Lokalnie",
-        body: "Rozumie prawdziwy talerz - pierogi, schabowy, jedzenie z Biedronki i Lidla. Nie tylko chicken breast i avocado toast.",
-      },
-      {
-        title: "Uczciwie",
-        body: "Ty zatwierdzasz szkic. Bez reklam, bez sztucznego pośpiechu, bez ceny tygodniowej udającej drobniaki.",
-      },
-      {
-        title: "Pamięta",
-        body: "Popraw posiłek raz. Następnym razem - jedno stuknięcie. Śledzenie robi się krótsze, nie dłuższe.",
-      },
+  plates: {
+    eyebrow: "Każdy posiłek",
+    title: "Od śniadania do kolacji. W domu i na mieście.",
+    sub: "Zrób zdjęcie tego, co masz na talerzu, i zobacz kalorie oraz makro w kilka sekund.",
+    dishes: [
+      "Tost z awokado i jajkami",
+      "Jogurt z granolą i owocami",
+      "Poke bowl",
+      "Pierogi ruskie",
+      "Sznycel z sałatką ziemniaczaną",
+      "Tortilla i pan con tomate",
+      "Makaron z pesto i kurczakiem",
+      "Stek z ziemniakami",
+      "Zestaw sushi",
+      "Burger z frytkami",
+      "Smoothie i owsianka",
+      "Kurczak, ryż i batat",
     ],
   },
   how: {
     eyebrow: "Jak to działa",
-    title: "Zdjęcie. Szkic. Potwierdzenie.",
+    title: "Od talerza do postępów.",
     steps: [
-      { title: "Zrób zdjęcie", body: "Talerz, resztki, lunch na mieście. Byle w kadrze." },
       {
-        title: "My wypełniamy",
-        body: "Kalorie plus białko, węgle, tłuszcz. Jeśli zgadujemy olej albo wielkość, mówimy o tym.",
+        title: "Zrób zdjęcie",
+        body: "Skieruj aparat na talerz. Resztą zajmie się Cal Clark.",
       },
       {
-        title: "Ty domykasz",
-        body: "Pasuje - albo jedno stuknięcie: większe, smażone, sos. Gramy, jeśli chcesz.",
+        title: "Zobacz, co jest na talerzu",
+        body: "Każdy składnik z kaloriami, białkiem, węglami i tłuszczem. Porcję zmienisz jednym dotknięciem.",
       },
       {
-        title: "Pamięta",
-        body: "To samo śniadanie jutro: jedno stuknięcie. Bez drugiego zgadywania.",
+        title: "Trzymaj się planu cały dzień",
+        body: "Widzisz, co już zjedzone i ile zostało na dziś - kalorie i makro obok siebie.",
       },
     ],
-    footnote:
-      "Szkic ze zdjęcia robi AI, potem sprawdzamy go z opublikowanymi tabelami żywieniowymi. Kody kreskowe: publiczne katalogi produktów.",
+    alt: "Bez zdjęcia? Opisz posiłek, zeskanuj kod kreskowy albo wybierz zapisany posiłek.",
+    sourcesNote: "Wartości sprawdzamy w opublikowanych tabelach składu żywności.",
     sourcesLink: "Skąd biorą się liczby",
   },
-  compare: {
-    eyebrow: "Różnica",
-    title: "Licznik z bazą vs. Cal Clark",
-    oldLabel: "Liczniki z bazą produktów",
-    newLabel: "Cal Clark",
-    rows: [
-      { old: "Szukaj „schabowy”, wybieraj spośród duplikatów", next: "Zdjęcie schabowego" },
-      { old: "Reklamy po każdym zapisie", next: "Bez reklam" },
-      { old: "To samo wpisywanie co rano", next: "Zwyczajowe śniadanie, jedno stuknięcie" },
+  goals: {
+    eyebrow: "Twój cel",
+    title: "Twój cel. Twój sposób.",
+    sub: "Cal Clark ustala cele kalorii i makro pod wybrany cel, a potem pomaga je realizować dzień po dniu.",
+    items: [
       {
-        old: "Liczba wygląda na dokładną, nie wiadomo co było zgadnięte",
-        next: "Szkic, który naprawdę domykasz",
+        title: "Schudnij",
+        body: "Jasny dzienny budżet kalorii, w którym wciąż jest miejsce na ulubione jedzenie.",
+      },
+      {
+        title: "Nabierz masy",
+        body: "Jedz tyle, ile trzeba, każdego dnia. Kalorie i białko zawsze masz na oku.",
+      },
+      {
+        title: "Wspieraj trening",
+        body: "Dobijaj do białka w dni treningowe i regeneruj się z właściwymi liczbami.",
+      },
+      {
+        title: "Dbaj o zdrowie",
+        body: "Rozumiej, co jesz, i utrzymuj równowagę, która przychodzi łatwo.",
       },
     ],
-  },
-  macros: {
-    eyebrow: "Na ekranie głównym",
-    title: "Kalorie i makro. Koniec listy.",
-    body: "Świadomie pomijamy czterdzieści mikroskładników, licznik wody i skrzynkę przepisów. Jeden pierścień na to, co zostało dziś, trzy belki na białko, węgle i tłuszcz. Jeśli chcesz panel witamin, to nie ta aplikacja.",
-    leftToday: "kcal zostało dziś",
-    protein: "Białko",
-    carbs: "Węgle",
-    fat: "Tłuszcz",
-  },
-  local: {
-    eyebrow: "Lokalny talerz",
-    title: "Rozumie polski talerz",
-    body: "Nie tylko chicken breast i avocado toast. Obiady z domu, lady piekarni i to, co naprawdę jest w lodówce.",
-    dishes: [
-      "Pierogi",
-      "Kotlet schabowy",
-      "Owsianka z owocami",
-      "Sałatka na szybko",
-      "Kanapka",
-      "Czarna kawa",
+    alts: [
+      "Kobieta fotografuje miskę z lunchem po porannym biegu",
+      "Mężczyzna je posiłek z pudełka na siłowni",
+      "Kobieta odpoczywa między seriami na siłowni",
+      "Para gotuje razem zdrową kolację",
     ],
+  },
+  life: {
+    title: "Dla tego, jak naprawdę jesz.",
+    sub: "Śniadanie w domu, lunch przy biurku, kolacja ze znajomymi. Zapisz posiłek w kilka sekund i wróć do chwili.",
+    alt: "Znajomi jedzą razem kolację w restauracji",
+    cardName: "Wieczór z makaronem",
+  },
+  trust: {
+    eyebrow: "Prywatność",
+    title: "Twój dziennik należy do Ciebie.",
+    claims: ["Bez reklam", "Nigdy nie sprzedajemy zdjęć posiłków", "Konto usuniesz w każdej chwili"],
+    link: "Przeczytaj politykę prywatności",
   },
   pricing: {
-    eyebrow: "Ceny",
-    title: "3 dni za darmo. Bez reklam.",
-    sub: "Cenę widzisz w aplikacji przy płatności przez Apple albo Google. Anulujesz w ustawieniach sklepu.",
-    freeTitle: "Za darmo",
-    freeSub: "Wypróbuj, zanim się zobowiążesz",
-    freePoints: [
-      "3 dni na wypróbowanie zapisu ze zdjęcia",
-      "Ostatnie i zwyczajowe posiłki bez limitu",
-      "Edycja gramów w każdym wpisie",
+    eyebrow: "Cena",
+    title: "Wypróbuj wszystko za darmo przez 3 dni.",
+    sub: "Potem jeden plan roczny, płatny przez App Store albo Google Play. Anulujesz w każdej chwili w ustawieniach sklepu.",
+    points: [
+      "Nielimitowane zapisy ze zdjęcia",
+      "Skaner kodów i opis posiłku",
+      "Osobiste cele kalorii i makro",
+      "Zapisane posiłki i dzienne postępy",
+      "Polski, angielski, niemiecki i hiszpański",
     ],
-    planTitle: "Rocznie",
-    planSub: "Na codzienne zapisywanie",
-    planBadge: "Najlepsza cena",
-    planPoints: [
-      "Nielimitowane skany AI ze zdjęcia",
-      "Jeden jasny plan roczny - płatność raz w roku",
-      "Nigdy jako grosze za tydzień",
-    ],
-    waitlistLead: "Jeszcze nie w sklepach - cenę i link do pobrania dostaniesz w dniu startu.",
   },
   faq: {
     eyebrow: "FAQ",
-    title: "Uczciwe odpowiedzi",
+    title: "Pytania i odpowiedzi.",
+    subPrefix: "Masz inne pytanie? Napisz na",
     items: [
       {
-        q: "Skąd biorą się kalorie?",
-        a: "Zdjęcie albo opis szkicuje AI, potem nazwy dań sprawdzamy w opublikowanych tabelach żywieniowych rządu USA na naszych serwerach. Kody kreskowe: publiczne katalogi produktów. Gramy możesz zmienić. Cały opis jest na stronie Skąd biorą się liczby.",
+        q: "Jak Cal Clark liczy kalorie?",
+        a: "Cal Clark rozpoznaje jedzenie ze zdjęcia albo opisu za pomocą AI, a potem dopasowuje każdy składnik do opublikowanych tabel wartości odżywczych. Produkty paczkowane pochodzą z katalogów kodów kreskowych. Szczegóły są na stronie Skąd biorą się liczby.",
       },
       {
-        q: "Czy zdjęcie jest dokładne?",
-        a: "Nie. Zdjęcie nie widzi, ile oleju jest w sosie. Robimy szkic wpisu - Ty potwierdzasz albo stukasz w to, co wiesz. Zapisane posiłki używają Twojej liczby następnym razem.",
+        q: "Jak dokładne jest zdjęcie?",
+        a: "Zdjęcie to mocny punkt wyjścia. Porcje i ukryte składniki, jak olej, trudno zobaczyć, więc gramy albo składniki poprawisz jednym dotknięciem. Zapisane posiłki zachowują Twoje liczby na następny raz.",
       },
       {
-        q: "Czemu nie wpisywać wszystkiego ręcznie?",
-        a: "Szkic, który czasem mija się z prawdą, i tak jest szybszy niż pusty dziennik. Powtarzany posiłek nie powinien wymagać nowego skanu codziennie.",
+        q: "Czy mogę zapisać posiłek bez zdjęcia?",
+        a: "Tak. Opisz posiłek własnymi słowami, zeskanuj kod kreskowy, wyszukaj produkt albo wybierz zapisany posiłek.",
       },
       {
-        q: "Czy potrzebuję znajomych w aplikacji?",
-        a: "Nie. Dziennik jest prywatny. Nie ma feedu, zaproszeń ani oceniania kolacji.",
-      },
-      {
-        q: "Czy są reklamy?",
-        a: "Nie. Ani w okresie próbnym, ani po zapisie posiłku.",
+        q: "Czy Cal Clark pasuje do mojego celu?",
+        a: "Chcesz schudnąć, nabrać masy albo utrzymać wagę? Cal Clark ustala cele kalorii i makro pod Twój cel przy rejestracji. Cel zmienisz później w Ustawieniach.",
       },
       {
         q: "Jakie języki są obsługiwane?",
-        a: "Polski, niemiecki, hiszpański i angielski, z rozpoznawaniem dań pod dany rynek - nie tylko amerykański kurczak z ryżem.",
-      },
-      {
-        q: "Kiedy będzie do pobrania?",
-        a: "Kończymy testy. Zapisz się na listę, a wyślemy maila, gdy wejdzie na iOS i Androida.",
+        a: "Aplikacja jest dostępna po polsku, angielsku, niemiecku i hiszpańsku.",
       },
       {
         q: "Ile to kosztuje?",
-        a: "3 dni za darmo, potem plan przez Apple albo Google. Kwota na ekranie płatności to kwota z faktury, nie ekwiwalent tygodniowy. Anulujesz w ustawieniach sklepu w telefonie; usunięcie aplikacji nie anuluje. Opis jest na stronie Pomoc.",
+        a: "Każde konto zaczyna od 3 dni za darmo. Potem Cal Clark to plan roczny płatny przez Apple albo Google. Kwota na ekranie płatności to kwota, którą płacisz. Anulujesz w ustawieniach sklepu w telefonie; usunięcie aplikacji nie anuluje. Więcej na stronie Pomoc.",
       },
       {
-        q: "Czy sprzedajecie moje zdjęcia jedzenia?",
-        a: "Nie. Zdjęcia posiłków zostają na Twoim koncie. Szczegóły są w polityce prywatności.",
+        q: "Czy są reklamy?",
+        a: "Nie. Cal Clark nie ma reklam ani sieci reklamowych.",
+      },
+      {
+        q: "Czy moje dane są prywatne?",
+        a: "Twój dziennik jest prywatny i przypisany do Twojego konta. Nigdy nie sprzedajemy zdjęć posiłków ani profilu, a konto możesz usunąć w każdej chwili. Szczegóły są w polityce prywatności.",
+      },
+      {
+        q: "Kiedy będzie do pobrania?",
+        a: "Zapisz się na listę, a napiszemy, gdy Cal Clark będzie dostępny na iOS i Androida.",
       },
     ],
   },
   final: {
-    title: "Zrób zdjęcie talerza. My wypełniamy dziennik.",
-    sub: "Ty potwierdzasz. Jutro to śniadanie to jedno stuknięcie. Zapisz się na listę i wejdź pierwszy, gdy startujemy.",
+    title: "Zacznij od następnego posiłku.",
+    sub: "Zapisz się na listę i bądź wśród pierwszych, którzy wypróbują Cal Clark na iOS i Androidzie.",
+    alt: "Stół pełen wspólnych dań",
   },
   footer: {
-    tagline: "Licznik kalorii ze zdjęcia. Pamięta twoje posiłki.",
+    tagline: "Prosty licznik kalorii, który pomaga trzymać się planu.",
     legal: "Informacje prawne",
     copyright: "© 2026 Cal Clark. To nie porada medyczna. To nie zastępuje dietetyka.",
-  },
-  store: {
-    appStore: "Pobierz w App Store",
-    play: "Pobierz w Google Play",
-    soon: "Wkrótce",
-    coming: "wkrótce, na razie lista oczekujących",
   },
 };
 
 const DE: Messages = {
   meta: {
-    title: "Cal Clark - Kalorienzähler per Foto",
+    title: "Cal Clark - Einfaches Kalorienzählen für jedes Ziel",
     description:
-      "Abnehmen, zunehmen oder gesund bleiben. Einfaches Kalorienzählen von Cal Clark. 3 Tage kostenlos. Keine Werbung.",
+      "Fotografiere dein Essen und sieh Kalorien und Makros in Sekunden. Abnehmen, zunehmen oder gesund bleiben mit Cal Clark. 3 Tage kostenlos. Keine Werbung.",
   },
   nav: {
-    why: "Warum Cal Clark",
     how: "So funktioniert's",
-    sources: "Quellen",
-    pricing: "Preise",
+    goals: "Ziele",
+    pricing: "Preis",
     faq: "FAQ",
-    waitlist: "Warteliste",
+    waitlist: "Auf die Warteliste",
     menuOpen: "Menü öffnen",
     menuClose: "Menü schließen",
-    primary: "Hauptnavigation",
+    primary: "Hauptmenü",
     mobile: "Mobil",
+    soon: "Bald für iOS und Android",
   },
   lang: {
     ariaSelect: "Sprache wählen",
     label: "Sprache",
   },
   hero: {
-    eyebrow: "Kalorienzähler per Foto",
+    eyebrow: "Bald für iOS und Android",
     h1Line1: "Einfaches Kalorienzählen,",
     h1Line2: "das dich auf Kurs hält.",
     sub: "Abnehmen, zunehmen oder gesund bleiben - egal was dein Ziel ist - Cal Clark hilft.",
     micro: "3 Tage kostenlos. Keine Werbung.",
   },
-  phone: {
-    estimated: "Entwurf",
-    plateAlt: "Ein Teller, bereit zum Eintragen in Cal Clark",
+  app: {
+    diary: "Tagebuch",
+    progress: "Fortschritt",
+    profile: "Profil",
+    calories: "Kalorien",
+    left: "übrig",
+    weeklyBudget: "Wochenbudget",
+    weeklyLeft: "noch {calories} kcal",
+    carbs: "Kohlenhydrate",
+    protein: "Eiweiß",
+    fats: "Fette",
+    recentlyLogged: "Zuletzt eingetragen",
+    analyzing: "Wird analysiert...",
+    ingredients: "Zutaten",
+    addMore: "Mehr hinzufügen",
+    fix: "Korrigieren",
+    looksRight: "Stimmt so",
+    photo: "Foto",
+    mealName: "Lachs, Reis und Avocado",
+    ingredientNames: ["Lachsfilet", "Jasminreis", "Avocado", "Brokkolini und Tomaten"],
+    earlierMeal: "Joghurt mit Granola",
+    plateAlt: "Lachs mit Reis, Avocado und Brokkolini, fotografiert in Cal Clark",
   },
   waitlist: {
     emailLabel: "E-Mail-Adresse",
     placeholder: "du@email.com",
     submit: "Auf die Warteliste",
     pending: "Wird eingetragen…",
-    success: "Du stehst drauf. Wir mailen, sobald die App live ist.",
+    success: "Du stehst auf der Liste. Wir melden uns, sobald Cal Clark verfügbar ist.",
     invalid: "Das sieht nicht nach einer gültigen E-Mail aus.",
     error: "Bei uns ist etwas schiefgelaufen. Versuch es gleich noch einmal.",
   },
-  proof: {
-    claims: ["Tests auf echten Handys", "Keine Werbung", "Für echte Teller"],
-    chips: [
-      { name: "Pierogi", kcal: "≈ 340 kcal", alt: "Pierogi - Beispielteller für Cal Clark" },
-      { name: "Schnitzel mit Pommes", kcal: "≈ 610 kcal", alt: "Schnitzel mit Pommes" },
-      { name: "Hähnchensalat", kcal: "≈ 380 kcal", alt: "Hähnchensalat" },
-      { name: "Haferbrei mit Beeren", kcal: "≈ 290 kcal", alt: "Haferbrei mit Beeren" },
-      { name: "Belegtes Brot", kcal: "≈ 260 kcal", alt: "Belegtes Brot" },
-      { name: "Schwarzer Kaffee", kcal: "≈ 5 kcal", alt: "Schwarzer Kaffee" },
-    ],
-  },
-  why: {
-    eyebrow: "Warum Cal Clark",
-    title: "So trifft man das Budget wirklich",
-    sub: "Keine weitere Datenbank mit 40 Nährstoffen. Ein Log, das ehrlich bleibt und mit der Zeit schneller wird.",
-    pillars: [
-      {
-        title: "Schnell",
-        body: "Ein Foto, keine Datenbanksuche. Kein Durchklicken durch vierzig Fast-Duplikate, nur um Schnitzel zu finden.",
-      },
-      {
-        title: "Lokal",
-        body: "Kennt echte Teller - Schnitzel, Döner, Supermarktessen. Nicht nur Hähnchenbrust und Avocado-Toast.",
-      },
-      {
-        title: "Ehrlich",
-        body: "Du bestätigst den Entwurf. Keine Werbung, keine Fake-Eile, kein Wochenpreis, der klein wirken soll.",
-      },
-      {
-        title: "Merkt sich das",
-        body: "Korrigiere ein Gericht einmal. Nächstes Mal ein Tipp. Tracking wird kürzer - nicht länger.",
-      },
+  plates: {
+    eyebrow: "Jede Mahlzeit",
+    title: "Vom Frühstück bis zum Abendessen. Zu Hause und unterwegs.",
+    sub: "Fotografiere, was auf deinem Teller liegt, und sieh Kalorien und Makros in Sekunden.",
+    dishes: [
+      "Avocado-Toast mit Eiern",
+      "Joghurt, Granola und Beeren",
+      "Poke Bowl",
+      "Piroggen",
+      "Schnitzel mit Kartoffelsalat",
+      "Tortilla und Pan con Tomate",
+      "Pesto-Pasta mit Hähnchen",
+      "Steak mit Kartoffeln",
+      "Sushi-Set",
+      "Burger mit Pommes",
+      "Smoothie und Overnight Oats",
+      "Hähnchen, Reis und Süßkartoffel",
     ],
   },
   how: {
     eyebrow: "So funktioniert's",
-    title: "Foto. Entwurf. Bestätigung.",
+    title: "Vom Teller zum Fortschritt.",
     steps: [
-      { title: "Foto machen", body: "Teller, Reste, Mittagessen außer Haus. Im Bild reicht." },
       {
-        title: "Wir setzen auf",
-        body: "Kalorien plus Protein, Kohlenhydrate, Fett. Wenn wir Öl oder Größe raten, sagen wir es.",
+        title: "Foto machen",
+        body: "Richte die Kamera auf deinen Teller. Den Rest erledigt Cal Clark.",
       },
       {
-        title: "Du machst fertig",
-        body: "Passt - oder ein Tipp: größer, gebraten, Sauce. Gramm, wenn du willst.",
+        title: "Sehen, was auf dem Teller ist",
+        body: "Jede Zutat mit Kalorien, Eiweiß, Kohlenhydraten und Fett. Portionen änderst du mit einem Tipp.",
       },
       {
-        title: "Es merkt sich das",
-        body: "Dasselbe Frühstück morgen: ein Tipp. Kein zweites Raten.",
+        title: "Den ganzen Tag auf Kurs",
+        body: "Sieh, was du gegessen hast und was heute noch übrig ist - Kalorien und Makros auf einen Blick.",
       },
     ],
-    footnote:
-      "Ein Foto wird per KI entworfen und dann mit veröffentlichten Nährwerttabellen abgeglichen. Strichcodes: öffentliche Produktkataloge.",
+    alt: "Kein Foto? Beschreibe dein Essen, scanne einen Barcode oder wähle eine gespeicherte Mahlzeit.",
+    sourcesNote: "Nährwerte werden mit veröffentlichten Nährwerttabellen abgeglichen.",
     sourcesLink: "Woher die Zahlen kommen",
   },
-  compare: {
-    eyebrow: "Der Unterschied",
-    title: "Datenbank-Tracker vs. Cal Clark",
-    oldLabel: "Tracker mit Produktdatenbank",
-    newLabel: "Cal Clark",
-    rows: [
-      { old: "„Schnitzel“ suchen, Duplikate durchklicken", next: "Foto vom Schnitzel" },
-      { old: "Werbung nach jedem Speichern", next: "Keine Werbung" },
-      { old: "Jeden Morgen dasselbe Tippen", next: "Übliches Frühstück, ein Tipp" },
+  goals: {
+    eyebrow: "Dein Ziel",
+    title: "Dein Ziel. Dein Weg.",
+    sub: "Cal Clark legt Kalorien- und Makroziele für dein Ziel fest und hilft dir, sie Tag für Tag zu erreichen.",
+    items: [
       {
-        old: "Sieht exakt aus, niemand weiß, was geraten war",
-        next: "Ein Entwurf, den du wirklich abschließt",
+        title: "Abnehmen",
+        body: "Ein klares Kalorienbudget pro Tag, mit Platz für das Essen, das du liebst.",
+      },
+      {
+        title: "Zunehmen",
+        body: "Jeden Tag genug essen. Kalorien und Eiweiß immer im Blick, während du aufbaust.",
+      },
+      {
+        title: "Training unterstützen",
+        body: "Erreiche dein Eiweißziel an Trainingstagen und regeneriere mit den richtigen Zahlen.",
+      },
+      {
+        title: "Gesund bleiben",
+        body: "Verstehe, was du isst, und halte eine Balance, die sich leicht anfühlt.",
       },
     ],
-  },
-  macros: {
-    eyebrow: "Auf dem Startbildschirm",
-    title: "Kalorien und Makros. Mehr brauchst du nicht.",
-    body: "Wir lassen vierzig Mikronährstoffe, Wasserzähler und Rezeptboxen bewusst weg. Ein Ring für den Rest heute, drei Balken für Protein, Kohlenhydrate und Fett. Wer ein Vitaminpanel will, ist hier falsch.",
-    leftToday: "kcal übrig heute",
-    protein: "Protein",
-    carbs: "Kohlenhydrate",
-    fat: "Fett",
-  },
-  local: {
-    eyebrow: "Lokale Teller",
-    title: "Kennt deutsches Essen",
-    body: "Nicht nur Fitness-Meal-Prep. Hausmannskost, Bäckereitheke und das, was wirklich im Kühlschrank steht.",
-    dishes: [
-      "Pierogi",
-      "Schnitzel",
-      "Haferbrei mit Beeren",
-      "Alltagssalat",
-      "Belegtes Brot",
-      "Schwarzer Kaffee",
+    alts: [
+      "Frau fotografiert ihre Lunch-Bowl nach dem Morgenlauf",
+      "Mann isst ein Meal-Prep-Essen im Fitnessstudio",
+      "Frau macht eine Pause zwischen zwei Sätzen im Fitnessstudio",
+      "Paar kocht zusammen ein gesundes Abendessen",
     ],
+  },
+  life: {
+    title: "Gemacht für dein echtes Essen.",
+    sub: "Frühstück zu Hause, Mittagessen am Schreibtisch, Abendessen mit Freunden. In Sekunden eingetragen, und du bist wieder im Moment.",
+    alt: "Freunde essen gemeinsam in einem Restaurant",
+    cardName: "Pasta-Abend",
+  },
+  trust: {
+    eyebrow: "Datenschutz",
+    title: "Dein Tagebuch gehört dir.",
+    claims: ["Keine Werbung", "Wir verkaufen nie deine Essensfotos", "Konto jederzeit löschen"],
+    link: "Datenschutzerklärung lesen",
   },
   pricing: {
-    eyebrow: "Preise",
-    title: "3 Tage kostenlos. Keine Werbung.",
-    sub: "Den Preis siehst du in der App vor dem Kauf über Apple oder Google. Kündigung in den Store-Einstellungen.",
-    freeTitle: "Kostenlos",
-    freeSub: "Erst testen, dann entscheiden",
-    freePoints: [
-      "3 Tage, um Foto-Logging zu testen",
-      "Zuletzt und übliche Gerichte ohne Limit",
-      "Gramm in jedem Eintrag ändern",
+    eyebrow: "Preis",
+    title: "3 Tage alles kostenlos testen.",
+    sub: "Danach ein Jahresabo über den App Store oder Google Play. Jederzeit in den Store-Einstellungen kündbar.",
+    points: [
+      "Unbegrenzt per Foto eintragen",
+      "Barcode-Scan und Beschreibung",
+      "Persönliche Kalorien- und Makroziele",
+      "Gespeicherte Mahlzeiten und Tagesfortschritt",
+      "Deutsch, Englisch, Polnisch und Spanisch",
     ],
-    planTitle: "Jährlich",
-    planSub: "Fürs tägliche Loggen",
-    planBadge: "Bester Preis",
-    planPoints: [
-      "Unbegrenzte KI-Fotosans",
-      "Ein klares Jahresabo - einmal im Jahr abgerechnet",
-      "Nie als Kleingeld pro Woche verkauft",
-    ],
-    waitlistLead: "Noch nicht im Store - Preis und Download-Link am Starttag.",
   },
   faq: {
     eyebrow: "FAQ",
-    title: "Ehrliche Antworten",
+    title: "Fragen und Antworten.",
+    subPrefix: "Noch Fragen? Schreib uns an",
     items: [
       {
-        q: "Woher kommen die Kalorienzahlen?",
-        a: "Foto oder Beschreibung entwirft die KI. Danach gleichen wir Namen mit veröffentlichten US-Nährwerttabellen auf unseren Servern ab. Strichcodes: öffentliche Produktkataloge. Gramm kannst du ändern. Der ganze Ablauf steht unter Woher die Zahlen kommen.",
+        q: "Wie berechnet Cal Clark die Kalorien?",
+        a: "Cal Clark erkennt das Essen auf deinem Foto oder in deiner Beschreibung mit KI und gleicht jede Zutat mit veröffentlichten Nährwerttabellen ab. Verpackte Lebensmittel kommen aus Barcode-Produktkatalogen. Details stehen auf der Seite Woher die Zahlen kommen.",
       },
       {
-        q: "Ist das Foto exakt?",
-        a: "Nein. Ein Foto sieht nicht, wie viel Öl in der Sauce ist. Wir setzen den Eintrag auf - du bestätigst oder tippst, was du weißt. Gespeicherte Gerichte nutzen beim nächsten Mal deine Zahl.",
+        q: "Wie genau ist ein Foto?",
+        a: "Ein Foto ist ein starker Ausgangspunkt. Portionen und versteckte Zutaten wie Öl sind schwer zu sehen, deshalb änderst du Gramm oder Zutaten mit einem Tipp. Gespeicherte Mahlzeiten behalten deine Werte für das nächste Mal.",
       },
       {
-        q: "Warum nicht alles tippen?",
-        a: "Ein Entwurf, der manchmal danebenliegt, ist trotzdem schneller als ein leeres Tagebuch. Wiederholte Gerichte sollten keinen neuen Scan brauchen.",
+        q: "Kann ich auch ohne Foto eintragen?",
+        a: "Ja. Beschreibe eine Mahlzeit mit eigenen Worten, scanne einen Barcode, suche ein Lebensmittel oder wähle eine gespeicherte Mahlzeit.",
       },
       {
-        q: "Brauche ich Freunde in der App?",
-        a: "Nein. Dein Log ist privat. Kein Feed, keine Einladung, niemand bewertet dein Abendessen.",
+        q: "Passt Cal Clark zu meinem Ziel?",
+        a: "Ob abnehmen, zunehmen oder Gewicht halten: Cal Clark legt bei der Anmeldung Kalorien- und Makroziele für dein Ziel fest. Dein Ziel änderst du später in den Einstellungen.",
       },
       {
-        q: "Gibt es Werbung?",
-        a: "Keine. Weder in der Testphase noch nach dem Speichern.",
-      },
-      {
-        q: "Welche Sprachen?",
-        a: "Polnisch, Deutsch, Spanisch und Englisch, mit Gerichten je Markt - nicht nur US-Hähnchen mit Reis.",
-      },
-      {
-        q: "Wann kann ich sie laden?",
-        a: "Wir sind in den letzten Tests. Trag dich ein, wir mailen, sobald iOS und Android live sind.",
+        q: "Welche Sprachen gibt es?",
+        a: "Die App gibt es auf Deutsch, Englisch, Polnisch und Spanisch.",
       },
       {
         q: "Was kostet das?",
-        a: "3 Tage kostenlos, dann ein Abo über Apple oder Google. Der Betrag auf dem Bezahlschirm ist der Rechnungsbetrag, kein Wochenäquivalent. Kündigung in den Store-Einstellungen; Deinstallieren kündigt nicht. Ablauf auf der Hilfeseite.",
+        a: "Jedes Konto startet mit 3 Tagen kostenlos. Danach ist Cal Clark ein Jahresabo über Apple oder Google. Der Preis auf dem Bezahlbildschirm ist der Betrag, den du zahlst. Kündigung in den Store-Einstellungen deines Handys; Deinstallieren kündigt nicht. Mehr auf der Hilfeseite.",
       },
       {
-        q: "Verkauft ihr meine Essensfotos?",
-        a: "Nein. Fotos bleiben unter deinem Konto. Details in der Datenschutzerklärung.",
+        q: "Gibt es Werbung?",
+        a: "Nein. Cal Clark hat keine Werbung und keine Werbenetzwerke.",
+      },
+      {
+        q: "Sind meine Daten privat?",
+        a: "Dein Ernährungstagebuch ist privat und gehört zu deinem Konto. Wir verkaufen nie deine Essensfotos oder dein Profil, und du kannst dein Konto jederzeit löschen. Details stehen in der Datenschutzerklärung.",
+      },
+      {
+        q: "Wann kann ich die App laden?",
+        a: "Trag dich in die Warteliste ein. Wir schreiben dir, sobald Cal Clark für iOS und Android verfügbar ist.",
       },
     ],
   },
   final: {
-    title: "Foto vom Teller. Wir setzen den Eintrag auf.",
-    sub: "Du bestätigst. Morgen ist dasselbe Frühstück ein Tipp. Auf die Liste, und du bist als Erstes dabei.",
+    title: "Fang mit deiner nächsten Mahlzeit an.",
+    sub: "Trag dich ein und gehöre zu den Ersten, die Cal Clark auf iOS und Android testen.",
+    alt: "Ein Tisch voller geteilter Gerichte",
   },
   footer: {
-    tagline: "Kalorienzähler per Foto. Er merkt sich deine Gerichte.",
+    tagline: "Einfaches Kalorienzählen, das dich auf Kurs hält.",
     legal: "Rechtliches",
     copyright: "© 2026 Cal Clark. Kein medizinischer Rat. Kein Ersatz für eine Ernährungsberatung.",
-  },
-  store: {
-    appStore: "Laden im App Store",
-    play: "Jetzt bei Google Play",
-    soon: "Bald",
-    coming: "bald, bis dahin auf die Warteliste",
   },
 };
 
 const ES: Messages = {
   meta: {
-    title: "Cal Clark - Contador de calorías por foto",
+    title: "Cal Clark - Contar calorías de forma simple, para cada objetivo",
     description:
-      "Pierde peso, gana masa o mantente sano. Un contador de calorías simple de Cal Clark. 3 días de prueba gratis. Sin anuncios.",
+      "Haz una foto de tu comida y ve calorías y macros en segundos. Pierde peso, gana masa o mantente sano con Cal Clark. 3 días de prueba gratis. Sin anuncios.",
   },
   nav: {
-    why: "Por qué Cal Clark",
     how: "Cómo funciona",
-    sources: "Fuentes",
-    pricing: "Precios",
+    goals: "Objetivos",
+    pricing: "Precio",
     faq: "FAQ",
-    waitlist: "Lista de espera",
+    waitlist: "Únete a la lista",
     menuOpen: "Abrir menú",
     menuClose: "Cerrar menú",
     primary: "Principal",
     mobile: "Móvil",
+    soon: "Muy pronto en iOS y Android",
   },
   lang: {
     ariaSelect: "Elegir idioma",
     label: "Idioma",
   },
   hero: {
-    eyebrow: "Contador de calorías por foto",
+    eyebrow: "Muy pronto en iOS y Android",
     h1Line1: "Un contador de calorías simple,",
     h1Line2: "pensado para que sigas el plan.",
     sub: "Pierde peso, gana masa o mantente sano - da igual el objetivo - Cal Clark te ayuda.",
     micro: "3 días de prueba gratis. Sin anuncios.",
   },
-  phone: {
-    estimated: "Borrador",
-    plateAlt: "Un plato listo para registrar en Cal Clark",
+  app: {
+    diary: "Diario",
+    progress: "Progreso",
+    profile: "Perfil",
+    calories: "Calorías",
+    left: "restantes",
+    weeklyBudget: "Presupuesto semanal",
+    weeklyLeft: "quedan {calories} kcal",
+    carbs: "Carbos",
+    protein: "Proteína",
+    fats: "Grasas",
+    recentlyLogged: "Registrado hace poco",
+    analyzing: "Analizando...",
+    ingredients: "Ingredientes",
+    addMore: "Añadir más",
+    fix: "Corregir",
+    looksRight: "Está bien",
+    photo: "Foto",
+    mealName: "Salmón, arroz y aguacate",
+    ingredientNames: ["Filete de salmón", "Arroz jazmín", "Aguacate", "Brócoli y tomates"],
+    earlierMeal: "Yogur con granola",
+    plateAlt: "Salmón con arroz, aguacate y brócoli, fotografiado en Cal Clark",
   },
   waitlist: {
     emailLabel: "Correo electrónico",
     placeholder: "tu@email.com",
-    submit: "Apuntarme a la lista",
+    submit: "Únete a la lista",
     pending: "Apuntando…",
-    success: "Estás en la lista. Te escribiremos en cuanto esté en las tiendas.",
+    success: "Ya estás en la lista. Te escribiremos en cuanto Cal Clark esté disponible.",
     invalid: "Eso no parece un correo válido.",
     error: "Algo ha fallado en nuestro lado. Prueba en un momento.",
   },
-  proof: {
-    claims: ["Pruebas en móviles de verdad", "Sin anuncios", "Hecho para platos reales"],
-    chips: [
-      { name: "Pierogi", kcal: "≈ 340 kcal", alt: "Pierogi, un plato de ejemplo que Cal Clark puede registrar" },
-      { name: "Empanado con patatas", kcal: "≈ 610 kcal", alt: "Empanado con patatas" },
-      { name: "Ensalada de pollo", kcal: "≈ 380 kcal", alt: "Ensalada de pollo" },
-      { name: "Avena con frutos", kcal: "≈ 290 kcal", alt: "Avena con frutos" },
-      { name: "Tostada", kcal: "≈ 260 kcal", alt: "Tostada" },
-      { name: "Café solo", kcal: "≈ 5 kcal", alt: "Café solo" },
-    ],
-  },
-  why: {
-    eyebrow: "Por qué Cal Clark",
-    title: "Así se llega de verdad al presupuesto",
-    sub: "No otra base de 40 nutrientes. Un diario que se mantiene honesto y se hace más rápido con el uso.",
-    pillars: [
-      {
-        title: "Rápido",
-        body: "Una foto, no una búsqueda en la base. Sin peinar cuarenta resultados casi iguales para encontrar un empanado.",
-      },
-      {
-        title: "Local",
-        body: "Entiende platos reales - pierogi, schnitzel, comida de supermercado. No solo pechuga de pollo y tostada de aguacate.",
-      },
-      {
-        title: "Honesto",
-        body: "Tú confirmas el borrador. Sin anuncios, sin urgencia falsa, sin un precio semanal disfrazado de céntimos.",
-      },
-      {
-        title: "Lo recuerda",
-        body: "Corrige una comida una vez. La siguiente, un toque. El registro se acorta con el tiempo, no se alarga.",
-      },
+  plates: {
+    eyebrow: "Cada comida",
+    title: "Del desayuno a la cena. En casa o fuera.",
+    sub: "Haz una foto de lo que hay en tu plato y ve las calorías y los macros en segundos.",
+    dishes: [
+      "Tostada de aguacate con huevos",
+      "Yogur, granola y frutos rojos",
+      "Poke bowl",
+      "Pierogi",
+      "Schnitzel con ensalada de patata",
+      "Tortilla y pan con tomate",
+      "Pasta al pesto con pollo",
+      "Filete con patatas",
+      "Surtido de sushi",
+      "Hamburguesa con patatas",
+      "Batido y avena",
+      "Pollo, arroz y boniato",
     ],
   },
   how: {
     eyebrow: "Cómo funciona",
-    title: "Foto. Borrador. Confirmación.",
+    title: "Del plato al progreso.",
     steps: [
-      { title: "Haz la foto", body: "El plato, las sobras, la comida fuera. Con que entre en el encuadre basta." },
       {
-        title: "Nosotros rellenamos",
-        body: "Calorías más proteína, hidratos, grasa. Si estimamos el aceite o el tamaño, lo decimos.",
+        title: "Haz una foto",
+        body: "Apunta la cámara a tu plato. Cal Clark hace el resto.",
       },
       {
-        title: "Tú cierras",
-        body: "Cuadra - o un toque: más grande, frito, salsa. Gramos si quieres.",
+        title: "Mira lo que hay en tu plato",
+        body: "Cada ingrediente con sus calorías, proteína, carbohidratos y grasa. Cambia una ración con un toque.",
       },
       {
-        title: "Lo recuerda",
-        body: "El mismo desayuno mañana: un toque. Sin volver a adivinar.",
+        title: "Sigue tu plan todo el día",
+        body: "Mira lo que has comido y lo que te queda hoy, con calorías y macros de un vistazo.",
       },
     ],
-    footnote:
-      "La foto la esboza la IA y luego se contrasta con tablas nutricionales publicadas. Códigos de barras: catálogos públicos de productos.",
+    alt: "¿Sin foto? Describe tu comida, escanea un código de barras o elige una comida guardada.",
+    sourcesNote: "Los valores se comprueban con tablas de composición de alimentos publicadas.",
     sourcesLink: "De dónde salen los números",
   },
-  compare: {
-    eyebrow: "La diferencia",
-    title: "Contadores con base vs. Cal Clark",
-    oldLabel: "Contadores con base de productos",
-    newLabel: "Cal Clark",
-    rows: [
-      { old: "Buscar «empanado» y elegir entre duplicados", next: "Foto del plato" },
-      { old: "Anuncios después de cada guardado", next: "Sin anuncios" },
-      { old: "El mismo tecleo cada mañana", next: "El desayuno de siempre, un toque" },
+  goals: {
+    eyebrow: "Tu objetivo",
+    title: "Tu objetivo. A tu manera.",
+    sub: "Cal Clark fija objetivos de calorías y macros para tu meta y te ayuda a cumplirlos día a día.",
+    items: [
       {
-        old: "Un número que parece exacto, sin saber qué se adivinó",
-        next: "Un borrador que sí puedes cerrar",
+        title: "Pierde peso",
+        body: "Un presupuesto diario de calorías claro, con sitio para la comida que te gusta.",
+      },
+      {
+        title: "Gana masa",
+        body: "Come lo suficiente cada día. Calorías y proteína siempre a la vista mientras construyes.",
+      },
+      {
+        title: "Apoya tu entreno",
+        body: "Llega a tu proteína los días de entreno y recupera con los números correctos.",
+      },
+      {
+        title: "Mantente sano",
+        body: "Entiende lo que comes y mantén un equilibrio que resulte fácil.",
       },
     ],
-  },
-  macros: {
-    eyebrow: "En la pantalla de inicio",
-    title: "Calorías y macros. Se acaba la lista.",
-    body: "Dejamos fuera a propósito cuarenta micronutrientes, el contador de agua y las recetas. Un anillo para lo que queda hoy, tres barras para proteína, hidratos y grasa. Si quieres un panel de vitaminas, esta no es tu app.",
-    leftToday: "kcal quedan hoy",
-    protein: "Proteína",
-    carbs: "Hidratos",
-    fat: "Grasa",
-  },
-  local: {
-    eyebrow: "Platos de aquí",
-    title: "Entiende platos reales",
-    body: "No solo pechuga de pollo y tostada de aguacate. Cenas de casa, mostrador de panadería y lo que hay de verdad en la nevera.",
-    dishes: [
-      "Pierogi",
-      "Empanado",
-      "Avena con frutos",
-      "Ensalada entre semana",
-      "Tostada",
-      "Café solo",
+    alts: [
+      "Mujer fotografía su bol de comida después de correr",
+      "Hombre come un táper de comida en el gimnasio",
+      "Mujer descansa entre series en el gimnasio",
+      "Pareja cocina junta una cena sana",
     ],
+  },
+  life: {
+    title: "Hecho para cómo comes de verdad.",
+    sub: "Desayuno en casa, comida en la oficina, cena con amigos. Regístralo en segundos y vuelve al momento.",
+    alt: "Amigos cenando juntos en un restaurante",
+    cardName: "Noche de pasta",
+  },
+  trust: {
+    eyebrow: "Privacidad",
+    title: "Tu diario es tuyo.",
+    claims: ["Sin anuncios", "Nunca vendemos tus fotos de comida", "Borra tu cuenta cuando quieras"],
+    link: "Lee nuestra política de privacidad",
   },
   pricing: {
-    eyebrow: "Precios",
-    title: "3 días de prueba gratis. Sin anuncios.",
-    sub: "El precio se ve en la app al pagar con Apple o Google. Cancela cuando quieras en los ajustes de la tienda.",
-    freeTitle: "Gratis",
-    freeSub: "Prueba antes de comprometerte",
-    freePoints: [
-      "3 días para probar el registro por foto",
-      "Recientes y comidas de siempre, sin límite",
-      "Edita gramos en cualquier registro",
+    eyebrow: "Precio",
+    title: "Pruébalo todo gratis durante 3 días.",
+    sub: "Después, un plan anual cobrado a través de App Store o Google Play. Cancela cuando quieras en los ajustes de la tienda.",
+    points: [
+      "Registro con foto ilimitado",
+      "Escáner de códigos y descripción",
+      "Objetivos personales de calorías y macros",
+      "Comidas guardadas y progreso diario",
+      "Español, inglés, polaco y alemán",
     ],
-    planTitle: "Anual",
-    planSub: "Para registrar cada día",
-    planBadge: "Mejor precio",
-    planPoints: [
-      "Análisis de IA por foto sin límite",
-      "Un plan anual claro - se cobra una vez al año",
-      "Nunca disfrazado de céntimos al día",
-    ],
-    waitlistLead: "Aún no está en las tiendas - el precio y el enlace, el día que salga.",
   },
   faq: {
     eyebrow: "FAQ",
-    title: "Respuestas honestas",
+    title: "Preguntas y respuestas.",
+    subPrefix: "¿Otra pregunta? Escríbenos a",
     items: [
       {
-        q: "¿De dónde salen las calorías?",
-        a: "La foto o la descripción las esboza la IA; luego contrastamos los nombres con tablas nutricionales publicadas del gobierno de EE. UU. en nuestros servidores. Códigos de barras: catálogos públicos de productos. Puedes editar los gramos. El recorrido completo está en De dónde salen los números.",
+        q: "¿Cómo calcula Cal Clark las calorías?",
+        a: "Cal Clark reconoce la comida de tu foto o descripción con IA y relaciona cada ingrediente con tablas de nutrición publicadas. Los productos envasados salen de catálogos de códigos de barras. Los detalles están en De dónde salen los números.",
       },
       {
-        q: "¿La foto es exacta?",
-        a: "No. Una foto no ve cuánto aceite hay en la salsa. Hacemos el borrador - tú confirmas o tocas lo que sí sabes. Las comidas guardadas usan tu número la próxima vez.",
+        q: "¿Qué precisión tiene una foto?",
+        a: "Una foto es un buen punto de partida. Las raciones y los ingredientes ocultos, como el aceite, son difíciles de ver, así que puedes ajustar gramos o ingredientes con un toque. Las comidas guardadas conservan tus números para la próxima vez.",
       },
       {
-        q: "¿Por qué no escribirlo todo a mano?",
-        a: "Un borrador que a veces se equivoca sigue siendo más rápido que un diario vacío. Una comida repetida no debería pedir un análisis nuevo cada día.",
+        q: "¿Puedo registrar sin foto?",
+        a: "Sí. Describe una comida con tus palabras, escanea un código de barras, busca un alimento o elige una comida guardada.",
       },
       {
-        q: "¿Hace falta tener amigos en la app?",
-        a: "No. Tu diario es privado. No hay feed, invitaciones ni nadie puntúa tu cena.",
+        q: "¿Cal Clark sirve para mi objetivo?",
+        a: "Tanto si quieres perder peso, ganar masa o mantener tu peso, Cal Clark fija objetivos de calorías y macros para tu meta al registrarte. Puedes cambiar tu objetivo más tarde en Ajustes.",
       },
       {
-        q: "¿Hay anuncios?",
-        a: "Ninguno. Ni en la prueba ni después de guardar una comida.",
-      },
-      {
-        q: "¿Qué idiomas admite?",
-        a: "Polaco, alemán, español e inglés, con platos ajustados a cada mercado - no solo pollo con arroz de menú estadounidense.",
-      },
-      {
-        q: "¿Cuándo se podrá descargar?",
-        a: "Estamos cerrando las pruebas. Apúntate y te escribiremos en cuanto esté en iOS y Android.",
+        q: "¿Qué idiomas tiene?",
+        a: "La app está disponible en español, inglés, polaco y alemán.",
       },
       {
         q: "¿Cuánto cuesta?",
-        a: "3 días de prueba gratis, luego un plan cobrado por Apple o Google. El importe de la pantalla de pago es el facturado, no un equivalente semanal. Cancela en los ajustes de la tienda del teléfono; borrar la app no cancela. El recorrido está en Ayuda.",
+        a: "Todas las cuentas empiezan con 3 días de prueba gratis. Después, Cal Clark es un plan anual cobrado por Apple o Google. El precio de la pantalla de pago es lo que pagas. Cancela en los ajustes de la tienda del teléfono; borrar la app no cancela. Más en Ayuda.",
       },
       {
-        q: "¿Vendéis mis fotos de comida?",
-        a: "No. Las fotos de las comidas quedan en tu cuenta. El detalle está en la política de privacidad.",
+        q: "¿Hay anuncios?",
+        a: "No. Cal Clark no tiene anuncios ni redes publicitarias.",
+      },
+      {
+        q: "¿Mis datos son privados?",
+        a: "Tu diario de comidas es privado y va ligado a tu cuenta. Nunca vendemos tus fotos de comida ni tu perfil, y puedes borrar tu cuenta cuando quieras. Los detalles están en la política de privacidad.",
+      },
+      {
+        q: "¿Cuándo puedo descargarla?",
+        a: "Únete a la lista y te escribiremos en cuanto Cal Clark esté disponible en iOS y Android.",
       },
     ],
   },
   final: {
-    title: "Haz la foto del plato. Nosotros rellenamos el diario.",
-    sub: "Tú confirmas. Mañana ese desayuno es un toque. Apúntate y entra el primero cuando lancemos.",
+    title: "Empieza con tu próxima comida.",
+    sub: "Únete a la lista y sé de los primeros en probar Cal Clark en iOS y Android.",
+    alt: "Una mesa llena de platos para compartir",
   },
   footer: {
-    tagline: "Contador de calorías por foto. Recuerda tus comidas.",
+    tagline: "Un contador de calorías simple, pensado para que sigas el plan.",
     legal: "Legal",
     copyright: "© 2026 Cal Clark. No es consejo médico. No sustituye a un dietista.",
-  },
-  store: {
-    appStore: "Descargar en App Store",
-    play: "Disponible en Google Play",
-    soon: "Pronto",
-    coming: "próximamente; mientras tanto, la lista de espera",
   },
 };
 

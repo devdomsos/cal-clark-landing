@@ -1,64 +1,113 @@
-import { Camera, Sparkles, CheckCheck, RotateCcw } from "lucide-react";
-import { Section, Reveal } from "./Section";
+"use client";
+
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useInView } from "framer-motion";
+import { Bookmark, PenLine, ScanBarcode } from "lucide-react";
+import { Reveal } from "./Section";
+import { CameraScreen, DiaryScreen, MealScreen, PhoneFrame } from "./phone/AppScreens";
 import type { Locale } from "@/lib/i18n/config";
-import { getMessages } from "@/lib/i18n/messages";
+import { getMessages, type Messages } from "@/lib/i18n/messages";
 import { legalHref } from "@/lib/legal";
 
-const ICONS = [Camera, Sparkles, CheckCheck, RotateCcw];
+function StepScreen({ step, locale, t, animate }: { step: number; locale: Locale; t: Messages; animate: boolean }) {
+  if (step === 0) return <CameraScreen t={t} />;
+  if (step === 1) return <MealScreen locale={locale} t={t} animate={animate} />;
+  return <DiaryScreen locale={locale} t={t} row="done" animate={animate} />;
+}
+
+function Step({ index, title, body, onActive, locale, t }: { index: number; title: string; body: string; onActive: (i: number) => void; locale: Locale; t: Messages }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.6 });
+  const mobileRef = useRef<HTMLDivElement>(null);
+  const mobileInView = useInView(mobileRef, { amount: 0.5, once: true });
+  useEffect(() => {
+    if (inView) onActive(index);
+  }, [inView, index, onActive]);
+
+  return (
+    <div ref={ref} className="flex flex-col justify-center py-10 lg:min-h-[78vh] lg:py-0">
+      <span className="mb-6 font-mono text-sm tracking-widest text-white/40">0{index + 1}</span>
+      <h3 className="display max-w-lg text-4xl text-white sm:text-5xl lg:text-6xl">{title}</h3>
+      <p className="mt-5 max-w-md text-lg leading-relaxed text-white/60">{body}</p>
+      <div ref={mobileRef} className="mt-10 w-full max-w-[280px] self-center lg:hidden">
+        <PhoneFrame shadow={false}>
+          <StepScreen step={index} locale={locale} t={t} animate={mobileInView} />
+        </PhoneFrame>
+      </div>
+    </div>
+  );
+}
 
 export function HowItWorks({ locale }: { locale: Locale }) {
   const t = getMessages(locale);
+  const [active, setActive] = useState(0);
+
   return (
-    <Section id="how-it-works" className="bg-surface py-20">
-      <div className="mx-auto max-w-6xl px-5">
-        <Reveal className="mx-auto mb-14 max-w-2xl text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">
-            {t.how.eyebrow}
-          </p>
-          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            {t.how.title}
-          </h2>
+    <section id="how-it-works" className="relative scroll-mt-16 bg-ink text-white">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_40%_at_25%_30%,rgba(59,130,246,0.18),transparent_70%)]"
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto max-w-7xl px-5 pb-24 pt-24 lg:px-8 lg:pb-32 lg:pt-32">
+        <Reveal className="max-w-3xl">
+          <p className="mb-4 text-sm font-medium text-white/50">{t.how.eyebrow}</p>
+          <h2 className="display text-5xl text-white sm:text-7xl">{t.how.title}</h2>
         </Reveal>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {t.how.steps.map((step, i) => {
-            const Icon = ICONS[i]!;
-            return (
-              <Reveal key={step.title} delay={i * 0.1} className="relative">
-                <div className="relative rounded-2xl border border-border bg-background p-6 shadow-[0_1px_2px_rgba(3,7,18,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_-12px_rgba(3,7,18,0.12)]">
-                  <span className="absolute -top-3 -left-1 text-6xl font-black text-muted/70 select-none">
-                    {i + 1}
-                  </span>
-                  <div className="relative mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10">
-                    <Icon className="h-5 w-5 text-primary" strokeWidth={2.25} />
-                  </div>
-                  <h3 className="relative text-lg font-semibold text-foreground">
-                    {step.title}
-                  </h3>
-                  <p className="relative mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {step.body}
-                  </p>
-                </div>
-                {i < t.how.steps.length - 1 && (
-                  <span
-                    className="absolute right-[-14px] top-1/2 hidden h-px w-6 -translate-y-1/2 bg-border lg:block"
-                    aria-hidden="true"
-                  />
-                )}
-              </Reveal>
-            );
-          })}
+        <div className="mt-10 grid gap-10 lg:mt-0 lg:grid-cols-2 lg:gap-20">
+          <div className="hidden lg:block">
+            <div className="sticky top-[calc(50vh-330px)] mx-auto w-full max-w-[320px] py-10">
+              <div
+                className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.12),transparent_65%)]"
+                aria-hidden="true"
+              />
+              <PhoneFrame shadow={false}>
+                <AnimatePresence initial={false} mode="popLayout">
+                  <motion.div
+                    key={active}
+                    className="absolute inset-0"
+                    initial={{ opacity: 0, scale: 1.02 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <StepScreen step={active} locale={locale} t={t} animate />
+                  </motion.div>
+                </AnimatePresence>
+              </PhoneFrame>
+              <div className="mt-8 flex justify-center gap-2" aria-hidden="true">
+                {[0, 1, 2].map((i) => (
+                  <span key={i} className={`h-1.5 rounded-full transition-all duration-500 ${i === active ? "w-8 bg-white" : "w-1.5 bg-white/30"}`} />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div>
+            {t.how.steps.map((step, i) => (
+              <Step key={step.title} index={i} title={step.title} body={step.body} onActive={setActive} locale={locale} t={t} />
+            ))}
+          </div>
         </div>
-        <p className="mt-10 text-center text-sm text-muted-foreground">
-          {t.how.footnote}{" "}
-          <a
-            href={legalHref(locale, "data-sources")}
-            className="text-primary underline underline-offset-2"
-          >
-            {t.how.sourcesLink}
-          </a>
-        </p>
+
+        <div className="mt-16 flex flex-col gap-6 border-t border-white/10 pt-10 lg:flex-row lg:items-center lg:justify-between">
+          <p className="flex flex-wrap items-center gap-x-3 gap-y-2 text-base text-white/80">
+            <span className="flex items-center gap-2 text-white/50">
+              <PenLine className="h-4 w-4" />
+              <ScanBarcode className="h-4 w-4" />
+              <Bookmark className="h-4 w-4" />
+            </span>
+            {t.how.alt}
+          </p>
+          <p className="text-sm text-white/50">
+            {t.how.sourcesNote}{" "}
+            <Link href={legalHref(locale, "data-sources")} className="text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">
+              {t.how.sourcesLink}
+            </Link>
+          </p>
+        </div>
       </div>
-    </Section>
+    </section>
   );
 }

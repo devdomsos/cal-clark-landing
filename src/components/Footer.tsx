@@ -8,12 +8,12 @@ import { getMessages } from "@/lib/i18n/messages";
 export function Footer({ locale }: { locale: Locale }) {
   const t = getMessages(locale);
   return (
-    <footer className="mt-auto border-t border-border bg-surface">
-      <div className="mx-auto max-w-6xl px-5 py-10">
+    <footer className="mt-auto">
+      <div className="mx-auto max-w-7xl px-5 py-14 lg:px-8">
         <div className="flex flex-col items-start justify-between gap-8 lg:flex-row">
           <div>
             <Logo />
-            <p className="mt-2 max-w-xs text-sm text-muted-foreground">
+            <p className="mt-3 max-w-xs text-sm text-muted-foreground">
               {t.footer.tagline}
             </p>
           </div>
@@ -43,7 +43,7 @@ export function Footer({ locale }: { locale: Locale }) {
           </div>
         </div>
 
-        <p className="mt-8 text-xs text-muted-foreground">{t.footer.copyright}</p>
+        <p className="mt-10 border-t border-foreground/10 pt-6 text-xs text-muted-foreground">{t.footer.copyright}</p>
       </div>
     </footer>
   );

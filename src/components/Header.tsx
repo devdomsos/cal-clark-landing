@@ -1,119 +1,162 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { Logo } from "./Logo";
-import { StoreBadges } from "./StoreBadges";
+import { ArrowRight } from "lucide-react";
+import { Logo, LogoMark } from "./Logo";
 import { LanguageSelect } from "./LanguageSelect";
 import { homePath, type Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
-import { legalHref } from "@/lib/legal";
 
 export function Header({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const t = getMessages(locale);
   const home = homePath(locale);
   const nav = [
-    { href: `${home}#why`, label: t.nav.why },
     { href: `${home}#how-it-works`, label: t.nav.how },
-    { href: legalHref(locale, "data-sources"), label: t.nav.sources },
+    { href: `${home}#goals`, label: t.nav.goals },
     { href: `${home}#pricing`, label: t.nav.pricing },
     { href: `${home}#faq`, label: t.nav.faq },
   ];
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/80 backdrop-blur-md">
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            key="backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+    <>
+      <header
+        className={`sticky top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300 ${
+          scrolled || open
+            ? "bg-background/85 shadow-[0_1px_0_rgba(11,11,12,0.08)] backdrop-blur-xl"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 lg:h-[72px] lg:px-8">
+          <Link
+            href={home}
+            className="focus-ring shrink-0"
             onClick={() => setOpen(false)}
-            className="fixed inset-0 top-[57px] z-40 bg-foreground/20 lg:hidden"
-            aria-hidden="true"
-          />
-        )}
-      </AnimatePresence>
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
-        <Link href={home} className="focus-ring" onClick={() => setOpen(false)} aria-label="Cal Clark">
-          <Logo />
-        </Link>
+            aria-label="Cal Clark"
+          >
+            <span className="lg:hidden">
+              <LogoMark className="h-9 w-9 text-foreground" />
+            </span>
+            <span className="hidden lg:block">
+              <Logo />
+            </span>
+          </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label={t.nav.primary}>
-          {nav.map((item) => (
+          <nav
+            className="hidden items-center gap-8 lg:flex"
+            aria-label={t.nav.primary}
+          >
+            {nav.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="focus-ring text-[15px] font-medium text-foreground/70 transition-colors hover:text-foreground"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden items-center gap-3 lg:flex">
+            <LanguageSelect />
             <a
-              key={item.href}
-              href={item.href}
-              className="focus-ring text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              href={`${home}#join`}
+              className="focus-ring inline-flex h-10 items-center gap-1.5 rounded-full bg-ink px-5 text-sm font-semibold text-white transition-transform hover:scale-[1.03] active:scale-[0.98]"
             >
-              {item.label}
+              {t.nav.waitlist}
             </a>
-          ))}
-        </nav>
+          </div>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <LanguageSelect />
-          <StoreBadges locale={locale} />
+          <div className="flex items-center gap-2 lg:hidden">
+            <LanguageSelect />
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              aria-label={open ? t.nav.menuClose : t.nav.menuOpen}
+              className="focus-ring relative inline-flex h-10 w-10 items-center justify-center rounded-full text-foreground"
+            >
+              <span
+                className={`absolute h-[2px] w-5 rounded-full bg-current transition-transform duration-300 ${open ? "rotate-45" : "-translate-y-[4px]"}`}
+              />
+              <span
+                className={`absolute h-[2px] w-5 rounded-full bg-current transition-transform duration-300 ${open ? "-rotate-45" : "translate-y-[4px]"}`}
+              />
+            </button>
+          </div>
         </div>
-
-        <div className="flex items-center gap-2 lg:hidden">
-          <LanguageSelect />
-          <a
-            href={`${home}#waitlist`}
-            onClick={() => setOpen(false)}
-            className="focus-ring inline-flex items-center rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-white transition-transform hover:scale-[1.03] active:scale-[0.98]"
-          >
-            {t.nav.waitlist}
-          </a>
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            aria-label={open ? t.nav.menuClose : t.nav.menuOpen}
-            className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border text-foreground"
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
-      </div>
-
+      </header>
       <AnimatePresence>
         {open && (
           <motion.div
             id="mobile-menu"
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute inset-x-0 top-full z-50 border-t border-border/70 bg-background shadow-lg lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-x-0 bottom-0 top-16 z-[45] flex flex-col bg-background px-5 pb-8 pt-6 lg:hidden"
           >
-            <nav
-              className="mx-auto flex max-w-6xl flex-col gap-1 px-5 py-4"
-              aria-label={t.nav.mobile}
-            >
-              {nav.map((item) => (
-                <a
+            <nav className="flex flex-col" aria-label={t.nav.mobile}>
+              {nav.map((item, i) => (
+                <motion.a
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="focus-ring rounded-lg px-2 py-2.5 text-base font-medium text-foreground transition-colors hover:bg-surface"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: 0.04 + i * 0.05,
+                    duration: 0.3,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className="focus-ring flex items-center justify-between border-b border-border py-5 text-[28px] font-semibold tracking-[-0.03em] text-foreground"
                 >
                   {item.label}
-                </a>
+                  <ArrowRight className="h-5 w-5 text-muted-foreground" />
+                </motion.a>
               ))}
-              <div className="mt-3 border-t border-border/70 pt-4">
-                <StoreBadges locale={locale} />
-              </div>
             </nav>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25, duration: 0.3 }}
+              className="mt-auto"
+            >
+              <a
+                href={`${home}#join`}
+                onClick={() => setOpen(false)}
+                className="focus-ring flex h-14 w-full items-center justify-center rounded-full bg-ink text-base font-semibold text-white active:scale-[0.99]"
+              >
+                {t.nav.waitlist}
+              </a>
+              <p className="mt-3 text-center text-sm text-muted-foreground">
+                {t.nav.soon}
+              </p>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }

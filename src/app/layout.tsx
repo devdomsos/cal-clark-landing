@@ -12,7 +12,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Cal Clark - Photo calorie tracker for real plates",
+    default: "Cal Clark - Simple calorie tracking for every goal",
     template: "%s",
   },
   description:
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
   },
   openGraph: {
-    title: "Cal Clark - Photo calorie tracker for real plates",
+    title: "Cal Clark - Simple calorie tracking for every goal",
     description:
       "Lose weight, gain mass or stay healthy. Simple calorie tracking from Cal Clark. 3-day free trial. No ads.",
     url: "https://calclark.app",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cal Clark - Photo calorie tracker for real plates",
+    title: "Cal Clark - Simple calorie tracking for every goal",
     description:
       "Lose weight, gain mass or stay healthy. Simple calorie tracking from Cal Clark. 3-day free trial. No ads.",
     images: ["/og-image.png"],
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#f9fafb",
+  themeColor: "#f5f3ee",
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {

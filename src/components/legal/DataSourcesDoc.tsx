@@ -25,19 +25,20 @@ const COPY: Record<
     not: string[];
     sourcesTitle: string;
     usdaLink: string;
+    blsLink: string;
     privacy: string;
   }
 > = {
   en: {
     title: "Where the numbers come from",
-    updated: "Last updated: 9 September 2026",
+    updated: "Last updated: 14 September 2026",
     intro:
       "Cal Clark logs meals. A photo cannot weigh oil in a sauce. We still show our sources, because you should know which number is a draft, which number is from a published nutrition table, and which number you typed yourself.",
     photoTitle: "Photo or a typed description",
     photo: [
       "You take a picture or type what you ate. That leaves your phone, goes to our servers in the EU, and is sent to OpenAI to draft the log.",
       "The draft has food names, a portion in grams, and a first calorie number. If the plate is messy, we may ask one extra question (oil, size, sauce) instead of inventing the rest.",
-      "We then check those names against published US government nutrition tables. When the match is confident, we use those published calories and macros for the grams on your draft.",
+      "We then check those names against published nutrition tables: first the US government tables, then the German national food table. When the match is confident, we use those published calories and macros for the grams on your draft.",
       "You can change grams or items before the meal counts for the day. Saved meals reuse your number. They do not send the photo again.",
     ],
     barcodeTitle: "Barcode on a packaged product",
@@ -49,7 +50,7 @@ const COPY: Record<
     ],
     searchTitle: "Search",
     search:
-      "Typed search uses the same published nutrition tables. About 13,600 foods. This is public data. We do not resell it.",
+      "Typed search uses the same published nutrition tables. About 20,700 foods. This is public data. We do not resell it.",
     budgetTitle: "Daily calorie budget",
     budget: [
       "Basal metabolic rate uses the Mifflin-St Jeor equation (Mifflin et al., 1990).",
@@ -64,18 +65,19 @@ const COPY: Record<
     ],
     sourcesTitle: "Named sources",
     usdaLink: "USDA published nutrition tables",
+    blsLink: "German Nutrient Database (BLS 4.0), published by the Max Rubner-Institut, CC BY 4.0",
     privacy: "How we store photos and accounts is on the privacy page.",
   },
   pl: {
     title: "Skąd biorą się liczby",
-    updated: "Ostatnia aktualizacja: 9 września 2026",
+    updated: "Ostatnia aktualizacja: 14 września 2026",
     intro:
       "Cal Clark zapisuje posiłki. Zdjęcie nie zważy sosu. Pokazujemy źródła, żeby było jasne: co jest szkicem, co pochodzi z opublikowanej tabeli żywieniowej, a co wpiszesz Ty.",
     photoTitle: "Zdjęcie albo krótki opis",
     photo: [
       "Robisz zdjęcie albo wpisujesz, co było na talerzu. To opuszcza telefon, idzie na nasze serwery w UE i do OpenAI, żeby zrobić szkic wpisu.",
       "Szkic ma nazwy produktów, gramy i pierwsze kalorie. Gdy talerz jest trudniejszy, pytamy o jedną rzecz (olej, wielkość, sos), zamiast zgadywać resztę.",
-      "Te nazwy sprawdzamy z opublikowanymi tabelami żywieniowymi rządu USA. Przy pewnym dopasowaniu bierzemy opublikowane kalorie i makro na gramy z Twojego szkicu.",
+      "Te nazwy sprawdzamy z opublikowanymi tabelami żywieniowymi: najpierw rządu USA, potem z niemiecką krajową tabelą żywności. Przy pewnym dopasowaniu bierzemy opublikowane kalorie i makro na gramy z Twojego szkicu.",
       "Możesz zmienić gramy albo składniki, zanim posiłek wejdzie w dzień. Zapamiętane posiłki używają Twojej liczby. Zdjęcia drugi raz nie wysyłają.",
     ],
     barcodeTitle: "Kod kreskowy na opakowaniu",
@@ -87,7 +89,7 @@ const COPY: Record<
     ],
     searchTitle: "Wyszukiwarka",
     search:
-      "Wpisane nazwy szukamy w tych samych opublikowanych tabelach. Około 13 600 produktów. To dane publiczne. Nie odsprzedajemy ich.",
+      "Wpisane nazwy szukamy w tych samych opublikowanych tabelach. Około 20 700 produktów. To dane publiczne. Nie odsprzedajemy ich.",
     budgetTitle: "Dzienny budżet kalorii",
     budget: [
       "Podstawowa przemiana materii: równanie Mifflin-St Jeor (Mifflin i in., 1990).",
@@ -102,18 +104,19 @@ const COPY: Record<
     ],
     sourcesTitle: "Nazwane źródła",
     usdaLink: "Opublikowane tabele żywieniowe USDA",
+    blsLink: "Niemiecka baza wartości odżywczych (BLS 4.0), wydawca: Max Rubner-Institut, CC BY 4.0",
     privacy: "Jak trzymamy zdjęcia i konta, opisuje polityka prywatności.",
   },
   de: {
     title: "Woher die Zahlen kommen",
-    updated: "Stand: 9. September 2026",
+    updated: "Stand: 14. September 2026",
     intro:
       "Cal Clark führt ein Tagebuch. Ein Foto wiegt keine Soße. Wir nennen die Quellen, damit klar ist: Was ist ein Entwurf, was ein veröffentlichter Nährwert, und was hast du selbst eingetippt.",
     photoTitle: "Foto oder kurze Beschreibung",
     photo: [
       "Du fotografierst oder tippst, was du gegessen hast. Das verlässt das Telefon, geht auf unsere Server in der EU und an OpenAI, damit wir den Entwurf erstellen.",
       "Der Entwurf hat Namen, Gramm und eine erste Kalorienzahl. Ist der Teller unübersichtlich, fragen wir eine Sache (Öl, Größe, Soße), statt den Rest zu erfinden.",
-      "Diese Namen gleichen wir mit veröffentlichten US-Nährwerttabellen ab. Bei einem sicheren Treffer nutzen wir die veröffentlichten Kalorien und Makros für die Gramm aus deinem Entwurf.",
+      "Diese Namen gleichen wir mit veröffentlichten Nährwerttabellen ab: zuerst mit den US-Tabellen, dann mit dem Bundeslebensmittelschlüssel. Bei einem sicheren Treffer nutzen wir die veröffentlichten Kalorien und Makros für die Gramm aus deinem Entwurf.",
       "Du kannst Gramm oder Zutaten ändern, bevor die Mahlzeit zählt. Gespeicherte Mahlzeiten nutzen deine Zahl. Sie senden das Foto nicht erneut.",
     ],
     barcodeTitle: "Strichcode auf der Packung",
@@ -125,7 +128,7 @@ const COPY: Record<
     ],
     searchTitle: "Suche",
     search:
-      "Getippte Suche nutzt dieselben veröffentlichten Nährwerttabellen. Etwa 13.600 Lebensmittel. Öffentliche Daten. Wir verkaufen sie nicht weiter.",
+      "Getippte Suche nutzt dieselben veröffentlichten Nährwerttabellen. Etwa 20.700 Lebensmittel. Öffentliche Daten. Wir verkaufen sie nicht weiter.",
     budgetTitle: "Tägliches Kalorienbudget",
     budget: [
       "Grundumsatz: Mifflin-St-Jeor-Gleichung (Mifflin et al., 1990).",
@@ -140,18 +143,19 @@ const COPY: Record<
     ],
     sourcesTitle: "Genannte Quellen",
     usdaLink: "Veröffentlichte USDA-Nährwerttabellen",
+    blsLink: "Bundeslebensmittelschlüssel (BLS 4.0), Herausgeber: Max Rubner-Institut, CC BY 4.0",
     privacy: "Wie wir Fotos und Konten speichern, steht in der Datenschutzerklärung.",
   },
   es: {
     title: "De dónde salen los números",
-    updated: "Última actualización: 9 de septiembre de 2026",
+    updated: "Última actualización: 14 de septiembre de 2026",
     intro:
       "Cal Clark registra comidas. Una foto no pesa la salsa. Mostramos las fuentes para que sepas qué cifra es un borrador, cuál viene de una tabla nutricional publicada y cuál escribiste tú.",
     photoTitle: "Foto o una descripción",
     photo: [
       "Haces una foto o escribes lo que comiste. Eso sale del teléfono, va a nuestros servidores en la UE y a OpenAI para esbozar el registro.",
       "El borrador tiene nombres, gramos y una primera cifra de calorías. Si el plato es confuso, preguntamos una sola cosa (aceite, tamaño, salsa) en vez de inventar el resto.",
-      "Esos nombres se contrastan con tablas nutricionales publicadas del gobierno de EE. UU. Si el emparejamiento es fiable, usamos esas calorías y macros publicadas con los gramos de tu borrador.",
+      "Esos nombres se contrastan con tablas nutricionales publicadas: primero las del gobierno de EE. UU., después la tabla nacional alemana de alimentos. Si el emparejamiento es fiable, usamos esas calorías y macros publicadas con los gramos de tu borrador.",
       "Puedes cambiar gramos o ingredientes antes de que la comida cuente. Las comidas guardadas reutilizan tu cifra. No vuelven a enviar la foto.",
     ],
     barcodeTitle: "Código de barras de un envase",
@@ -163,7 +167,7 @@ const COPY: Record<
     ],
     searchTitle: "Búsqueda",
     search:
-      "La búsqueda por texto usa las mismas tablas nutricionales publicadas. Unos 13.600 alimentos. Datos públicos. No los revendemos.",
+      "La búsqueda por texto usa las mismas tablas nutricionales publicadas. Unos 20.700 alimentos. Datos públicos. No los revendemos.",
     budgetTitle: "Presupuesto diario de calorías",
     budget: [
       "Metabolismo basal: ecuación Mifflin-St Jeor (Mifflin et al., 1990).",
@@ -178,6 +182,7 @@ const COPY: Record<
     ],
     sourcesTitle: "Fuentes con nombre",
     usdaLink: "Tablas nutricionales publicadas del USDA",
+    blsLink: "Base de datos alemana de nutrientes (BLS 4.0), editada por el Max Rubner-Institut, CC BY 4.0",
     privacy: "Cómo guardamos fotos y cuentas está en la política de privacidad.",
   },
 };
@@ -225,6 +230,11 @@ export function DataSourcesDoc({ locale }: { locale: LegalLocale }) {
         <li>
           <a className="text-primary underline underline-offset-2" href="https://fdc.nal.usda.gov">
             {c.usdaLink}
+          </a>
+        </li>
+        <li>
+          <a className="text-primary underline underline-offset-2" href="https://blsdb.de">
+            {c.blsLink}
           </a>
         </li>
         <li>

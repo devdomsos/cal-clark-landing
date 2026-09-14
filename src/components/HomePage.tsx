@@ -1,11 +1,10 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { ProofStrip } from "@/components/ProofStrip";
-import { WhyCalClark } from "@/components/WhyCalClark";
+import { Plates } from "@/components/Plates";
 import { HowItWorks } from "@/components/HowItWorks";
-import { Compare } from "@/components/Compare";
-import { MacrosPreview } from "@/components/MacrosPreview";
-import { LocalFood } from "@/components/LocalFood";
+import { Goals } from "@/components/Goals";
+import { RealLife } from "@/components/RealLife";
+import { Trust } from "@/components/Trust";
 import { Pricing } from "@/components/Pricing";
 import { Faq } from "@/components/Faq";
 import { FinalCta } from "@/components/FinalCta";
@@ -22,12 +21,11 @@ export function HomePage({ locale }: { locale: Locale }) {
       <Header locale={locale} />
       <main className="flex-1">
         <Hero locale={locale} />
-        <ProofStrip locale={locale} />
-        <WhyCalClark locale={locale} />
         <HowItWorks locale={locale} />
-        <Compare locale={locale} />
-        <MacrosPreview locale={locale} />
-        <LocalFood locale={locale} />
+        <Plates locale={locale} />
+        <Goals locale={locale} />
+        <RealLife locale={locale} />
+        <Trust locale={locale} />
         <Pricing locale={locale} />
         <Faq locale={locale} />
         <FinalCta locale={locale} />

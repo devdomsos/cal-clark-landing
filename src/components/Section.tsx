@@ -1,31 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import type { ReactNode } from "react";
-
-export function Section({
-  id,
-  className = "",
-  children,
-}: {
-  id?: string;
-  className?: string;
-  children: ReactNode;
-}) {
-  const reduceMotion = useReducedMotion();
-  return (
-    <motion.section
-      id={id}
-      initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      className={className}
-    >
-      {children}
-    </motion.section>
-  );
-}
+import { useEffect, useState, type ReactNode } from "react";
 
 export function Reveal({
   className = "",
@@ -36,16 +12,27 @@ export function Reveal({
   delay?: number;
   children: ReactNode;
 }) {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useSafeReducedMotion();
   return (
     <motion.div
-      initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+      initial={reduceMotion ? false : { opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.35, ease: "easeOut", delay }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay }}
       className={className}
     >
       {children}
     </motion.div>
   );
+}
+
+/**
+ * Reduced-motion preference that is `false` during SSR and the first client
+ * render, so server and client markup match.
+ */
+export function useSafeReducedMotion() {
+  const reduce = useReducedMotion();
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
+  return hydrated && !!reduce;
 }
