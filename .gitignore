@@ -49,3 +49,5 @@ data/waitlist.json
 .cursor/grind/conversations/
 .cursor/grind/**/*.json
 !.cursor/grind/README.md
+
+!.env.example

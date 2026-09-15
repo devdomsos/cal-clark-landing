@@ -28,7 +28,7 @@ function PrivacyEn() {
       path="privacy"
       references="privacy"
       title="Privacy policy"
-      updated="Last updated: 11 September 2026. Not a substitute for counsel. The legal entity name and registered address will be printed here before store listing."
+      updated="Last updated: 15 September 2026. Not a substitute for counsel. The legal entity name and registered address will be printed here before store listing."
     >
       <p>
         This policy describes how Cal Clark handles information in the mobile
@@ -83,6 +83,7 @@ function PrivacyEn() {
           nutrition information is provided by the fatsecret Platform API.
         </li>
         <li>Sentry - crash reports, with photos and text hidden.</li>
+        <li>Resend - sends the email that confirms your waitlist signup on calclark.app.</li>
         <li>PostHog (EU) - optional usage stats in some versions of the app. Never for ads.</li>
       </LegalList>
       <LegalH2>What we do not do</LegalH2>
@@ -117,8 +118,12 @@ function PrivacyEn() {
       </p>
       <LegalH2>Waitlist on this website</LegalH2>
       <p>
-        If you join the waitlist we store the email you typed so we can tell
-        you when the app is on the stores. We do not sell that list. See{" "}
+        If you join the waitlist we store the email you typed, the language of
+        the page, and when you signed up and confirmed. We send you one email
+        with a link to confirm the address. Resend sends that email for us. We
+        only tell confirmed addresses when the app is on the stores. We keep
+        the address until you ask us to remove it or we close the waitlist.
+        To remove it, write to <Contact />. We do not sell that list. See{" "}
         <Link href="/cookies" className="text-primary underline underline-offset-2">
           cookies
         </Link>
@@ -163,7 +168,7 @@ function PrivacyPl() {
       path="privacy"
       references="privacy"
       title="Polityka prywatności"
-      updated="Ostatnia aktualizacja: 9 września 2026. To nie zastępuje porady prawnej. Nazwa i adres podmiotu pojawią się tu przed listą w sklepach."
+      updated="Ostatnia aktualizacja: 15 września 2026. To nie zastępuje porady prawnej. Nazwa i adres podmiotu pojawią się tu przed listą w sklepach."
     >
       <p>
         Ta strona opisuje, jak Cal Clark przetwarza dane w aplikacji i na
@@ -220,6 +225,7 @@ function PrivacyPl() {
           FatSecret pochodzą z fatsecret Platform API.
         </li>
         <li>Sentry - raporty awarii, ze zdjęciami i tekstem ukrytymi.</li>
+        <li>Resend - wysyła e-mail, który potwierdza zapis na listę oczekujących na calclark.app.</li>
         <li>PostHog (UE) - opcjonalne statystyki użycia w niektórych wersjach. Nigdy do reklam.</li>
       </LegalList>
       <LegalH2>Czego nie robimy</LegalH2>
@@ -253,8 +259,12 @@ function PrivacyPl() {
       </p>
       <LegalH2>Lista oczekujących na tej stronie</LegalH2>
       <p>
-        Jeśli zapiszesz się na listę, trzymamy e-mail, żeby dać znać, gdy
-        aplikacja trafi do sklepów. Listy nie sprzedajemy. Zobacz{" "}
+        Jeśli zapiszesz się na listę, trzymamy wpisany e-mail, język strony
+        oraz datę zapisu i potwierdzenia. Wysyłamy jeden e-mail z linkiem do
+        potwierdzenia adresu. Ten e-mail wysyła dla nas Resend. O starcie
+        aplikacji w sklepach piszemy tylko na potwierdzone adresy. Adres
+        trzymamy, dopóki nie poprosisz o usunięcie albo nie zamkniemy listy.
+        Żeby go usunąć, napisz na <Contact />. Listy nie sprzedajemy. Zobacz{" "}
         <Link href="/pl/cookies" className="text-primary underline underline-offset-2">
           cookies
         </Link>
@@ -298,7 +308,7 @@ function PrivacyDe() {
       path="privacy"
       references="privacy"
       title="Datenschutz"
-      updated="Stand: 9. September 2026. Kein Rechtsrat. Firmenname und Sitz stehen hier, bevor die App in den Stores ist."
+      updated="Stand: 15. September 2026. Kein Rechtsrat. Firmenname und Sitz stehen hier, bevor die App in den Stores ist."
     >
       <p>
         Diese Seite beschreibt, wie Cal Clark Daten in der App und auf
@@ -338,6 +348,7 @@ function PrivacyDe() {
         <li>Apple, Google und RevenueCat - Zahlungen. Die Kartennummer sehen wir nicht.</li>
         <li>Open Food Facts und FatSecret - Packungsetiketten. FatSecret-Nährwerte stammen von der fatsecret Platform API.</li>
         <li>Sentry - Absturzberichte, Fotos und Text verborgen.</li>
+        <li>Resend - verschickt die E-Mail, mit der du deine Eintragung in die Warteliste auf calclark.app bestätigst.</li>
         <li>PostHog (EU) - optionale Nutzungszahlen in manchen App-Versionen. Nie für Werbung.</li>
       </LegalList>
       <LegalH2>Was wir nicht tun</LegalH2>
@@ -364,8 +375,13 @@ function PrivacyDe() {
       <p>Cal Clark ist nicht für Personen unter 16 Jahren bestimmt.</p>
       <LegalH2>Warteliste auf dieser Website</LegalH2>
       <p>
-        Wenn du dich einträgst, speichern wir die E-Mail, um Bescheid zu
-        sagen, wenn die App in den Stores ist. Die Liste verkaufen wir nicht.
+        Wenn du dich einträgst, speichern wir die eingegebene E-Mail, die
+        Sprache der Seite und wann du dich eingetragen und bestätigt hast. Wir
+        schicken dir eine E-Mail mit einem Link, um die Adresse zu bestätigen.
+        Diese E-Mail verschickt Resend für uns. Nur bestätigte Adressen
+        erfahren, wann die App in den Stores ist. Wir speichern die Adresse,
+        bis du die Löschung verlangst oder wir die Warteliste schließen. Zum
+        Löschen schreib an <Contact />. Die Liste verkaufen wir nicht.
         Siehe{" "}
         <Link href="/de/cookies" className="text-primary underline underline-offset-2">
           Cookies
@@ -409,7 +425,7 @@ function PrivacyEs() {
       path="privacy"
       references="privacy"
       title="Política de privacidad"
-      updated="Última actualización: 9 de septiembre de 2026. No sustituye asesoramiento legal. El nombre y domicilio de la entidad se publicarán aquí antes de las tiendas."
+      updated="Última actualización: 15 de septiembre de 2026. No sustituye asesoramiento legal. El nombre y domicilio de la entidad se publicarán aquí antes de las tiendas."
     >
       <p>
         Esta página describe cómo Cal Clark trata datos en la app y en
@@ -450,6 +466,7 @@ function PrivacyEs() {
         <li>Apple, Google y RevenueCat - pagos. No vemos el número de tarjeta.</li>
         <li>Open Food Facts y FatSecret - etiquetas de envases. Información nutricional de FatSecret: fatsecret Platform API.</li>
         <li>Sentry - informes de fallos, con fotos y texto ocultos.</li>
+        <li>Resend - envía el correo que confirma tu registro en la lista de espera de calclark.app.</li>
         <li>PostHog (UE) - estadísticas de uso opcionales en algunas versiones. Nunca para anuncios.</li>
       </LegalList>
       <LegalH2>Lo que no hacemos</LegalH2>
@@ -475,8 +492,13 @@ function PrivacyEs() {
       <p>Cal Clark no está dirigido a menores de 16 años.</p>
       <LegalH2>Lista de espera en este sitio</LegalH2>
       <p>
-        Si te apuntas, guardamos el correo para avisarte cuando la app esté en
-        las tiendas. No vendemos esa lista. Ver{" "}
+        Si te apuntas, guardamos el correo que escribiste, el idioma de la
+        página y cuándo te apuntaste y confirmaste. Te enviamos un correo con
+        un enlace para confirmar la dirección. Ese correo lo envía Resend por
+        nosotros. Solo avisamos a las direcciones confirmadas cuando la app
+        esté en las tiendas. Guardamos la dirección hasta que pidas borrarla o
+        cerremos la lista. Para borrarla, escribe a <Contact />. No vendemos
+        esa lista. Ver{" "}
         <Link href="/es/cookies" className="text-primary underline underline-offset-2">
           cookies
         </Link>

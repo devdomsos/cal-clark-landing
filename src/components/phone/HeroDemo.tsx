@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { AnimatePresence, m, useInView } from "framer-motion";
 import { useSafeReducedMotion } from "../Section";
 import { useEffect, useRef, useState } from "react";
 import type { Locale } from "@/lib/i18n/config";
@@ -56,33 +56,33 @@ export function HeroDemo({ locale }: { locale: Locale }) {
       <PhoneFrame>
         <AnimatePresence initial={false} mode="popLayout">
           {screen === "camera" && (
-            <motion.div key="camera" className="absolute inset-0" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: 1.04 }} transition={{ duration: 0.45, ease }}>
-              <CameraScreen t={t} shutter={phase === "shutter"} flash={phase === "shutter"} />
-            </motion.div>
+            <m.div key="camera" className="absolute inset-0" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: 1.04 }} transition={{ duration: 0.45, ease }}>
+              <CameraScreen t={t} shutter={phase === "shutter"} flash={phase === "shutter"} preload />
+            </m.div>
           )}
           {screen === "diary" && (
-            <motion.div key="diary" className="absolute inset-0" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0, x: 0 }} exit={{ x: "-25%", opacity: 0.6 }} transition={{ duration: 0.5, ease }}>
+            <m.div key="diary" className="absolute inset-0" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0, x: 0 }} exit={{ x: "-25%", opacity: 0.6 }} transition={{ duration: 0.5, ease }}>
               <DiaryScreen locale={locale} t={t} row={phase === "pending" ? "pending" : "done"} />
               {phase === "tapRow" && <TouchRipple {...ROW_TAP} />}
-            </motion.div>
+            </m.div>
           )}
           {screen === "meal" && (
-            <motion.div key="meal" className="absolute inset-0 z-10 shadow-[-20px_0_40px_rgba(0,0,0,0.15)]" initial={{ x: reduce ? 0 : "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ duration: 0.5, ease }}>
+            <m.div key="meal" className="absolute inset-0 z-10 shadow-[-20px_0_40px_rgba(0,0,0,0.15)]" initial={{ x: reduce ? 0 : "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ duration: 0.5, ease }}>
               <MealScreen locale={locale} t={t} animate={!reduce} pressed={phase === "tapConfirm"} />
               {phase === "tapConfirm" && <TouchRipple {...CONFIRM_TAP} />}
-            </motion.div>
+            </m.div>
           )}
           {screen === "diary-saved" && (
-            <motion.div key="diary-saved" className="absolute inset-0" initial={{ x: "-25%", opacity: 0.6 }} animate={{ x: 0, opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5, ease }}>
+            <m.div key="diary-saved" className="absolute inset-0" initial={{ x: "-25%", opacity: 0.6 }} animate={{ x: 0, opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5, ease }}>
               <DiaryScreen locale={locale} t={t} row="done" animate={false} />
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </PhoneFrame>
 
       <div className="pointer-events-none mt-7 flex h-9 items-center justify-center" aria-hidden="true">
         <AnimatePresence mode="wait" initial={false}>
-          <motion.span
+          <m.span
             key={caption}
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
@@ -92,7 +92,7 @@ export function HeroDemo({ locale }: { locale: Locale }) {
           >
             <span className="h-1.5 w-1.5 rounded-full bg-fat" />
             {caption}
-          </motion.span>
+          </m.span>
         </AnimatePresence>
       </div>
     </div>

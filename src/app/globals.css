@@ -91,10 +91,6 @@ body {
   font-weight: 650;
 }
 
-.marquee-mask {
-  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
-}
-
 .no-scrollbar {
   scrollbar-width: none;
 }

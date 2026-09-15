@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { AnimatePresence, m, useInView } from "framer-motion";
+import { DESKTOP_QUERY, useMediaQuery } from "@/lib/useMediaQuery";
 import { Bookmark, PenLine, ScanBarcode } from "lucide-react";
 import { Reveal } from "./Section";
 import { CameraScreen, DiaryScreen, MealScreen, PhoneFrame } from "./phone/AppScreens";
@@ -16,14 +17,14 @@ function StepScreen({ step, locale, t, animate }: { step: number; locale: Locale
   return <DiaryScreen locale={locale} t={t} row="done" animate={animate} />;
 }
 
-function Step({ index, title, body, onActive, locale, t }: { index: number; title: string; body: string; onActive: (i: number) => void; locale: Locale; t: Messages }) {
+function Step({ index, title, body, onActive, locale, t, isDesktop }: { index: number; title: string; body: string; onActive: (i: number) => void; locale: Locale; t: Messages; isDesktop: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.6 });
   const mobileRef = useRef<HTMLDivElement>(null);
   const mobileInView = useInView(mobileRef, { amount: 0.5, once: true });
   useEffect(() => {
-    if (inView) onActive(index);
-  }, [inView, index, onActive]);
+    if (inView && isDesktop) onActive(index);
+  }, [inView, index, onActive, isDesktop]);
 
   return (
     <div ref={ref} className="flex flex-col justify-center py-10 lg:min-h-[78vh] lg:py-0">
@@ -32,7 +33,7 @@ function Step({ index, title, body, onActive, locale, t }: { index: number; titl
       <p className="mt-5 max-w-md text-lg leading-relaxed text-white/60">{body}</p>
       <div ref={mobileRef} className="mt-10 w-full max-w-[280px] self-center lg:hidden">
         <PhoneFrame shadow={false}>
-          <StepScreen step={index} locale={locale} t={t} animate={mobileInView} />
+          {!isDesktop && <StepScreen step={index} locale={locale} t={t} animate={mobileInView} />}
         </PhoneFrame>
       </div>
     </div>
@@ -42,6 +43,8 @@ function Step({ index, title, body, onActive, locale, t }: { index: number; titl
 export function HowItWorks({ locale }: { locale: Locale }) {
   const t = getMessages(locale);
   const [active, setActive] = useState(0);
+  // Only one variant runs: the sticky phone on desktop, one phone per step on mobile.
+  const isDesktop = useMediaQuery(DESKTOP_QUERY);
 
   return (
     <section id="how-it-works" className="relative scroll-mt-16 bg-ink text-white">
@@ -63,8 +66,9 @@ export function HowItWorks({ locale }: { locale: Locale }) {
                 aria-hidden="true"
               />
               <PhoneFrame shadow={false}>
+                {isDesktop && (
                 <AnimatePresence initial={false} mode="popLayout">
-                  <motion.div
+                  <m.div
                     key={active}
                     className="absolute inset-0"
                     initial={{ opacity: 0, scale: 1.02 }}
@@ -73,8 +77,9 @@ export function HowItWorks({ locale }: { locale: Locale }) {
                     transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <StepScreen step={active} locale={locale} t={t} animate />
-                  </motion.div>
+                  </m.div>
                 </AnimatePresence>
+                )}
               </PhoneFrame>
               <div className="mt-8 flex justify-center gap-2" aria-hidden="true">
                 {[0, 1, 2].map((i) => (
@@ -86,7 +91,7 @@ export function HowItWorks({ locale }: { locale: Locale }) {
 
           <div>
             {t.how.steps.map((step, i) => (
-              <Step key={step.title} index={i} title={step.title} body={step.body} onActive={setActive} locale={locale} t={t} />
+              <Step key={step.title} index={i} title={step.title} body={step.body} onActive={setActive} locale={locale} t={t} isDesktop={isDesktop} />
             ))}
           </div>
         </div>

@@ -61,8 +61,23 @@ export interface Messages {
     submit: string;
     pending: string;
     success: string;
+    already: string;
     invalid: string;
     error: string;
+    /** /waitlist/confirm page, opened from the confirmation email. */
+    confirm: {
+      metaTitle: string;
+      confirmedTitle: string;
+      confirmedBody: string;
+      alreadyTitle: string;
+      alreadyBody: string;
+      expiredTitle: string;
+      expiredBody: string;
+      invalidTitle: string;
+      invalidBody: string;
+      errorTitle: string;
+      back: string;
+    };
   };
   plates: {
     eyebrow: string;
@@ -178,9 +193,23 @@ const EN: Messages = {
     placeholder: "you@email.com",
     submit: "Join the waitlist",
     pending: "Joining…",
-    success: "You're on the list. We'll email you as soon as Cal Clark is live.",
+    success: "Almost there. Check your inbox and tap the link to confirm your email. We'll tell you when Cal Clark goes live.",
+    already: "You're already on the list. We'll email you when Cal Clark goes live.",
     invalid: "That doesn't look like a valid email.",
     error: "Something went wrong on our end. Try again in a moment.",
+    confirm: {
+      metaTitle: "Confirm your email - Cal Clark",
+      confirmedTitle: "You're on the list.",
+      confirmedBody: "Thanks for confirming your email. We'll tell you when Cal Clark goes live on iOS and Android.",
+      alreadyTitle: "You're already on the list.",
+      alreadyBody: "Your email is confirmed. We'll tell you when Cal Clark goes live.",
+      expiredTitle: "This link has expired.",
+      expiredBody: "Join the waitlist again and we'll send you a new link.",
+      invalidTitle: "This link doesn't work.",
+      invalidBody: "It may be old or incomplete. Join the waitlist again and we'll send you a new link.",
+      errorTitle: "Something went wrong on our end. Open the link again in a moment.",
+      back: "Back to Cal Clark",
+    },
   },
   plates: {
     eyebrow: "Every meal",
@@ -387,9 +416,23 @@ const PL: Messages = {
     placeholder: "ty@email.com",
     submit: "Zapisz się na listę",
     pending: "Zapisuję…",
-    success: "Jesteś na liście. Napiszemy, gdy Cal Clark będzie dostępny.",
+    success: "Prawie gotowe. Sprawdź skrzynkę i kliknij link, żeby potwierdzić e-mail. Damy Ci znać, gdy Cal Clark wystartuje.",
+    already: "Już jesteś na liście. Napiszemy, gdy Cal Clark wystartuje.",
     invalid: "To nie wygląda na poprawny e-mail.",
     error: "Coś poszło nie tak u nas. Spróbuj za chwilę.",
+    confirm: {
+      metaTitle: "Potwierdź e-mail - Cal Clark",
+      confirmedTitle: "Jesteś na liście.",
+      confirmedBody: "Dzięki za potwierdzenie e-maila. Damy Ci znać, gdy Cal Clark wystartuje na iOS i Androidzie.",
+      alreadyTitle: "Już jesteś na liście.",
+      alreadyBody: "Twój e-mail jest potwierdzony. Damy Ci znać, gdy Cal Clark wystartuje.",
+      expiredTitle: "Ten link wygasł.",
+      expiredBody: "Zapisz się na listę jeszcze raz, a wyślemy nowy link.",
+      invalidTitle: "Ten link nie działa.",
+      invalidBody: "Może jest stary albo niepełny. Zapisz się na listę jeszcze raz, a wyślemy nowy link.",
+      errorTitle: "Coś poszło nie tak u nas. Otwórz link ponownie za chwilę.",
+      back: "Wróć do Cal Clark",
+    },
   },
   plates: {
     eyebrow: "Każdy posiłek",
@@ -596,9 +639,23 @@ const DE: Messages = {
     placeholder: "du@email.com",
     submit: "Auf die Warteliste",
     pending: "Wird eingetragen…",
-    success: "Du stehst auf der Liste. Wir melden uns, sobald Cal Clark verfügbar ist.",
+    success: "Fast geschafft. Schau in dein Postfach und tippe auf den Link, um deine E-Mail zu bestätigen. Wir sagen dir Bescheid, sobald Cal Clark startet.",
+    already: "Du stehst schon auf der Liste. Wir sagen dir Bescheid, sobald Cal Clark startet.",
     invalid: "Das sieht nicht nach einer gültigen E-Mail aus.",
     error: "Bei uns ist etwas schiefgelaufen. Versuch es gleich noch einmal.",
+    confirm: {
+      metaTitle: "E-Mail bestätigen - Cal Clark",
+      confirmedTitle: "Du stehst auf der Liste.",
+      confirmedBody: "Danke für die Bestätigung. Wir sagen dir Bescheid, sobald Cal Clark für iOS und Android startet.",
+      alreadyTitle: "Du stehst schon auf der Liste.",
+      alreadyBody: "Deine E-Mail ist bestätigt. Wir sagen dir Bescheid, sobald Cal Clark startet.",
+      expiredTitle: "Dieser Link ist abgelaufen.",
+      expiredBody: "Trag dich noch einmal ein und wir schicken dir einen neuen Link.",
+      invalidTitle: "Dieser Link funktioniert nicht.",
+      invalidBody: "Vielleicht ist er alt oder unvollständig. Trag dich noch einmal ein und wir schicken dir einen neuen Link.",
+      errorTitle: "Bei uns ist etwas schiefgelaufen. Öffne den Link gleich noch einmal.",
+      back: "Zurück zu Cal Clark",
+    },
   },
   plates: {
     eyebrow: "Jede Mahlzeit",
@@ -805,9 +862,23 @@ const ES: Messages = {
     placeholder: "tu@email.com",
     submit: "Únete a la lista",
     pending: "Apuntando…",
-    success: "Ya estás en la lista. Te escribiremos en cuanto Cal Clark esté disponible.",
+    success: "Casi listo. Revisa tu correo y toca el enlace para confirmar tu email. Te avisaremos cuando Cal Clark esté disponible.",
+    already: "Ya estás en la lista. Te avisaremos cuando Cal Clark esté disponible.",
     invalid: "Eso no parece un correo válido.",
     error: "Algo ha fallado en nuestro lado. Prueba en un momento.",
+    confirm: {
+      metaTitle: "Confirma tu correo - Cal Clark",
+      confirmedTitle: "Ya estás en la lista.",
+      confirmedBody: "Gracias por confirmar tu correo. Te avisaremos cuando Cal Clark llegue a iOS y Android.",
+      alreadyTitle: "Ya estabas en la lista.",
+      alreadyBody: "Tu correo está confirmado. Te avisaremos cuando Cal Clark esté disponible.",
+      expiredTitle: "Este enlace ha caducado.",
+      expiredBody: "Vuelve a apuntarte y te enviaremos un enlace nuevo.",
+      invalidTitle: "Este enlace no funciona.",
+      invalidBody: "Puede que sea antiguo o esté incompleto. Vuelve a apuntarte y te enviaremos un enlace nuevo.",
+      errorTitle: "Algo ha fallado en nuestro lado. Abre el enlace de nuevo en un momento.",
+      back: "Volver a Cal Clark",
+    },
   },
   plates: {
     eyebrow: "Cada comida",

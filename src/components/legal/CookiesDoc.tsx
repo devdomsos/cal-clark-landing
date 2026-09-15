@@ -10,10 +10,10 @@ import { legalHref } from "@/lib/legal";
 
 export function CookiesDoc({ locale }: { locale: LegalLocale }) {
   const titles: Record<LegalLocale, { title: string; updated: string }> = {
-    en: { title: "Cookie policy", updated: "Last updated: 11 September 2026" },
-    pl: { title: "Polityka cookies", updated: "Ostatnia aktualizacja: 11 września 2026" },
-    de: { title: "Cookie-Richtlinie", updated: "Stand: 11. September 2026" },
-    es: { title: "Política de cookies", updated: "Última actualización: 11 de septiembre de 2026" },
+    en: { title: "Cookie policy", updated: "Last updated: 15 September 2026" },
+    pl: { title: "Polityka cookies", updated: "Ostatnia aktualizacja: 15 września 2026" },
+    de: { title: "Cookie-Richtlinie", updated: "Stand: 15. September 2026" },
+    es: { title: "Política de cookies", updated: "Última actualización: 15 de septiembre de 2026" },
   };
   const meta = titles[locale];
   return (
@@ -36,8 +36,9 @@ function En() {
       </p>
       <LegalH2>What happens when you join the waitlist</LegalH2>
       <p>
-        You type an email. We store that address so we can tell you when the
-        app is live. That is a form submission, not a tracking cookie. Details
+        You type an email. We store that address and send one email to
+        confirm it. When you confirm, we tell you when the app is live. That
+        is a form submission, not a tracking cookie. Details
         in{" "}
         <Link className="text-primary underline underline-offset-2" href={legalHref("en", "privacy")}>
           privacy
@@ -77,8 +78,9 @@ function Pl() {
       </p>
       <LegalH2>Lista oczekujących</LegalH2>
       <p>
-        Wpisujesz e-mail. Zapisujemy adres, żeby dać znać, gdy aplikacja
-        wystartuje. To wysyłka formularza, nie cookie śledzące. Szczegóły w{" "}
+        Wpisujesz e-mail. Zapisujemy adres i wysyłamy jeden e-mail do
+        potwierdzenia. Po potwierdzeniu damy znać, gdy aplikacja wystartuje.
+        To wysyłka formularza, nie cookie śledzące. Szczegóły w{" "}
         <Link className="text-primary underline underline-offset-2" href={legalHref("pl", "privacy")}>
           polityce prywatności
         </Link>
@@ -117,8 +119,9 @@ function De() {
       </p>
       <LegalH2>Warteliste</LegalH2>
       <p>
-        Du tippst eine E-Mail. Wir speichern die Adresse, um Bescheid zu
-        sagen, wenn die App live ist. Das ist ein Formular, kein Tracking-Cookie.
+        Du tippst eine E-Mail. Wir speichern die Adresse und schicken eine
+        E-Mail zur Bestätigung. Nach der Bestätigung sagen wir Bescheid, wenn
+        die App live ist. Das ist ein Formular, kein Tracking-Cookie.
         Details in der{" "}
         <Link className="text-primary underline underline-offset-2" href={legalHref("de", "privacy")}>
           Datenschutzerklärung
@@ -158,8 +161,9 @@ function Es() {
       </p>
       <LegalH2>Lista de espera</LegalH2>
       <p>
-        Escribes un correo. Guardamos la dirección para avisarte cuando la
-        app esté lista. Es un formulario, no una cookie de rastreo. Detalle en{" "}
+        Escribes un correo. Guardamos la dirección y te enviamos un correo
+        para confirmarla. Cuando confirmes, te avisaremos cuando la app esté
+        lista. Es un formulario, no una cookie de rastreo. Detalle en{" "}
         <Link className="text-primary underline underline-offset-2" href={legalHref("es", "privacy")}>
           privacidad
         </Link>

@@ -21,7 +21,8 @@ export function Hero({ locale }: { locale: Locale }) {
             {t.hero.eyebrow}
           </p>
           <h1 className="display text-[2.6rem] text-foreground sm:text-6xl lg:text-[4.6rem]">
-            {t.hero.h1Line1} <span className="text-foreground/40">{t.hero.h1Line2}</span>
+            <span className="block text-balance">{t.hero.h1Line1}</span>{" "}
+            <span className="block text-balance text-foreground/40">{t.hero.h1Line2}</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/70 sm:text-xl">{t.hero.sub}</p>
 

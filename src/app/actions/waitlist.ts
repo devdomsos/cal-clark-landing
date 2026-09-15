@@ -1,39 +1,19 @@
 "use server";
 
-import { promises as fs } from "fs";
-import path from "path";
 import { isLocale, type Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
+import { postCalClarkApi } from "@/lib/calClarkApi";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const DATA_FILE = path.join(process.cwd(), "data", "waitlist.json");
 
 export type WaitlistState = {
   status: "idle" | "success" | "error";
   message?: string;
 };
 
-// TODO: this writes to a local JSON file so the demo works with zero config.
-// Before launch, swap this for a real ESP (Resend / Loops / Buttondown) once
-// an API key exists, and drop the filesystem write.
-async function appendEmail(email: string, locale: Locale) {
-  let entries: { email: string; ts: string; locale: Locale }[] = [];
-  try {
-    const raw = await fs.readFile(DATA_FILE, "utf8");
-    entries = JSON.parse(raw);
-  } catch {
-    entries = [];
-  }
-
-  if (entries.some((e) => e.email.toLowerCase() === email.toLowerCase())) {
-    return;
-  }
-
-  entries.push({ email, ts: new Date().toISOString(), locale });
-  await fs.mkdir(path.dirname(DATA_FILE), { recursive: true });
-  await fs.writeFile(DATA_FILE, JSON.stringify(entries, null, 2), "utf8");
-}
-
+// Signups live in the Cal Clark API (Postgres table waitlist_signups). The API
+// stores the email, checks for duplicates, and sends the confirmation email
+// (double opt-in via Resend). See server/src/routes/waitlist.ts in the app repo.
 export async function joinWaitlist(
   _prevState: WaitlistState,
   formData: FormData
@@ -41,23 +21,34 @@ export async function joinWaitlist(
   const email = String(formData.get("email") || "").trim();
   const localeRaw = String(formData.get("locale") || "en");
   const locale: Locale = isLocale(localeRaw) ? localeRaw : "en";
+  const source = String(formData.get("source") || "").slice(0, 40) || undefined;
   const t = getMessages(locale);
+
+  // Honeypot: people never see or fill this field, form bots do.
+  if (String(formData.get("company") || "") !== "") {
+    return { status: "success", message: t.waitlist.success };
+  }
 
   if (!EMAIL_RE.test(email)) {
     return { status: "error", message: t.waitlist.invalid };
   }
 
   try {
-    await appendEmail(email, locale);
-  } catch {
+    const res = await postCalClarkApi("/v1/waitlist", { email, locale, source });
+    if (res.status === 400) {
+      return { status: "error", message: t.waitlist.invalid };
+    }
+    if (!res.ok) {
+      console.error(`[waitlist] API responded ${res.status}`);
+      return { status: "error", message: t.waitlist.error };
+    }
+    const body = (await res.json()) as { status: string };
     return {
-      status: "error",
-      message: t.waitlist.error,
+      status: "success",
+      message: body.status === "already_confirmed" ? t.waitlist.already : t.waitlist.success,
     };
+  } catch (error) {
+    console.error("[waitlist] API call failed", error);
+    return { status: "error", message: t.waitlist.error };
   }
-
-  return {
-    status: "success",
-    message: t.waitlist.success,
-  };
 }

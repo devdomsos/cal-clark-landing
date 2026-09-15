@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState, type ReactNode } from "react";
+import { m, useReducedMotion } from "framer-motion";
+import { useSyncExternalStore, type ReactNode } from "react";
 
 export function Reveal({
   className = "",
@@ -14,7 +14,7 @@ export function Reveal({
 }) {
   const reduceMotion = useSafeReducedMotion();
   return (
-    <motion.div
+    <m.div
       initial={reduceMotion ? false : { opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
@@ -22,9 +22,11 @@ export function Reveal({
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
+
+const noopSubscribe = () => () => {};
 
 /**
  * Reduced-motion preference that is `false` during SSR and the first client
@@ -32,7 +34,10 @@ export function Reveal({
  */
 export function useSafeReducedMotion() {
   const reduce = useReducedMotion();
-  const [hydrated, setHydrated] = useState(false);
-  useEffect(() => setHydrated(true), []);
+  const hydrated = useSyncExternalStore(
+    noopSubscribe,
+    () => true,
+    () => false
+  );
   return hydrated && !!reduce;
 }

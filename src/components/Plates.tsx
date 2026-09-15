@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Flame } from "lucide-react";
 import { Reveal } from "./Section";
+import { Marquee } from "./Marquee";
 import type { Locale } from "@/lib/i18n/config";
 import { LOCALE_META } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
@@ -25,7 +26,7 @@ function Tile({ src, name, kcal }: { src: string; name: string; kcal: string }) 
   return (
     <figure className="relative h-[280px] w-[220px] shrink-0 overflow-hidden rounded-[28px] sm:h-[360px] sm:w-[290px]">
       <Image src={src} alt={name} fill sizes="290px" className="object-cover" />
-      <figcaption className="absolute inset-x-3 bottom-3 rounded-2xl bg-white/95 px-3.5 py-2.5 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.4)] backdrop-blur">
+      <figcaption className="absolute inset-x-3 bottom-3 rounded-2xl bg-white px-3.5 py-2.5 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.4)]">
         <span className="block text-[13px] font-semibold leading-snug text-foreground">{name}</span>
         <span className="mt-0.5 flex items-center gap-1 text-[13px] text-foreground/70">
           <Flame className="h-3.5 w-3.5" strokeWidth={2.5} />
@@ -53,20 +54,13 @@ export function Plates({ locale }: { locale: Locale }) {
         </div>
       </Reveal>
 
-      <div className="marquee-mask flex flex-col gap-4">
+      <div className="flex flex-col gap-4">
         {[rowA, rowB].map((row, r) => (
-          <div key={r} className="flex overflow-hidden">
-            <div
-              className={`flex w-max gap-4 pr-4 ${r === 0 ? "animate-marquee" : "animate-marquee-reverse"}`}
-              style={{ ["--marquee-duration" as string]: r === 0 ? "70s" : "80s" }}
-            >
-              {[...row, ...row].map((d, i) => (
-                <div key={`${d.src}-${i}`} aria-hidden={i >= row.length ? true : undefined}>
-                  <Tile src={d.src} name={d.name} kcal={d.label} />
-                </div>
-              ))}
-            </div>
-          </div>
+          <Marquee key={r} reverse={r === 1} duration={r === 0 ? 70 : 80}>
+            {row.map((d) => (
+              <Tile key={d.src} src={d.src} name={d.name} kcal={d.label} />
+            ))}
+          </Marquee>
         ))}
       </div>
     </section>

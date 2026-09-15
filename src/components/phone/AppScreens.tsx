@@ -8,7 +8,7 @@
  */
 
 import Image from "next/image";
-import { animate, motion, useMotionValue, useTransform } from "framer-motion";
+import { m } from "framer-motion";
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import {
   ArrowLeft,
@@ -66,8 +66,15 @@ export const DAY = {
   before: { kcal: 566, carbs: 40, protein: 20, fat: 18 },
 };
 
+const NUMBER_FORMATS = new Map<Locale, Intl.NumberFormat>();
+
 export function fmt(locale: Locale, n: number) {
-  return new Intl.NumberFormat(LOCALE_META[locale].htmlLang).format(Math.round(n));
+  let nf = NUMBER_FORMATS.get(locale);
+  if (!nf) {
+    nf = new Intl.NumberFormat(LOCALE_META[locale].htmlLang);
+    NUMBER_FORMATS.set(locale, nf);
+  }
+  return nf.format(Math.round(n));
 }
 
 /* ---------------------------------------------------------------- icons -- */
@@ -90,19 +97,29 @@ function MacroIcon({ kind, size = 16 }: { kind: "kcal" | "protein" | "carbs" | "
 
 /* ------------------------------------------------------------- helpers -- */
 
+/** Counts a number up or down by writing straight to the DOM, so React does not re-render per frame. */
 export function CountUp({ locale, from, to, duration = 0.9, run = true }: { locale: Locale; from: number; to: number; duration?: number; run?: boolean }) {
-  const mv = useMotionValue(run ? from : to);
-  const text = useTransform(mv, (v) => fmt(locale, v));
+  const ref = useRef<HTMLSpanElement>(null);
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
     if (!run) {
-      mv.set(to);
+      el.textContent = fmt(locale, to);
       return;
     }
-    mv.set(from);
-    const controls = animate(mv, to, { duration, ease: [0.22, 1, 0.36, 1] });
-    return () => controls.stop();
-  }, [from, to, duration, run, mv]);
-  return <motion.span>{text}</motion.span>;
+    const start = performance.now();
+    const ms = duration * 1000;
+    let raf = 0;
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - start) / ms);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(locale, from + (to - from) * eased);
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [locale, from, to, duration, run]);
+  return <span ref={ref}>{fmt(locale, run ? from : to)}</span>;
 }
 
 function Ring({ size, stroke, progress, color, track = "#e5e7eb", children }: { size: number; stroke: number; progress: number; color: string; track?: string; children?: ReactNode }) {
@@ -112,7 +129,7 @@ function Ring({ size, stroke, progress, color, track = "#e5e7eb", children }: { 
     <div className="relative" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="-rotate-90">
         <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={track} strokeWidth={stroke} />
-        <motion.circle
+        <m.circle
           cx={size / 2}
           cy={size / 2}
           r={r}
@@ -133,7 +150,7 @@ function Ring({ size, stroke, progress, color, track = "#e5e7eb", children }: { 
 
 function Skeleton({ w, h }: { w: number; h: number }) {
   return (
-    <motion.span
+    <m.span
       className="block rounded-md"
       style={{ width: w, height: h, background: "#e5e7eb" }}
       animate={{ opacity: [0.55, 1, 0.55] }}
@@ -153,7 +170,7 @@ function Spinner({ color = "#fff", size = 22 }: { color?: string; size?: number 
 
 export function TouchRipple({ x, y }: { x: number; y: number }) {
   return (
-    <motion.span
+    <m.span
       className="pointer-events-none absolute z-50 rounded-full"
       style={{ left: x - 28, top: y - 28, width: 56, height: 56, background: "rgba(3,7,18,0.18)", border: "2px solid rgba(255,255,255,0.9)", boxShadow: "0 4px 18px rgba(0,0,0,0.25)" }}
       initial={{ scale: 0.4, opacity: 0 }}
@@ -221,14 +238,14 @@ export function PhoneFrame({ children, className = "", shadow = true }: { childr
 
 /* -------------------------------------------------------------- camera -- */
 
-export function CameraScreen({ t, shutter = false, flash = false }: { t: Messages; shutter?: boolean; flash?: boolean }) {
+export function CameraScreen({ t, shutter = false, flash = false, preload = false }: { t: Messages; shutter?: boolean; flash?: boolean; preload?: boolean }) {
   return (
     <div className="absolute inset-0 bg-black">
       <div className="absolute inset-x-0 top-0 h-[700px] overflow-hidden">
-        <Image src="/images/hero-meal.jpg" alt={t.app.plateAlt} fill sizes="(min-width: 1024px) 380px, 300px" className="object-cover" priority />
+        <Image src="/images/hero-meal.jpg" alt={t.app.plateAlt} fill sizes="(min-width: 1024px) 340px, 270px" className="object-cover" preload={preload} />
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-transparent" />
         {/* viewfinder */}
-        <motion.div className="absolute left-[46px] right-[46px] top-[170px] h-[400px]" animate={{ scale: shutter ? 0.96 : 1 }} transition={{ duration: 0.25 }}>
+        <m.div className="absolute left-[46px] right-[46px] top-[170px] h-[400px]" animate={{ scale: shutter ? 0.96 : 1 }} transition={{ duration: 0.25 }}>
           {[
             "left-0 top-0 border-l-[4px] border-t-[4px] rounded-tl-[22px]",
             "right-0 top-0 border-r-[4px] border-t-[4px] rounded-tr-[22px]",
@@ -237,23 +254,23 @@ export function CameraScreen({ t, shutter = false, flash = false }: { t: Message
           ].map((c) => (
             <span key={c} className={`absolute h-[46px] w-[46px] border-white ${c}`} />
           ))}
-        </motion.div>
+        </m.div>
         <div className="absolute inset-x-0 top-[70px] flex items-center justify-between px-[22px] text-white">
-          <span className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-black/35 backdrop-blur"><Zap size={18} /></span>
-          <span className="rounded-full bg-black/35 px-[14px] py-[7px] text-[13px] font-semibold backdrop-blur">{t.app.photo}</span>
-          <span className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-black/35 backdrop-blur"><RefreshCcw size={17} /></span>
+          <span className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-black/45"><Zap size={18} /></span>
+          <span className="rounded-full bg-black/45 px-[14px] py-[7px] text-[13px] font-semibold">{t.app.photo}</span>
+          <span className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-black/45"><RefreshCcw size={17} /></span>
         </div>
       </div>
       <div className="absolute inset-x-0 bottom-0 flex h-[174px] items-center justify-center bg-black">
-        <motion.span
+        <m.span
           className="flex h-[78px] w-[78px] items-center justify-center rounded-full border-[4px] border-white"
           animate={{ scale: shutter ? 0.88 : 1 }}
           transition={{ duration: 0.18 }}
         >
           <span className="h-[62px] w-[62px] rounded-full bg-white" />
-        </motion.span>
+        </m.span>
       </div>
-      <motion.div className="pointer-events-none absolute inset-0 z-30 bg-white" initial={false} animate={{ opacity: flash ? 1 : 0 }} transition={{ duration: flash ? 0.08 : 0.45 }} />
+      <m.div className="pointer-events-none absolute inset-0 z-30 bg-white" initial={false} animate={{ opacity: flash ? 1 : 0 }} transition={{ duration: flash ? 0.08 : 0.45 }} />
       <StatusBar dark />
     </div>
   );
@@ -287,8 +304,7 @@ function WeekStrip({ locale }: { locale: Locale }) {
 function MealRow({ locale, name, photo, time, kcal, protein, carbs, fat, state, t, animateIn }: { locale: Locale; name: string; photo: string; time: string; kcal: number; protein: number; carbs: number; fat: number; state: RowState; t: Messages; animateIn?: boolean }) {
   const pending = state === "pending";
   return (
-    <motion.div
-      layout
+    <m.div
       initial={animateIn ? { opacity: 0, y: -16, scale: 0.97 } : false}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
@@ -307,9 +323,9 @@ function MealRow({ locale, name, photo, time, kcal, protein, carbs, fat, state, 
           {pending ? (
             <span className="truncate text-[16px] font-semibold text-[#030712]">{t.app.analyzing}</span>
           ) : (
-            <motion.span initial={animateIn ? { opacity: 0 } : false} animate={{ opacity: 1 }} className="truncate text-[16px] font-semibold text-[#030712]">
+            <m.span initial={animateIn ? { opacity: 0 } : false} animate={{ opacity: 1 }} className="truncate text-[16px] font-semibold text-[#030712]">
               {name}
-            </motion.span>
+            </m.span>
           )}
           <span className="shrink-0 text-[14px] text-[#6b7280]">{time}</span>
         </div>
@@ -335,7 +351,7 @@ function MealRow({ locale, name, photo, time, kcal, protein, carbs, fat, state, 
           ))}
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -419,7 +435,7 @@ export function DiaryScreen({ locale, t, row, animate: animateNew = true }: { lo
 
 function TabBar({ t }: { t: Messages }) {
   return (
-    <div className="absolute inset-x-0 bottom-0 z-30 h-[92px] border-t border-[#e5e7eb] bg-white/95 backdrop-blur">
+    <div className="absolute inset-x-0 bottom-0 z-30 h-[92px] border-t border-[#e5e7eb] bg-white">
       <div className="grid grid-cols-4 px-[10px] pt-[10px]">
         <span className="flex flex-col items-center gap-[3px] text-[#030712]"><NotebookText size={24} strokeWidth={2} /><span className="text-[12px] font-semibold">{t.app.diary}</span></span>
         <span className="flex flex-col items-center gap-[3px] text-[#b6bac2]"><ChartNoAxesCombined size={24} strokeWidth={2} /><span className="text-[12px] font-medium">{t.app.progress}</span></span>
@@ -442,7 +458,7 @@ export function MealScreen({ locale, t, animate: animateIn = true, pressed = fal
   return (
     <div className="absolute inset-0 overflow-hidden" style={{ background: COLORS.bg }}>
       <div className="absolute inset-x-0 top-0 h-[300px] overflow-hidden">
-        <Image src="/images/hero-meal.jpg" alt="" fill sizes="(min-width: 1024px) 380px, 300px" className="object-cover object-[50%_58%]" />
+        <Image src="/images/hero-meal.jpg" alt="" fill sizes="(min-width: 1024px) 340px, 270px" className="object-cover object-[50%_58%]" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent" />
       </div>
       <StatusBar dark />
@@ -457,7 +473,7 @@ export function MealScreen({ locale, t, animate: animateIn = true, pressed = fal
           <Bookmark size={22} color={COLORS.ink} />
         </div>
         <p className="mt-[10px] truncate text-[23px] font-semibold tracking-[-0.01em] text-[#030712]">{t.app.mealName}</p>
-        <motion.div {...stagger(0)} className="mt-[10px] flex items-center gap-[14px] rounded-[20px] bg-white p-[10px] shadow-[0_1px_3px_rgba(3,7,18,0.06)]">
+        <m.div {...stagger(0)} className="mt-[10px] flex items-center gap-[14px] rounded-[20px] bg-white p-[10px] shadow-[0_1px_3px_rgba(3,7,18,0.06)]">
           <span className="flex h-[56px] w-[56px] items-center justify-center rounded-[14px] bg-[#f3f4f6]"><Flame size={24} color={COLORS.ink} strokeWidth={2.25} /></span>
           <span>
             <span className="block text-[14px] text-[#6b7280]">{t.app.calories}</span>
@@ -465,8 +481,8 @@ export function MealScreen({ locale, t, animate: animateIn = true, pressed = fal
               <CountUp locale={locale} from={0} to={MEAL.kcal} run={animateIn} /> kcal
             </span>
           </span>
-        </motion.div>
-        <motion.div {...stagger(1)} className="mt-[8px] grid grid-cols-3 gap-[8px]">
+        </m.div>
+        <m.div {...stagger(1)} className="mt-[8px] grid grid-cols-3 gap-[8px]">
           {macroCards.map((m) => (
             <div key={m.label} className="rounded-[18px] bg-white px-[12px] py-[12px] shadow-[0_1px_3px_rgba(3,7,18,0.06)]">
               <span className="block truncate text-[13px] text-[#6b7280]">{m.label}</span>
@@ -476,29 +492,29 @@ export function MealScreen({ locale, t, animate: animateIn = true, pressed = fal
               </span>
             </div>
           ))}
-        </motion.div>
+        </m.div>
         <div className="mt-[16px] flex items-center justify-between">
           <span className="text-[19px] font-semibold text-[#030712]">{t.app.ingredients}</span>
           <span className="text-[14px] text-[#6b7280]">+ {t.app.addMore}</span>
         </div>
         <div className="mt-[10px] flex flex-col gap-[7px]">
           {MEAL.ingredients.map((ing, i) => (
-            <motion.div key={i} {...stagger(2 + i)} className="flex items-center gap-[10px]">
+            <m.div key={i} {...stagger(2 + i)} className="flex items-center gap-[10px]">
               <div className="flex min-w-0 flex-1 items-center rounded-[16px] bg-white px-[14px] py-[10px] shadow-[0_1px_3px_rgba(3,7,18,0.06)]">
                 <span className="min-w-0 flex-1 truncate text-[14px] font-semibold text-[#030712]">{t.app.ingredientNames[i]}</span>
                 <span className="ml-[8px] shrink-0 text-[13px] text-[#6b7280]">· {fmt(locale, ing.kcal)} kcal</span>
                 <span className="ml-[10px] shrink-0 text-[14px] font-medium text-[#030712]">{ing.grams} g</span>
               </div>
               <Trash2 size={18} color="#9ca3af" />
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>
       <div className="absolute inset-x-0 bottom-0 z-20 flex gap-[10px] border-t border-[#e5e7eb] bg-white px-[16px] pb-[34px] pt-[12px]">
         <span className="flex h-[50px] flex-1 items-center justify-center gap-[8px] rounded-full border-[1.5px] border-[#030712] text-[16px] font-semibold text-[#030712]"><Sparkles size={18} />{t.app.fix}</span>
-        <motion.span animate={{ scale: pressed ? 0.95 : 1 }} transition={{ duration: 0.15 }} className="flex h-[50px] flex-1 items-center justify-center rounded-full bg-[#030712] text-[16px] font-semibold text-white">
+        <m.span animate={{ scale: pressed ? 0.95 : 1 }} transition={{ duration: 0.15 }} className="flex h-[50px] flex-1 items-center justify-center rounded-full bg-[#030712] text-[16px] font-semibold text-white">
           {t.app.looksRight}
-        </motion.span>
+        </m.span>
       </div>
     </div>
   );

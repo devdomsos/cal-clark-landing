@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
+import { DESKTOP_QUERY, useMediaQuery } from "@/lib/useMediaQuery";
 import { Reveal, useSafeReducedMotion } from "./Section";
 import type { Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
@@ -21,12 +22,13 @@ export function Goals({ locale }: { locale: Locale }) {
   const reduce = useSafeReducedMotion();
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const isDesktop = useMediaQuery(DESKTOP_QUERY);
 
   useEffect(() => {
-    if (reduce || paused) return;
+    if (reduce || paused || !isDesktop) return;
     const id = setTimeout(() => setActive((a) => (a + 1) % PHOTOS.length), ROTATE_MS);
     return () => clearTimeout(id);
-  }, [active, paused, reduce]);
+  }, [active, paused, reduce, isDesktop]);
 
   return (
     <section id="goals" className="scroll-mt-16 py-24 lg:py-32">
@@ -73,21 +75,21 @@ export function Goals({ locale }: { locale: Locale }) {
               <div className={`absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/5 transition-opacity duration-500 ${open ? "opacity-100" : "opacity-80"}`} />
               <div className={`absolute inset-x-0 bottom-0 ${open ? "p-8" : "p-6"}`}>
                 <h3 className={`display text-white transition-[font-size] duration-500 ${open ? "text-5xl" : "text-[1.6rem] leading-[1.05]"}`}>{item.title}</h3>
-                <motion.p
+                <m.p
                   initial={false}
                   animate={{ opacity: open ? 1 : 0, y: open ? 0 : 8, height: open ? "auto" : 0 }}
                   transition={{ duration: 0.4, delay: open ? 0.2 : 0 }}
                   className="mt-3 max-w-sm overflow-hidden text-lg leading-snug text-white/85"
                 >
                   {item.body}
-                </motion.p>
-                {open && !reduce && !paused && (
+                </m.p>
+                {open && isDesktop && !reduce && !paused && (
                   <span className="mt-6 block h-[3px] w-40 overflow-hidden rounded-full bg-white/25">
-                    <motion.span
+                    <m.span
                       key={active}
-                      className="block h-full bg-white"
-                      initial={{ width: "0%" }}
-                      animate={{ width: "100%" }}
+                      className="block h-full origin-left bg-white"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
                       transition={{ duration: ROTATE_MS / 1000, ease: "linear" }}
                     />
                   </span>

@@ -33,10 +33,12 @@ MVP by design, so it ships fast and stays easy to audit.
   see `CREDITS.md`), the animated camera → result phone mockup
   (`src/components/PhoneMock.tsx`), the waitlist form and its server action.
 - **Stubbed — needs a real value before launch:**
-  - `src/app/actions/waitlist.ts` writes emails to a local
-    `data/waitlist.json` file (gitignored) so the demo works with zero
-    config. Swap this for a real ESP (Resend / Loops / Buttondown) once an
-    API key exists.
+  - `src/app/actions/waitlist.ts` calls the Cal Clark API
+    (`POST /v1/waitlist`, table `waitlist_signups`, double opt-in email via
+    Resend). The confirm link opens `/waitlist/confirm?token=`. Set
+    `CAL_CLARK_API_URL` (server-only, e.g. `https://api.coinclark.com`) on
+    the host. Unset = `http://127.0.0.1:3847`, the local API from `npm run dev`
+    in the app repo. `data/waitlist.json` is no longer used.
   - `src/components/StoreBadges.tsx` badges are disabled placeholders
     labelled "Coming soon" — replace the `href="#"` with real App Store /
     Google Play listing URLs when they exist.

@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Logo, LogoMark } from "./Logo";
 import { LanguageSelect } from "./LanguageSelect";
@@ -21,11 +21,15 @@ export function Header({ locale }: { locale: Locale }) {
     { href: `${home}#faq`, label: t.nav.faq },
   ];
 
+  const sentinel = useRef<HTMLDivElement>(null);
+
+  // Watch a marker at the top of the page instead of reading scrollY on every scroll event.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const el = sentinel.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([entry]) => setScrolled(!entry!.isIntersecting));
+    io.observe(el);
+    return () => io.disconnect();
   }, []);
 
   useEffect(() => {
@@ -40,10 +44,11 @@ export function Header({ locale }: { locale: Locale }) {
 
   return (
     <>
+      <div ref={sentinel} className="pointer-events-none absolute left-0 top-0 h-2 w-px" aria-hidden="true" />
       <header
         className={`sticky top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300 ${
           scrolled || open
-            ? "bg-background/85 shadow-[0_1px_0_rgba(11,11,12,0.08)] backdrop-blur-xl"
+            ? "bg-background/95 shadow-[0_1px_0_rgba(11,11,12,0.08)] lg:bg-background/85 lg:backdrop-blur-xl"
             : "bg-transparent"
         }`}
       >
@@ -109,7 +114,7 @@ export function Header({ locale }: { locale: Locale }) {
       </header>
       <AnimatePresence>
         {open && (
-          <motion.div
+          <m.div
             id="mobile-menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -119,7 +124,7 @@ export function Header({ locale }: { locale: Locale }) {
           >
             <nav className="flex flex-col" aria-label={t.nav.mobile}>
               {nav.map((item, i) => (
-                <motion.a
+                <m.a
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
@@ -134,10 +139,10 @@ export function Header({ locale }: { locale: Locale }) {
                 >
                   {item.label}
                   <ArrowRight className="h-5 w-5 text-muted-foreground" />
-                </motion.a>
+                </m.a>
               ))}
             </nav>
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.3 }}
@@ -153,8 +158,8 @@ export function Header({ locale }: { locale: Locale }) {
               <p className="mt-3 text-center text-sm text-muted-foreground">
                 {t.nav.soon}
               </p>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>
