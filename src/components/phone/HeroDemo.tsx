@@ -32,12 +32,14 @@ export function HeroDemo({ locale }: { locale: Locale }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.3 });
   const [index, setIndex] = useState(0);
+  // Hold on the camera until the photo has loaded, so the loop never starts on a placeholder.
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    if (reduce || !inView) return;
+    if (reduce || !inView || !ready) return;
     const timer = setTimeout(() => setIndex((i) => (i + 1) % TIMELINE.length), TIMELINE[index]![1]);
     return () => clearTimeout(timer);
-  }, [index, inView, reduce]);
+  }, [index, inView, reduce, ready]);
 
   const phase: Phase = reduce ? "meal" : TIMELINE[index]![0];
   const screen = phase === "camera" || phase === "shutter" ? "camera" : phase === "meal" || phase === "tapConfirm" ? "meal" : phase === "saved" ? "diary-saved" : "diary";
@@ -52,12 +54,12 @@ export function HeroDemo({ locale }: { locale: Locale }) {
           : `+${fmt(locale, MEAL.kcal)} kcal`;
 
   return (
-    <div ref={ref} className="relative mx-auto w-full max-w-[330px] lg:max-w-[360px]">
-      <PhoneFrame>
+    <div ref={ref} className="relative mx-auto flex w-full flex-col items-center">
+      <PhoneFrame width={{ base: 330, lg: 360 }}>
         <AnimatePresence initial={false} mode="popLayout">
           {screen === "camera" && (
             <m.div key="camera" className="absolute inset-0" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: 1.04 }} transition={{ duration: 0.45, ease }}>
-              <CameraScreen t={t} shutter={phase === "shutter"} flash={phase === "shutter"} preload />
+              <CameraScreen t={t} shutter={phase === "shutter"} flash={phase === "shutter"} preload onReady={() => setReady(true)} />
             </m.div>
           )}
           {screen === "diary" && (

@@ -7,9 +7,11 @@
  * PhoneFrame scales the whole screen to fit.
  */
 
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
+import heroMeal from "../../../public/images/hero-meal.jpg";
+import yogurt from "../../../public/images/food/yogurt.jpg";
 import { m } from "framer-motion";
-import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import {
   ArrowLeft,
   Bookmark,
@@ -194,33 +196,69 @@ export function StatusBar({ dark = false }: { dark?: boolean }) {
   );
 }
 
+/**
+ * Tiny inline preview of a photo, painted with the first HTML so the phone never
+ * shows an empty screen while the real photo downloads. A plain data-URL JPEG with
+ * no filter paints immediately and is cheap to repaint; the 8px image upscales soft.
+ */
+function BlurBackdrop({ image, position = "50% 50%" }: { image: StaticImageData; position?: string }) {
+  return (
+    <span
+      className="absolute inset-0"
+      style={{ backgroundImage: `url(${image.blurDataURL})`, backgroundSize: "cover", backgroundPosition: position }}
+      aria-hidden="true"
+    />
+  );
+}
+
 /* --------------------------------------------------------------- frame -- */
+
+/** The bezel is 3.2% of the phone width on each side. */
+const SCREEN_RATIO = 1 - 2 * 0.032;
+const scaleFor = (phoneWidth: number) => (phoneWidth * SCREEN_RATIO) / SCREEN_W;
 
 /**
  * iPhone-shaped frame. The 402 x 874 screen is scaled with a transform so the
  * UI stays in real point sizes and never reflows.
+ *
+ * `width` is the phone width in CSS px (and at `lg`). The scale for that width
+ * is set in CSS, so the very first paint is already the right size. JS only
+ * corrects it when the phone ends up narrower (very small screens).
  */
-export function PhoneFrame({ children, className = "", shadow = true }: { children: ReactNode; className?: string; shadow?: boolean }) {
+export function PhoneFrame({ children, width, className = "", shadow = true }: { children: ReactNode; width: { base: number; lg?: number }; className?: string; shadow?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(0.78);
+  const [measured, setMeasured] = useState<number | null>(null);
+  const lg = width.lg ?? width.base;
   useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const update = () => setScale(el.clientWidth / SCREEN_W);
+    const update = () => {
+      const actual = el.clientWidth / SCREEN_W;
+      const expected = window.matchMedia("(min-width: 1024px)").matches ? scaleFor(lg) : scaleFor(width.base);
+      setMeasured(Math.abs(actual - expected) > 0.002 ? actual : null);
+    };
     update();
     const ro = new ResizeObserver(update);
     ro.observe(el);
     return () => ro.disconnect();
-  }, []);
+  }, [width.base, lg]);
+  const vars = {
+    "--phone-w": `${width.base}px`,
+    "--phone-w-lg": `${lg}px`,
+    "--phone-scale": scaleFor(width.base),
+    "--phone-scale-lg": scaleFor(lg),
+  } as CSSProperties;
   return (
-    <div className={`relative select-none ${className}`}>
+    <div className={`relative w-[min(var(--phone-w),100%)] select-none lg:w-[min(var(--phone-w-lg),100%)] ${className}`} style={vars}>
       <div
         className={`relative rounded-[18.5%/8.6%] bg-[#0b0b0c] p-[3.2%] ${shadow ? "shadow-[0_50px_100px_-30px_rgba(11,11,12,0.55),0_30px_60px_-40px_rgba(11,11,12,0.5)]" : ""}`}
-        style={{ boxShadow: shadow ? undefined : "none" }}
       >
         <div className="pointer-events-none absolute inset-0 rounded-[18.5%/8.6%] ring-1 ring-inset ring-white/10" aria-hidden="true" />
-        <div ref={ref} className="relative aspect-[402/874] w-full overflow-hidden rounded-[15.5%/7.2%] bg-white" style={{ isolation: "isolate", clipPath: "inset(0 round 15.5% / 7.2%)" }}>
-          <div className="absolute left-0 top-0 origin-top-left" style={{ width: SCREEN_W, height: SCREEN_H, transform: `scale(${scale})` }}>
+        <div ref={ref} className="relative aspect-[402/874] w-full overflow-hidden rounded-[15.5%/7.2%] bg-[#0b0b0c]" style={{ isolation: "isolate", clipPath: "inset(0 round 15.5% / 7.2%)" }}>
+          <div
+            className="absolute left-0 top-0 origin-top-left [transform:scale(var(--phone-scale))] lg:[transform:scale(var(--phone-scale-lg))]"
+            style={{ width: SCREEN_W, height: SCREEN_H, transform: measured === null ? undefined : `scale(${measured})` }}
+          >
             {children}
             {/* Dynamic Island */}
             <div className="absolute left-1/2 top-[11px] z-50 h-[37px] w-[125px] -translate-x-1/2 rounded-full bg-black" aria-hidden="true" />
@@ -238,11 +276,12 @@ export function PhoneFrame({ children, className = "", shadow = true }: { childr
 
 /* -------------------------------------------------------------- camera -- */
 
-export function CameraScreen({ t, shutter = false, flash = false, preload = false }: { t: Messages; shutter?: boolean; flash?: boolean; preload?: boolean }) {
+export function CameraScreen({ t, shutter = false, flash = false, preload = false, onReady }: { t: Messages; shutter?: boolean; flash?: boolean; preload?: boolean; onReady?: () => void }) {
   return (
     <div className="absolute inset-0 bg-black">
       <div className="absolute inset-x-0 top-0 h-[700px] overflow-hidden">
-        <Image src="/images/hero-meal.jpg" alt={t.app.plateAlt} fill sizes="(min-width: 1024px) 340px, 270px" className="object-cover" preload={preload} />
+        <BlurBackdrop image={heroMeal} />
+        <Image src={heroMeal} alt={t.app.plateAlt} fill sizes="(min-width: 1024px) 340px, 270px" className="object-cover" preload={preload} onLoad={onReady} />
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-transparent" />
         {/* viewfinder */}
         <m.div className="absolute left-[46px] right-[46px] top-[170px] h-[400px]" animate={{ scale: shutter ? 0.96 : 1 }} transition={{ duration: 0.25 }}>
@@ -270,7 +309,7 @@ export function CameraScreen({ t, shutter = false, flash = false, preload = fals
           <span className="h-[62px] w-[62px] rounded-full bg-white" />
         </m.span>
       </div>
-      <m.div className="pointer-events-none absolute inset-0 z-30 bg-white" initial={false} animate={{ opacity: flash ? 1 : 0 }} transition={{ duration: flash ? 0.08 : 0.45 }} />
+      <m.div className="pointer-events-none absolute inset-0 z-30 bg-white" initial={false} animate={{ opacity: flash ? 0.55 : 0 }} transition={{ duration: flash ? 0.06 : 0.35 }} />
       <StatusBar dark />
     </div>
   );
@@ -301,7 +340,7 @@ function WeekStrip({ locale }: { locale: Locale }) {
   );
 }
 
-function MealRow({ locale, name, photo, time, kcal, protein, carbs, fat, state, t, animateIn }: { locale: Locale; name: string; photo: string; time: string; kcal: number; protein: number; carbs: number; fat: number; state: RowState; t: Messages; animateIn?: boolean }) {
+function MealRow({ locale, name, photo, time, kcal, protein, carbs, fat, state, t, animateIn }: { locale: Locale; name: string; photo: StaticImageData; time: string; kcal: number; protein: number; carbs: number; fat: number; state: RowState; t: Messages; animateIn?: boolean }) {
   const pending = state === "pending";
   return (
     <m.div
@@ -311,6 +350,7 @@ function MealRow({ locale, name, photo, time, kcal, protein, carbs, fat, state, 
       className="flex items-center gap-[14px] rounded-[20px] bg-white p-[10px] pr-[16px] shadow-[0_1px_3px_rgba(3,7,18,0.06)]"
     >
       <div className="relative h-[94px] w-[94px] shrink-0 overflow-hidden rounded-[14px]">
+        <BlurBackdrop image={photo} />
         <Image src={photo} alt="" fill sizes="96px" className={`object-cover transition-[filter] duration-500 ${pending ? "brightness-[0.6]" : ""}`} />
         {pending && (
           <span className="absolute inset-0 flex items-center justify-center">
@@ -423,9 +463,9 @@ export function DiaryScreen({ locale, t, row, animate: animateNew = true }: { lo
         <p className="px-[16px] pb-[12px] pt-[22px] text-[21px] font-semibold text-[#030712]">{t.app.recentlyLogged}</p>
         <div className="flex flex-col gap-[10px] px-[16px]">
           {row !== "hidden" && (
-            <MealRow key="new" locale={locale} t={t} state={row} animateIn={animateNew} name={t.app.mealName} photo="/images/hero-meal.jpg" time="12:34" kcal={MEAL.kcal} protein={MEAL.protein} carbs={MEAL.carbs} fat={MEAL.fat} />
+            <MealRow key="new" locale={locale} t={t} state={row} animateIn={animateNew} name={t.app.mealName} photo={heroMeal} time="12:34" kcal={MEAL.kcal} protein={MEAL.protein} carbs={MEAL.carbs} fat={MEAL.fat} />
           )}
-          <MealRow key="old" locale={locale} t={t} state="done" name={t.app.earlierMeal} photo="/images/food/yogurt.jpg" time="08:10" kcal={566} protein={20} carbs={40} fat={18} />
+          <MealRow key="old" locale={locale} t={t} state="done" name={t.app.earlierMeal} photo={yogurt} time="08:10" kcal={566} protein={20} carbs={40} fat={18} />
         </div>
       </div>
       <TabBar t={t} />
@@ -458,7 +498,8 @@ export function MealScreen({ locale, t, animate: animateIn = true, pressed = fal
   return (
     <div className="absolute inset-0 overflow-hidden" style={{ background: COLORS.bg }}>
       <div className="absolute inset-x-0 top-0 h-[300px] overflow-hidden">
-        <Image src="/images/hero-meal.jpg" alt="" fill sizes="(min-width: 1024px) 340px, 270px" className="object-cover object-[50%_58%]" />
+        <BlurBackdrop image={heroMeal} position="50% 58%" />
+        <Image src={heroMeal} alt="" fill sizes="(min-width: 1024px) 340px, 270px" className="object-cover object-[50%_58%]" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent" />
       </div>
       <StatusBar dark />

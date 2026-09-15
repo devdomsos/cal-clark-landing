@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { headers } from "next/headers";
-import { LOCALE_META, isLocale } from "@/lib/i18n/config";
+import { LOCALES, LOCALE_META, isLocale } from "@/lib/i18n/config";
 import { MotionProvider } from "@/components/MotionProvider";
-import "./globals.css";
+import "../globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -58,11 +57,17 @@ export const viewport = {
   themeColor: "#f5f3ee",
 };
 
-export default async function RootLayout({ children }: LayoutProps<"/">) {
-  const headerLocale = (await headers()).get("x-locale") ?? "en";
-  const lang = isLocale(headerLocale)
-    ? LOCALE_META[headerLocale].htmlLang
-    : "en";
+// Every locale is prerendered at build time. English URLs without a prefix
+// ("/", "/privacy") are rewritten to /en in next.config.ts.
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return LOCALES.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({ children, params }: LayoutProps<"/[locale]">) {
+  const { locale } = await params;
+  const lang = isLocale(locale) ? LOCALE_META[locale].htmlLang : "en";
   return (
     <html lang={lang} className={`${inter.variable} h-full antialiased`} data-scroll-behavior="smooth">
       <body className="min-h-full flex flex-col bg-background text-foreground">

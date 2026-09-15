@@ -31,8 +31,8 @@ function Step({ index, title, body, onActive, locale, t, isDesktop }: { index: n
       <span className="mb-6 font-mono text-sm tracking-widest text-white/40">0{index + 1}</span>
       <h3 className="display max-w-lg text-4xl text-white sm:text-5xl lg:text-6xl">{title}</h3>
       <p className="mt-5 max-w-md text-lg leading-relaxed text-white/60">{body}</p>
-      <div ref={mobileRef} className="mt-10 w-full max-w-[280px] self-center lg:hidden">
-        <PhoneFrame shadow={false}>
+      <div ref={mobileRef} className="mt-10 flex w-full justify-center lg:hidden">
+        <PhoneFrame width={{ base: 280 }} shadow={false}>
           {!isDesktop && <StepScreen step={index} locale={locale} t={t} animate={mobileInView} />}
         </PhoneFrame>
       </div>
@@ -65,7 +65,7 @@ export function HowItWorks({ locale }: { locale: Locale }) {
                 className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.12),transparent_65%)]"
                 aria-hidden="true"
               />
-              <PhoneFrame shadow={false}>
+              <PhoneFrame width={{ base: 320 }} shadow={false}>
                 {isDesktop && (
                 <AnimatePresence initial={false} mode="popLayout">
                   <m.div
