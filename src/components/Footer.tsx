@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { LanguageSelect } from "./LanguageSelect";
+import { CookieSettingsButton } from "./cookie-consent/CookieSettingsButton";
 import { LEGAL_NAV, legalHref } from "@/lib/legal";
 import type { Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
@@ -33,6 +34,10 @@ export function Footer({ locale }: { locale: Locale }) {
                   {item.label[locale]}
                 </Link>
               ))}
+              <CookieSettingsButton
+                label={t.footer.cookieSettings}
+                className="focus-ring text-left hover:text-foreground"
+              />
               <a
                 href="mailto:support@calclark.app"
                 className="focus-ring hover:text-foreground"

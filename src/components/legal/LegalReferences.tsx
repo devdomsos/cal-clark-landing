@@ -319,7 +319,7 @@ function cookiesLaw(locale: Locale): SourceDoc {
       hrefLabel: "UODO · pliki cookies",
       article: "Zgoda na cookies nieistotne",
       excerpt:
-        "Cookies niezbędne do świadczenia usługi nie wymagają zgody. Cookies analityczne i reklamowe wymagają zgody. calclark.app dziś nie stawia cookies reklamowych ani analitycznych. Nie ma Google Analytics, piksela Meta ani TikToka. Jeśli to się zmieni, ta strona wymieni narzędzie i pojawi się baner zgody.",
+        "Cookies niezbędne do świadczenia usługi nie wymagają zgody. Cookies analityczne i reklamowe wymagają zgody. calclark.app nie stawia cookies reklamowych. Odsłony liczy Vercel Web Analytics bez cookies. Cookies analityczne ładują się tylko po zgodzie w banerze.",
     };
   }
   if (locale === "de") {
@@ -332,7 +332,7 @@ function cookiesLaw(locale: Locale): SourceDoc {
       hrefLabel: "gesetze-im-internet.de · TDDDG",
       article: "Einwilligung für nicht notwendige Speicher",
       excerpt:
-        "Das Speichern von Informationen auf dem Endgerät oder der Zugriff darauf ist nur erlaubt, wenn die Nutzerin eingewilligt hat - außer es ist unbedingt erforderlich, den Dienst zu erbringen. calclark.app setzt heute keine Werbe- oder Analyse-Cookies. Kein Google Analytics, kein Meta-Pixel, kein TikTok-Pixel. Ändert sich das, steht das Werkzeug hier und es gibt einen Einwilligungsbanner.",
+        "Das Speichern von Informationen auf dem Endgerät oder der Zugriff darauf ist nur erlaubt, wenn die Nutzerin eingewilligt hat - außer es ist unbedingt erforderlich, den Dienst zu erbringen. calclark.app setzt keine Werbe-Cookies. Seitenaufrufe zählt Vercel Web Analytics ohne Cookies. Analyse-Cookies laden nur nach Zustimmung im Banner.",
     };
   }
   if (locale === "es") {
@@ -345,7 +345,7 @@ function cookiesLaw(locale: Locale): SourceDoc {
       hrefLabel: "aepd.es · guía de cookies",
       article: "Consentimiento para cookies no necesarias",
       excerpt:
-        "Las cookies técnicas necesarias para el servicio no exigen consentimiento. Las de analítica y publicidad sí. calclark.app no coloca hoy cookies de analítica ni de anuncios. No hay Google Analytics, píxel de Meta ni TikTok. Si eso cambia, esta página lo nombrará y habrá banner de consentimiento.",
+        "Las cookies técnicas necesarias para el servicio no exigen consentimiento. Las de analítica y publicidad sí. calclark.app no coloca cookies de anuncios. Vercel Web Analytics cuenta visitas sin cookies. Las cookies de analítica solo se cargan tras aceptar en el banner.",
     };
   }
   return {
@@ -356,7 +356,7 @@ function cookiesLaw(locale: Locale): SourceDoc {
     hrefLabel: "ICO · cookies",
     article: "Consent for non-essential cookies",
     excerpt:
-      "Strictly necessary cookies do not need consent. Analytics and advertising cookies do. calclark.app does not set advertising or analytics cookies today. No Google Analytics, no Meta pixel, no TikTok pixel. If that changes, this page will name the tool and a consent banner will appear.",
+      "Strictly necessary cookies do not need consent. Analytics and advertising cookies do. calclark.app does not set advertising cookies. Vercel Web Analytics counts visits without cookies. Analytics cookies load only after you say yes in the banner.",
   };
 }
 

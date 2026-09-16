@@ -7,13 +7,16 @@ import {
   type LegalLocale,
 } from "./LegalShell";
 import { legalHref } from "@/lib/legal";
+import { CookieSettingsButton } from "@/components/cookie-consent/CookieSettingsButton";
+
+const settingsLink = "focus-ring text-primary underline underline-offset-2";
 
 export function CookiesDoc({ locale }: { locale: LegalLocale }) {
   const titles: Record<LegalLocale, { title: string; updated: string }> = {
-    en: { title: "Cookie policy", updated: "Last updated: 15 September 2026" },
-    pl: { title: "Polityka cookies", updated: "Ostatnia aktualizacja: 15 września 2026" },
-    de: { title: "Cookie-Richtlinie", updated: "Stand: 15. September 2026" },
-    es: { title: "Política de cookies", updated: "Última actualización: 15 de septiembre de 2026" },
+    en: { title: "Cookie policy", updated: "Last updated: 16 September 2026" },
+    pl: { title: "Polityka cookies", updated: "Ostatnia aktualizacja: 16 września 2026" },
+    de: { title: "Cookie-Richtlinie", updated: "Stand: 16. September 2026" },
+    es: { title: "Política de cookies", updated: "Última actualización: 16 de septiembre de 2026" },
   };
   const meta = titles[locale];
   return (
@@ -30,9 +33,25 @@ function En() {
   return (
     <>
       <p>
-        calclark.app does not run ads and does not drop advertising or
-        analytics cookies today. No Google Analytics, no Meta pixel, no
-        TikTok pixel. If that changes, this page will name the tool.
+        calclark.app does not run ads and does not drop advertising cookies.
+        No Meta pixel, no TikTok pixel. Analytics cookies load only if you
+        say yes in the cookie banner. If we add a tool, this page will name it.
+      </p>
+      <LegalH2>Cookieless measurement</LegalH2>
+      <p>
+        We count page views with Vercel Web Analytics. It sets no cookie and
+        reads nothing from your device. It does not follow you across sites.
+        It tells us which pages people open, the country, the browser and the
+        device type. Because it stores nothing on your device, it runs for
+        every visitor.
+      </p>
+      <LegalH2>Your cookie choice</LegalH2>
+      <p>
+        The banner saves your choice in one cookie,{" "}
+        <code>calclark-cookie-consent</code>, for 12 months. It is essential,
+        because without it we would ask you on every page. Change your choice
+        any time:{" "}
+        <CookieSettingsButton label="cookie settings" className={settingsLink} />.
       </p>
       <LegalH2>What happens when you join the waitlist</LegalH2>
       <p>
@@ -72,9 +91,25 @@ function Pl() {
   return (
     <>
       <p>
-        calclark.app nie serwuje reklam i dziś nie stawia cookies
-        reklamowych ani analitycznych. Nie ma Google Analytics, piksela Meta
-        ani TikToka. Jeśli to się zmieni, ta strona wymieni narzędzie.
+        calclark.app nie serwuje reklam i nie stawia cookies reklamowych. Nie
+        ma piksela Meta ani TikToka. Cookies analityczne ładują się tylko, gdy
+        zgodzisz się w banerze cookies. Jeśli dodamy narzędzie, ta strona je
+        wymieni.
+      </p>
+      <LegalH2>Pomiar bez cookies</LegalH2>
+      <p>
+        Odsłony liczymy przez Vercel Web Analytics. Nie stawia cookies i nie
+        czyta niczego z Twojego urządzenia. Nie śledzi Cię między stronami.
+        Pokazuje nam, które strony ludzie otwierają, kraj, przeglądarkę i typ
+        urządzenia. Nic nie zapisuje na urządzeniu, więc działa dla każdego.
+      </p>
+      <LegalH2>Twój wybór cookies</LegalH2>
+      <p>
+        Baner zapisuje wybór w jednym cookie,{" "}
+        <code>calclark-cookie-consent</code>, na 12 miesięcy. Jest niezbędne,
+        bo bez niego pytalibyśmy na każdej stronie. Zmień wybór w każdej
+        chwili:{" "}
+        <CookieSettingsButton label="ustawienia cookies" className={settingsLink} />.
       </p>
       <LegalH2>Lista oczekujących</LegalH2>
       <p>
@@ -113,9 +148,24 @@ function De() {
   return (
     <>
       <p>
-        calclark.app zeigt keine Werbung und setzt heute keine Werbe- oder
-        Analyse-Cookies. Kein Google Analytics, kein Meta-Pixel, kein
-        TikTok-Pixel. Ändert sich das, steht das Werkzeug hier.
+        calclark.app zeigt keine Werbung und setzt keine Werbe-Cookies. Kein
+        Meta-Pixel, kein TikTok-Pixel. Analyse-Cookies laden nur, wenn du im
+        Cookie-Banner zustimmst. Kommt ein Werkzeug dazu, steht es hier.
+      </p>
+      <LegalH2>Messung ohne Cookies</LegalH2>
+      <p>
+        Seitenaufrufe zählen wir mit Vercel Web Analytics. Es setzt kein Cookie
+        und liest nichts von deinem Gerät. Es verfolgt dich nicht über andere
+        Seiten. Wir sehen, welche Seiten geöffnet werden, Land, Browser und
+        Gerätetyp. Weil nichts auf dem Gerät gespeichert wird, läuft es für
+        alle Besucher.
+      </p>
+      <LegalH2>Deine Cookie-Wahl</LegalH2>
+      <p>
+        Der Banner speichert deine Wahl in einem Cookie,{" "}
+        <code>calclark-cookie-consent</code>, für 12 Monate. Es ist notwendig,
+        sonst fragen wir auf jeder Seite neu. Ändere deine Wahl jederzeit:{" "}
+        <CookieSettingsButton label="Cookie-Einstellungen" className={settingsLink} />.
       </p>
       <LegalH2>Warteliste</LegalH2>
       <p>
@@ -155,9 +205,25 @@ function Es() {
   return (
     <>
       <p>
-        calclark.app no pone anuncios y hoy no deja cookies de publicidad ni
-        de analítica. No hay Google Analytics, píxel de Meta ni de TikTok. Si
-        eso cambia, esta página nombrará la herramienta.
+        calclark.app no pone anuncios y no deja cookies de publicidad. No hay
+        píxel de Meta ni de TikTok. Las cookies de analítica solo se cargan si
+        aceptas en el banner de cookies. Si añadimos una herramienta, esta
+        página la nombrará.
+      </p>
+      <LegalH2>Medición sin cookies</LegalH2>
+      <p>
+        Contamos visitas con Vercel Web Analytics. No pone cookies y no lee
+        nada de tu dispositivo. No te sigue entre sitios. Nos dice qué páginas
+        se abren, el país, el navegador y el tipo de dispositivo. Como no
+        guarda nada en tu dispositivo, funciona para todos.
+      </p>
+      <LegalH2>Tu elección de cookies</LegalH2>
+      <p>
+        El banner guarda tu elección en una cookie,{" "}
+        <code>calclark-cookie-consent</code>, durante 12 meses. Es necesaria,
+        si no te preguntaríamos en cada página. Cambia tu elección cuando
+        quieras:{" "}
+        <CookieSettingsButton label="ajustes de cookies" className={settingsLink} />.
       </p>
       <LegalH2>Lista de espera</LegalH2>
       <p>

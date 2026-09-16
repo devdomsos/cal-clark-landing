@@ -28,7 +28,7 @@ function PrivacyEn() {
       path="privacy"
       references="privacy"
       title="Privacy policy"
-      updated="Last updated: 15 September 2026. Not a substitute for counsel. The legal entity name and registered address will be printed here before store listing."
+      updated="Last updated: 16 September 2026. Not a substitute for counsel. The legal entity name and registered address will be printed here before store listing."
     >
       <p>
         This policy describes how Cal Clark handles information in the mobile
@@ -63,20 +63,25 @@ function PrivacyEn() {
       <LegalH2>Photos and AI</LegalH2>
       <p>
         A photo or description you send goes to our servers in the EU, is stored
-        privately with your account, and is sent to OpenAI to draft the log. We
-        then check food names against published US government nutrition tables
+        privately with your account, and is sent to OpenRouter (USA) to draft
+        the log. OpenRouter passes it to an AI model from Google (Gemini) or,
+        if that model is down, OpenAI. We do not send your name or email with
+        it. We then check food names against published US government nutrition tables
         that we keep on those servers. Your photos never go to USDA. Details:{" "}
         <Link href="/data-sources" className="text-primary underline underline-offset-2">
           where the numbers come from
         </Link>
-        . The app asks once before the first estimate leaves the device.
+        . The app names these companies and asks for your permission before
+        the first meal is sent. If you say no, AI drafts stay off; search,
+        barcode, and manual logging still work.
       </p>
       <LegalH2>Who processes data for us</LegalH2>
       <LegalList>
         <li>Clerk - so you can sign in with Apple, Google, or email.</li>
         <li>Hetzner - servers in the EU that hold your account and diary.</li>
         <li>Cloudflare - private photo storage.</li>
-        <li>OpenAI - drafts the meal from a photo or a typed description.</li>
+        <li>OpenRouter (USA) - routes a meal photo or description to the AI model.</li>
+        <li>Google (Gemini) and OpenAI (USA) - the AI models that draft the meal. They receive the photo or text, not your name or email.</li>
         <li>Apple, Google, and RevenueCat - payments. We never see your card number.</li>
         <li>
           Open Food Facts and FatSecret - packaged product labels. FatSecret
@@ -113,8 +118,12 @@ function PrivacyEn() {
       <p>Cal Clark is not for people under 16.</p>
       <LegalH2>International transfers</LegalH2>
       <p>
-        Some of the companies above may handle data outside the EEA. We use
-        them only to run Cal Clark.
+        Your account and diary are stored in the EU. OpenRouter, Google,
+        OpenAI, Clerk, RevenueCat, and Sentry are US companies and may handle
+        data in the USA. Those transfers rely on the EU-US Data Privacy
+        Framework where the company is certified, and otherwise on the
+        European Commission&apos;s Standard Contractual Clauses. We use them
+        only to run Cal Clark.
       </p>
       <LegalH2>Waitlist on this website</LegalH2>
       <p>
@@ -145,7 +154,8 @@ function PrivacyEn() {
       <LegalH2>Lawful bases (GDPR)</LegalH2>
       <LegalList>
         <li>Account, meals, and the paid plan: the contract to run Cal Clark.</li>
-        <li>Health-related profile and meal photos used to draft the log: your consent, which you can withdraw by deleting the account or stopping AI scans.</li>
+        <li>Health-related profile (height, weight, goal, activity) and your diary: your explicit consent, given in the app before you enter them. Withdraw it by deleting the account.</li>
+        <li>Meal photos and descriptions sent to AI: your explicit consent, asked before the first meal is sent. Withdraw it by not starting AI scans or by deleting the account.</li>
         <li>Waitlist email: your request to be notified.</li>
         <li>Security, invoices Apple or Google keep, and legal holds: legal obligation or legitimate interest in running a lawful service.</li>
       </LegalList>
@@ -168,7 +178,7 @@ function PrivacyPl() {
       path="privacy"
       references="privacy"
       title="Polityka prywatności"
-      updated="Ostatnia aktualizacja: 15 września 2026. To nie zastępuje porady prawnej. Nazwa i adres podmiotu pojawią się tu przed listą w sklepach."
+      updated="Ostatnia aktualizacja: 16 września 2026. To nie zastępuje porady prawnej. Nazwa i adres podmiotu pojawią się tu przed listą w sklepach."
     >
       <p>
         Ta strona opisuje, jak Cal Clark przetwarza dane w aplikacji i na
@@ -205,20 +215,25 @@ function PrivacyPl() {
       <LegalH2>Zdjęcia i AI</LegalH2>
       <p>
         Zdjęcie albo opis idzie na nasze serwery w UE, leży prywatnie przy Twoim
-        koncie i trafia do OpenAI, żeby zrobić szkic wpisu. Nazwy dań sprawdzamy
+        koncie i trafia do OpenRouter (USA), żeby zrobić szkic wpisu. OpenRouter
+        przekazuje je do modelu AI firmy Google (Gemini), a gdy ten nie działa,
+        do OpenAI. Nie wysyłamy przy tym imienia ani e-maila. Nazwy dań sprawdzamy
         potem z opublikowanymi tabelami żywieniowymi rządu USA, które trzymamy
         na tych serwerach. Zdjęć do USDA nie wysyłamy. Szczegóły:{" "}
         <Link href="/pl/data-sources" className="text-primary underline underline-offset-2">
           skąd biorą się liczby
         </Link>
-        . Aplikacja pyta raz, zanim pierwsze oszacowanie opuści telefon.
+        . Aplikacja podaje nazwy tych firm i prosi o zgodę przed wysłaniem
+        pierwszego posiłku. Bez zgody szkice AI są wyłączone; wyszukiwanie,
+        kod kreskowy i ręczny wpis działają dalej.
       </p>
       <LegalH2>Komu przekazujemy dane</LegalH2>
       <LegalList>
         <li>Clerk - logowanie Apple, Google albo e-mailem.</li>
         <li>Hetzner - serwery w UE z kontem i dziennikiem.</li>
         <li>Cloudflare - prywatne przechowywanie zdjęć.</li>
-        <li>OpenAI - szkic posiłku ze zdjęcia albo opisu.</li>
+        <li>OpenRouter (USA) - przekazuje zdjęcie albo opis posiłku do modelu AI.</li>
+        <li>Google (Gemini) i OpenAI (USA) - modele AI, które robią szkic posiłku. Dostają zdjęcie albo tekst, bez imienia i e-maila.</li>
         <li>Apple, Google i RevenueCat - płatności. Numeru karty nie widzimy.</li>
         <li>
           Open Food Facts i FatSecret - etykiety opakowań. Informacje żywieniowe
@@ -254,8 +269,11 @@ function PrivacyPl() {
       <p>Cal Clark nie jest przeznaczony dla osób poniżej 16. roku życia.</p>
       <LegalH2>Przekazania zagraniczne</LegalH2>
       <p>
-        Część firm powyżej może przetwarzać dane poza EOG. Używamy ich tylko
-        do działania Cal Clark.
+        Konto i dziennik są w UE. OpenRouter, Google, OpenAI, Clerk, RevenueCat
+        i Sentry to firmy z USA i mogą przetwarzać dane w USA. Podstawą jest
+        EU-US Data Privacy Framework, jeśli firma ma certyfikat, a w innym
+        wypadku standardowe klauzule umowne Komisji Europejskiej. Używamy ich
+        tylko do działania Cal Clark.
       </p>
       <LegalH2>Lista oczekujących na tej stronie</LegalH2>
       <p>
@@ -286,7 +304,8 @@ function PrivacyPl() {
       <LegalH2>Podstawy (RODO)</LegalH2>
       <LegalList>
         <li>Konto, posiłki i plan płatny: umowa o świadczenie Cal Clark.</li>
-        <li>Profil i zdjęcia posiłków do szkicu wpisu: zgoda, którą cofniesz usuwając konto albo przestając skanować.</li>
+        <li>Dane o zdrowiu w profilu (wzrost, waga, cel, aktywność) i dziennik: Twoja wyraźna zgoda, wyrażona w aplikacji przed ich wpisaniem. Cofniesz ją, usuwając konto.</li>
+        <li>Zdjęcia i opisy posiłków wysyłane do AI: Twoja wyraźna zgoda, o którą pytamy przed pierwszym wysłaniem. Cofniesz ją, nie uruchamiając skanów AI albo usuwając konto.</li>
         <li>E-mail z listy: Twoja prośba o powiadomienie.</li>
         <li>Bezpieczeństwo i obowiązki prawne: obowiązek prawny albo prawnie uzasadniony interes.</li>
       </LegalList>
@@ -308,7 +327,7 @@ function PrivacyDe() {
       path="privacy"
       references="privacy"
       title="Datenschutz"
-      updated="Stand: 15. September 2026. Kein Rechtsrat. Firmenname und Sitz stehen hier, bevor die App in den Stores ist."
+      updated="Stand: 16. September 2026. Kein Rechtsrat. Firmenname und Sitz stehen hier, bevor die App in den Stores ist."
     >
       <p>
         Diese Seite beschreibt, wie Cal Clark Daten in der App und auf
@@ -331,20 +350,26 @@ function PrivacyDe() {
       <LegalH2>Fotos und KI</LegalH2>
       <p>
         Ein Foto oder eine Beschreibung geht auf unsere Server in der EU, liegt
-        privat bei deinem Konto und an OpenAI, damit wir den Entwurf erstellen.
+        privat bei deinem Konto und geht an OpenRouter (USA), damit wir den
+        Entwurf erstellen. OpenRouter gibt es an ein KI-Modell von Google
+        (Gemini) weiter, und wenn das ausfällt, an OpenAI. Name und E-Mail
+        senden wir nicht mit.
         Namen gleichen wir mit veröffentlichten US-Nährwerttabellen auf diesen
         Servern ab. Fotos gehen nicht an das USDA. Details:{" "}
         <Link href="/de/data-sources" className="text-primary underline underline-offset-2">
           woher die Zahlen kommen
         </Link>
-        . Die App fragt einmal, bevor die erste Schätzung das Gerät verlässt.
+        . Die App nennt diese Firmen und fragt nach deiner Einwilligung, bevor
+        die erste Mahlzeit gesendet wird. Ohne Einwilligung bleiben KI-Entwürfe
+        aus; Suche, Strichcode und manuelles Eintragen funktionieren weiter.
       </p>
       <LegalH2>Auftragsverarbeiter</LegalH2>
       <LegalList>
         <li>Clerk - Anmeldung mit Apple, Google oder E-Mail.</li>
         <li>Hetzner - Server in der EU für Konto und Tagebuch.</li>
         <li>Cloudflare - private Fotospeicherung.</li>
-        <li>OpenAI - Entwurf der Mahlzeit aus Foto oder Text.</li>
+        <li>OpenRouter (USA) - leitet Foto oder Text der Mahlzeit an das KI-Modell weiter.</li>
+        <li>Google (Gemini) und OpenAI (USA) - KI-Modelle, die den Entwurf erstellen. Sie erhalten Foto oder Text, nicht Name oder E-Mail.</li>
         <li>Apple, Google und RevenueCat - Zahlungen. Die Kartennummer sehen wir nicht.</li>
         <li>Open Food Facts und FatSecret - Packungsetiketten. FatSecret-Nährwerte stammen von der fatsecret Platform API.</li>
         <li>Sentry - Absturzberichte, Fotos und Text verborgen.</li>
@@ -373,6 +398,14 @@ function PrivacyDe() {
       </p>
       <LegalH2>Kinder</LegalH2>
       <p>Cal Clark ist nicht für Personen unter 16 Jahren bestimmt.</p>
+      <LegalH2>Übermittlung in Drittländer</LegalH2>
+      <p>
+        Konto und Tagebuch liegen in der EU. OpenRouter, Google, OpenAI, Clerk,
+        RevenueCat und Sentry sind US-Firmen und können Daten in den USA
+        verarbeiten. Grundlage ist das EU-US Data Privacy Framework, wenn die
+        Firma zertifiziert ist, sonst die Standardvertragsklauseln der
+        EU-Kommission. Wir nutzen sie nur, um Cal Clark zu betreiben.
+      </p>
       <LegalH2>Warteliste auf dieser Website</LegalH2>
       <p>
         Wenn du dich einträgst, speichern wir die eingegebene E-Mail, die
@@ -403,7 +436,8 @@ function PrivacyDe() {
       <LegalH2>Rechtsgrundlagen (DSGVO)</LegalH2>
       <LegalList>
         <li>Konto, Mahlzeiten und der bezahlte Plan: Vertrag über Cal Clark.</li>
-        <li>Profil und Speisefotos für den Entwurf: Einwilligung, widerrufbar durch Kontolöschung oder indem du keine KI-Scans mehr startest.</li>
+        <li>Gesundheitsdaten im Profil (Größe, Gewicht, Ziel, Aktivität) und das Tagebuch: deine ausdrückliche Einwilligung, die du in der App vor der Eingabe gibst. Widerruf durch Kontolöschung.</li>
+        <li>Speisefotos und Beschreibungen für die KI: deine ausdrückliche Einwilligung, abgefragt vor dem ersten Senden. Widerruf, indem du keine KI-Scans mehr startest oder das Konto löschst.</li>
         <li>Wartelisten-Mail: deine Bitte um Nachricht.</li>
         <li>Sicherheit und gesetzliche Pflichten: rechtliche Pflicht oder berechtigtes Interesse.</li>
       </LegalList>
@@ -425,7 +459,7 @@ function PrivacyEs() {
       path="privacy"
       references="privacy"
       title="Política de privacidad"
-      updated="Última actualización: 15 de septiembre de 2026. No sustituye asesoramiento legal. El nombre y domicilio de la entidad se publicarán aquí antes de las tiendas."
+      updated="Última actualización: 16 de septiembre de 2026. No sustituye asesoramiento legal. El nombre y domicilio de la entidad se publicarán aquí antes de las tiendas."
     >
       <p>
         Esta página describe cómo Cal Clark trata datos en la app y en
@@ -448,21 +482,26 @@ function PrivacyEs() {
       <LegalH2>Fotos e IA</LegalH2>
       <p>
         La foto o descripción va a nuestros servidores en la UE, se guarda en
-        privado con tu cuenta y a OpenAI para esbozar el registro. Los nombres
+        privado con tu cuenta y se envía a OpenRouter (EE. UU.) para esbozar el
+        registro. OpenRouter la pasa a un modelo de IA de Google (Gemini) o, si
+        falla, de OpenAI. No enviamos tu nombre ni tu correo. Los nombres
         se contrastan con tablas nutricionales publicadas del gobierno de
         EE. UU. en esos servidores. Tus fotos no van al USDA. Detalle:{" "}
         <Link href="/es/data-sources" className="text-primary underline underline-offset-2">
           de dónde salen los números
         </Link>
-        . La app pregunta una vez antes de que la primera estimación salga del
-        teléfono.
+        . La app nombra estas empresas y pide tu permiso antes de enviar la
+        primera comida. Sin permiso, los borradores con IA quedan desactivados;
+        la búsqueda, el código de barras y el registro manual siguen
+        funcionando.
       </p>
       <LegalH2>Encargados</LegalH2>
       <LegalList>
         <li>Clerk - inicio de sesión con Apple, Google o correo.</li>
         <li>Hetzner - servidores en la UE para la cuenta y el diario.</li>
         <li>Cloudflare - almacenamiento privado de fotos.</li>
-        <li>OpenAI - borrador de la comida desde una foto o un texto.</li>
+        <li>OpenRouter (EE. UU.) - envía la foto o la descripción al modelo de IA.</li>
+        <li>Google (Gemini) y OpenAI (EE. UU.) - modelos de IA que esbozan la comida. Reciben la foto o el texto, no tu nombre ni tu correo.</li>
         <li>Apple, Google y RevenueCat - pagos. No vemos el número de tarjeta.</li>
         <li>Open Food Facts y FatSecret - etiquetas de envases. Información nutricional de FatSecret: fatsecret Platform API.</li>
         <li>Sentry - informes de fallos, con fotos y texto ocultos.</li>
@@ -490,6 +529,15 @@ function PrivacyEs() {
       </p>
       <LegalH2>Menores</LegalH2>
       <p>Cal Clark no está dirigido a menores de 16 años.</p>
+      <LegalH2>Transferencias internacionales</LegalH2>
+      <p>
+        La cuenta y el diario se guardan en la UE. OpenRouter, Google, OpenAI,
+        Clerk, RevenueCat y Sentry son empresas de EE. UU. y pueden tratar
+        datos en EE. UU. La base es el Marco de Privacidad de Datos UE-EE. UU.
+        si la empresa está certificada y, si no, las cláusulas contractuales
+        tipo de la Comisión Europea. Solo las usamos para que Cal Clark
+        funcione.
+      </p>
       <LegalH2>Lista de espera en este sitio</LegalH2>
       <p>
         Si te apuntas, guardamos el correo que escribiste, el idioma de la
@@ -520,7 +568,8 @@ function PrivacyEs() {
       <LegalH2>Bases jurídicas (RGPD)</LegalH2>
       <LegalList>
         <li>Cuenta, comidas y el plan de pago: el contrato de Cal Clark.</li>
-        <li>Perfil y fotos de comidas para el borrador: tu consentimiento, que retiras al borrar la cuenta o al dejar de escanear.</li>
+        <li>Datos de salud del perfil (altura, peso, objetivo, actividad) y el diario: tu consentimiento explícito, dado en la app antes de introducirlos. Lo retiras al borrar la cuenta.</li>
+        <li>Fotos y descripciones de comidas enviadas a la IA: tu consentimiento explícito, pedido antes del primer envío. Lo retiras al dejar de iniciar escaneos con IA o al borrar la cuenta.</li>
         <li>Correo de la lista: tu petición de aviso.</li>
         <li>Seguridad y obligaciones legales: obligación legal o interés legítimo.</li>
       </LegalList>

@@ -132,7 +132,24 @@ export interface Messages {
   footer: {
     tagline: string;
     legal: string;
+    cookieSettings: string;
     copyright: string;
+  };
+  cookieConsent: {
+    bannerTitle: string;
+    bannerBody: string;
+    policyLink: string;
+    acceptAll: string;
+    rejectNonEssential: string;
+    customize: string;
+    savePreferences: string;
+    back: string;
+    close: string;
+    alwaysOn: string;
+    categories: {
+      essential: { title: string; description: string };
+      analytics: { title: string; description: string };
+    };
   };
 }
 
@@ -355,7 +372,31 @@ const EN: Messages = {
   footer: {
     tagline: "Simple calorie tracking designed to help you stay on track.",
     legal: "Legal",
+    cookieSettings: "Cookie settings",
     copyright: "© 2026 Cal Clark. Not medical advice. Not a substitute for a dietitian.",
+  },
+  cookieConsent: {
+    bannerTitle: "Cookies on calclark.app",
+    bannerBody:
+      "We count visits without cookies, so we know which pages help. Optional analytics cookies load only if you allow them. No ads, no tracking pixels.",
+    policyLink: "Cookie policy",
+    acceptAll: "Accept all",
+    rejectNonEssential: "Essential only",
+    customize: "Customize",
+    savePreferences: "Save preferences",
+    back: "Back",
+    close: "Close",
+    alwaysOn: "Always on",
+    categories: {
+      essential: {
+        title: "Essential",
+        description: "Stores your cookie choice and keeps the site working. Cannot be turned off.",
+      },
+      analytics: {
+        title: "Analytics",
+        description: "Optional cookies that help us see how people use calclark.app. Off unless you turn them on.",
+      },
+    },
   },
 };
 
@@ -578,7 +619,31 @@ const PL: Messages = {
   footer: {
     tagline: "Prosty licznik kalorii, który pomaga trzymać się planu.",
     legal: "Informacje prawne",
+    cookieSettings: "Ustawienia cookies",
     copyright: "© 2026 Cal Clark. To nie porada medyczna. To nie zastępuje dietetyka.",
+  },
+  cookieConsent: {
+    bannerTitle: "Cookies na calclark.app",
+    bannerBody:
+      "Liczymy odwiedziny bez cookies, żeby wiedzieć, które strony pomagają. Opcjonalne cookies analityczne włączymy tylko za Twoją zgodą. Bez reklam i pikseli śledzących.",
+    policyLink: "Polityka cookies",
+    acceptAll: "Akceptuj wszystkie",
+    rejectNonEssential: "Tylko niezbędne",
+    customize: "Dostosuj",
+    savePreferences: "Zapisz wybór",
+    back: "Wstecz",
+    close: "Zamknij",
+    alwaysOn: "Zawsze włączone",
+    categories: {
+      essential: {
+        title: "Niezbędne",
+        description: "Zapisują Twój wybór cookies i utrzymują działanie strony. Nie da się ich wyłączyć.",
+      },
+      analytics: {
+        title: "Analityczne",
+        description: "Opcjonalne cookies, które pokazują nam, jak ludzie korzystają z calclark.app. Wyłączone, dopóki ich nie włączysz.",
+      },
+    },
   },
 };
 
@@ -801,7 +866,31 @@ const DE: Messages = {
   footer: {
     tagline: "Einfaches Kalorienzählen, das dich auf Kurs hält.",
     legal: "Rechtliches",
+    cookieSettings: "Cookie-Einstellungen",
     copyright: "© 2026 Cal Clark. Kein medizinischer Rat. Kein Ersatz für eine Ernährungsberatung.",
+  },
+  cookieConsent: {
+    bannerTitle: "Cookies auf calclark.app",
+    bannerBody:
+      "Wir zählen Besuche ohne Cookies, damit wir sehen, welche Seiten helfen. Optionale Analyse-Cookies laden nur, wenn du zustimmst. Keine Werbung, keine Tracking-Pixel.",
+    policyLink: "Cookie-Richtlinie",
+    acceptAll: "Alle akzeptieren",
+    rejectNonEssential: "Nur notwendige",
+    customize: "Anpassen",
+    savePreferences: "Auswahl speichern",
+    back: "Zurück",
+    close: "Schließen",
+    alwaysOn: "Immer aktiv",
+    categories: {
+      essential: {
+        title: "Notwendig",
+        description: "Speichern deine Cookie-Wahl und halten die Seite am Laufen. Nicht abschaltbar.",
+      },
+      analytics: {
+        title: "Analyse",
+        description: "Optionale Cookies, die uns zeigen, wie calclark.app genutzt wird. Aus, bis du sie einschaltest.",
+      },
+    },
   },
 };
 
@@ -1024,7 +1113,31 @@ const ES: Messages = {
   footer: {
     tagline: "Un contador de calorías simple, pensado para que sigas el plan.",
     legal: "Legal",
+    cookieSettings: "Ajustes de cookies",
     copyright: "© 2026 Cal Clark. No es consejo médico. No sustituye a un dietista.",
+  },
+  cookieConsent: {
+    bannerTitle: "Cookies en calclark.app",
+    bannerBody:
+      "Contamos visitas sin cookies para saber qué páginas ayudan. Las cookies de analítica opcionales solo se cargan si las permites. Sin anuncios ni píxeles de rastreo.",
+    policyLink: "Política de cookies",
+    acceptAll: "Aceptar todas",
+    rejectNonEssential: "Solo necesarias",
+    customize: "Personalizar",
+    savePreferences: "Guardar selección",
+    back: "Atrás",
+    close: "Cerrar",
+    alwaysOn: "Siempre activas",
+    categories: {
+      essential: {
+        title: "Necesarias",
+        description: "Guardan tu elección de cookies y mantienen el sitio funcionando. No se pueden desactivar.",
+      },
+      analytics: {
+        title: "Analítica",
+        description: "Cookies opcionales que nos muestran cómo se usa calclark.app. Desactivadas hasta que las actives.",
+      },
+    },
   },
 };
 

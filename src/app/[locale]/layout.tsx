@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { LOCALES, LOCALE_META, isLocale } from "@/lib/i18n/config";
+import { Analytics } from "@vercel/analytics/next";
 import { MotionProvider } from "@/components/MotionProvider";
+import { CookieConsentProvider } from "@/components/cookie-consent/CookieConsentProvider";
 import "../globals.css";
 
 const inter = Inter({
@@ -71,7 +73,16 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[lo
   return (
     <html lang={lang} className={`${inter.variable} h-full antialiased`} data-scroll-behavior="smooth">
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider>
+          <CookieConsentProvider>{children}</CookieConsentProvider>
+        </MotionProvider>
+        {/*
+          Cookieless visit counting. It sets no cookie and reads nothing from the
+          device, so it sits outside the consent gate and runs for every visitor.
+          Optional cookie-based analytics stay behind the banner in
+          `src/lib/cookieConsent.ts`.
+        */}
+        <Analytics />
       </body>
     </html>
   );

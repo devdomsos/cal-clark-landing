@@ -31,12 +31,12 @@ const COPY: Record<
 > = {
   en: {
     title: "Where the numbers come from",
-    updated: "Last updated: 14 September 2026",
+    updated: "Last updated: 16 September 2026",
     intro:
       "Cal Clark logs meals. A photo cannot weigh oil in a sauce. We still show our sources, because you should know which number is a draft, which number is from a published nutrition table, and which number you typed yourself.",
     photoTitle: "Photo or a typed description",
     photo: [
-      "You take a picture or type what you ate. That leaves your phone, goes to our servers in the EU, and is sent to OpenAI to draft the log.",
+      "You take a picture or type what you ate. That leaves your phone, goes to our servers in the EU, and is sent to OpenRouter (USA), which passes it to an AI model from Google (Gemini) or OpenAI to draft the log. Your name and email are not sent.",
       "The draft has food names, a portion in grams, and a first calorie number. If the plate is messy, we may ask one extra question (oil, size, sauce) instead of inventing the rest.",
       "We then check those names against published nutrition tables: first the US government tables, then the German national food table. When the match is confident, we use those published calories and macros for the grams on your draft.",
       "You can change grams or items before the meal counts for the day. Saved meals reuse your number. They do not send the photo again.",
@@ -70,12 +70,12 @@ const COPY: Record<
   },
   pl: {
     title: "Skąd biorą się liczby",
-    updated: "Ostatnia aktualizacja: 14 września 2026",
+    updated: "Ostatnia aktualizacja: 16 września 2026",
     intro:
       "Cal Clark zapisuje posiłki. Zdjęcie nie zważy sosu. Pokazujemy źródła, żeby było jasne: co jest szkicem, co pochodzi z opublikowanej tabeli żywieniowej, a co wpiszesz Ty.",
     photoTitle: "Zdjęcie albo krótki opis",
     photo: [
-      "Robisz zdjęcie albo wpisujesz, co było na talerzu. To opuszcza telefon, idzie na nasze serwery w UE i do OpenAI, żeby zrobić szkic wpisu.",
+      "Robisz zdjęcie albo wpisujesz, co było na talerzu. To opuszcza telefon, idzie na nasze serwery w UE i do OpenRouter (USA), który przekazuje je do modelu AI firmy Google (Gemini) albo OpenAI, żeby zrobić szkic wpisu. Imienia ani e-maila nie wysyłamy.",
       "Szkic ma nazwy produktów, gramy i pierwsze kalorie. Gdy talerz jest trudniejszy, pytamy o jedną rzecz (olej, wielkość, sos), zamiast zgadywać resztę.",
       "Te nazwy sprawdzamy z opublikowanymi tabelami żywieniowymi: najpierw rządu USA, potem z niemiecką krajową tabelą żywności. Przy pewnym dopasowaniu bierzemy opublikowane kalorie i makro na gramy z Twojego szkicu.",
       "Możesz zmienić gramy albo składniki, zanim posiłek wejdzie w dzień. Zapamiętane posiłki używają Twojej liczby. Zdjęcia drugi raz nie wysyłają.",
@@ -109,12 +109,12 @@ const COPY: Record<
   },
   de: {
     title: "Woher die Zahlen kommen",
-    updated: "Stand: 14. September 2026",
+    updated: "Stand: 16. September 2026",
     intro:
       "Cal Clark führt ein Tagebuch. Ein Foto wiegt keine Soße. Wir nennen die Quellen, damit klar ist: Was ist ein Entwurf, was ein veröffentlichter Nährwert, und was hast du selbst eingetippt.",
     photoTitle: "Foto oder kurze Beschreibung",
     photo: [
-      "Du fotografierst oder tippst, was du gegessen hast. Das verlässt das Telefon, geht auf unsere Server in der EU und an OpenAI, damit wir den Entwurf erstellen.",
+      "Du fotografierst oder tippst, was du gegessen hast. Das verlässt das Telefon, geht auf unsere Server in der EU und an OpenRouter (USA). OpenRouter gibt es an ein KI-Modell von Google (Gemini) oder OpenAI weiter, damit wir den Entwurf erstellen. Name und E-Mail senden wir nicht mit.",
       "Der Entwurf hat Namen, Gramm und eine erste Kalorienzahl. Ist der Teller unübersichtlich, fragen wir eine Sache (Öl, Größe, Soße), statt den Rest zu erfinden.",
       "Diese Namen gleichen wir mit veröffentlichten Nährwerttabellen ab: zuerst mit den US-Tabellen, dann mit dem Bundeslebensmittelschlüssel. Bei einem sicheren Treffer nutzen wir die veröffentlichten Kalorien und Makros für die Gramm aus deinem Entwurf.",
       "Du kannst Gramm oder Zutaten ändern, bevor die Mahlzeit zählt. Gespeicherte Mahlzeiten nutzen deine Zahl. Sie senden das Foto nicht erneut.",
@@ -148,12 +148,12 @@ const COPY: Record<
   },
   es: {
     title: "De dónde salen los números",
-    updated: "Última actualización: 14 de septiembre de 2026",
+    updated: "Última actualización: 16 de septiembre de 2026",
     intro:
       "Cal Clark registra comidas. Una foto no pesa la salsa. Mostramos las fuentes para que sepas qué cifra es un borrador, cuál viene de una tabla nutricional publicada y cuál escribiste tú.",
     photoTitle: "Foto o una descripción",
     photo: [
-      "Haces una foto o escribes lo que comiste. Eso sale del teléfono, va a nuestros servidores en la UE y a OpenAI para esbozar el registro.",
+      "Haces una foto o escribes lo que comiste. Eso sale del teléfono, va a nuestros servidores en la UE y a OpenRouter (EE. UU.), que la pasa a un modelo de IA de Google (Gemini) u OpenAI para esbozar el registro. No enviamos tu nombre ni tu correo.",
       "El borrador tiene nombres, gramos y una primera cifra de calorías. Si el plato es confuso, preguntamos una sola cosa (aceite, tamaño, salsa) en vez de inventar el resto.",
       "Esos nombres se contrastan con tablas nutricionales publicadas: primero las del gobierno de EE. UU., después la tabla nacional alemana de alimentos. Si el emparejamiento es fiable, usamos esas calorías y macros publicadas con los gramos de tu borrador.",
       "Puedes cambiar gramos o ingredientes antes de que la comida cuente. Las comidas guardadas reutilizan tu cifra. No vuelven a enviar la foto.",
@@ -254,6 +254,16 @@ export function DataSourcesDoc({ locale }: { locale: LegalLocale }) {
           </a>
           {" - "}
           nutrition information provided by fatsecret Platform API
+        </li>
+        <li>
+          <a className="text-primary underline underline-offset-2" href="https://openrouter.ai">
+            OpenRouter
+          </a>
+        </li>
+        <li>
+          <a className="text-primary underline underline-offset-2" href="https://ai.google.dev/gemini-api">
+            Google Gemini
+          </a>
         </li>
         <li>
           <a className="text-primary underline underline-offset-2" href="https://openai.com">
