@@ -10,7 +10,6 @@ export type LegalPath =
   | "cookies"
   | "support"
   | "delete-account"
-  | "data-sources"
   | "imprint";
 
 export function legalHref(locale: LegalLocale, path: LegalPath): string {
@@ -44,15 +43,6 @@ export const LEGAL_NAV: {
       pl: "Usuń konto",
       de: "Konto löschen",
       es: "Borrar cuenta",
-    },
-  },
-  {
-    path: "data-sources",
-    label: {
-      en: "Where numbers come from",
-      pl: "Skąd biorą się liczby",
-      de: "Woher die Zahlen kommen",
-      es: "De dónde salen los números",
     },
   },
   {

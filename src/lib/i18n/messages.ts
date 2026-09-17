@@ -91,7 +91,6 @@ export interface Messages {
     steps: [Item, Item, Item];
     alt: string;
     sourcesNote: string;
-    sourcesLink: string;
   };
   goals: {
     eyebrow: string;
@@ -266,7 +265,6 @@ const EN: Messages = {
     ],
     alt: "No photo? Describe your meal, scan a barcode or pick a saved meal.",
     sourcesNote: "Nutrition values are checked against published food composition tables.",
-    sourcesLink: "Where the numbers come from",
   },
   goals: {
     eyebrow: "Your goal",
@@ -328,7 +326,7 @@ const EN: Messages = {
     items: [
       {
         q: "How does Cal Clark work out the calories?",
-        a: "Cal Clark recognizes the food in your photo or description with AI, then matches each ingredient to published nutrition tables. Packaged food comes from barcode product catalogs. The details are on the Where the numbers come from page.",
+        a: "Cal Clark recognizes the food in your photo or description with AI, then matches each ingredient to published nutrition tables. Packaged food comes from barcode product catalogs.",
       },
       {
         q: "How accurate is a photo?",
@@ -513,7 +511,6 @@ const PL: Messages = {
     ],
     alt: "Bez zdjęcia? Opisz posiłek, zeskanuj kod kreskowy albo wybierz zapisany posiłek.",
     sourcesNote: "Wartości sprawdzamy w opublikowanych tabelach składu żywności.",
-    sourcesLink: "Skąd biorą się liczby",
   },
   goals: {
     eyebrow: "Twój cel",
@@ -575,7 +572,7 @@ const PL: Messages = {
     items: [
       {
         q: "Jak Cal Clark liczy kalorie?",
-        a: "Cal Clark rozpoznaje jedzenie ze zdjęcia albo opisu za pomocą AI, a potem dopasowuje każdy składnik do opublikowanych tabel wartości odżywczych. Produkty paczkowane pochodzą z katalogów kodów kreskowych. Szczegóły są na stronie Skąd biorą się liczby.",
+        a: "Cal Clark rozpoznaje jedzenie ze zdjęcia albo opisu za pomocą AI, a potem dopasowuje każdy składnik do opublikowanych tabel wartości odżywczych. Produkty paczkowane pochodzą z katalogów kodów kreskowych.",
       },
       {
         q: "Jak dokładne jest zdjęcie?",
@@ -760,7 +757,6 @@ const DE: Messages = {
     ],
     alt: "Kein Foto? Beschreibe dein Essen, scanne einen Barcode oder wähle eine gespeicherte Mahlzeit.",
     sourcesNote: "Nährwerte werden mit veröffentlichten Nährwerttabellen abgeglichen.",
-    sourcesLink: "Woher die Zahlen kommen",
   },
   goals: {
     eyebrow: "Dein Ziel",
@@ -822,7 +818,7 @@ const DE: Messages = {
     items: [
       {
         q: "Wie berechnet Cal Clark die Kalorien?",
-        a: "Cal Clark erkennt das Essen auf deinem Foto oder in deiner Beschreibung mit KI und gleicht jede Zutat mit veröffentlichten Nährwerttabellen ab. Verpackte Lebensmittel kommen aus Barcode-Produktkatalogen. Details stehen auf der Seite Woher die Zahlen kommen.",
+        a: "Cal Clark erkennt das Essen auf deinem Foto oder in deiner Beschreibung mit KI und gleicht jede Zutat mit veröffentlichten Nährwerttabellen ab. Verpackte Lebensmittel kommen aus Barcode-Produktkatalogen.",
       },
       {
         q: "Wie genau ist ein Foto?",
@@ -1007,7 +1003,6 @@ const ES: Messages = {
     ],
     alt: "¿Sin foto? Describe tu comida, escanea un código de barras o elige una comida guardada.",
     sourcesNote: "Los valores se comprueban con tablas de composición de alimentos publicadas.",
-    sourcesLink: "De dónde salen los números",
   },
   goals: {
     eyebrow: "Tu objetivo",
@@ -1069,7 +1064,7 @@ const ES: Messages = {
     items: [
       {
         q: "¿Cómo calcula Cal Clark las calorías?",
-        a: "Cal Clark reconoce la comida de tu foto o descripción con IA y relaciona cada ingrediente con tablas de nutrición publicadas. Los productos envasados salen de catálogos de códigos de barras. Los detalles están en De dónde salen los números.",
+        a: "Cal Clark reconoce la comida de tu foto o descripción con IA y relaciona cada ingrediente con tablas de nutrición publicadas. Los productos envasados salen de catálogos de códigos de barras.",
       },
       {
         q: "¿Qué precisión tiene una foto?",

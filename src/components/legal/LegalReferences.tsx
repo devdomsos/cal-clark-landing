@@ -5,7 +5,6 @@ import { ExternalLink, Shield } from "lucide-react";
 export type LegalRefVariant =
   | "privacy"
   | "terms"
-  | "data-sources"
   | "imprint"
   | "cookies";
 
@@ -366,8 +365,6 @@ function sourcesFor(variant: LegalRefVariant, locale: Locale): SourceDoc[] {
       return [gdprHealth(locale), dpa(locale), usda(locale)];
     case "terms":
       return [medicalDevice(locale), gdprHealth(locale)];
-    case "data-sources":
-      return [usda(locale), gdprHealth(locale)];
     case "imprint":
       return [imprintLaw(locale), dpa(locale)];
     case "cookies":

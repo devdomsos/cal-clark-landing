@@ -51,11 +51,7 @@ function En() {
         Photo and text drafts are made with AI, then checked against published
         nutrition tables when we have a match. You can correct the result. We
         are not responsible for diet or health decisions made only from these
-        drafts. See{" "}
-        <a className="text-primary underline underline-offset-2" href="/data-sources">
-          where the numbers come from
-        </a>
-        .
+        drafts.
       </p>
       <LegalH2>Acceptable use</LegalH2>
       <p>
@@ -118,11 +114,7 @@ function Pl() {
         Szacunek ze zdjęcia lub opisu robi AI, potem sprawdzamy nazwy z
         opublikowanymi tabelami żywieniowymi, gdy jest trafienie. Możesz
         poprawić wynik. Nie odpowiadamy za decyzje zdrowotne podjęte wyłącznie
-        na podstawie tych szkiców. Zobacz{" "}
-        <a className="text-primary underline underline-offset-2" href="/pl/data-sources">
-          skąd biorą się liczby
-        </a>
-        .
+        na podstawie tych szkiców.
       </p>
       <LegalH2>Dozwolone użycie</LegalH2>
       <p>
@@ -181,11 +173,7 @@ function De() {
       <LegalH2>KI-Ergebnis</LegalH2>
       <p>
         Foto- und Textentwürfe kommen aus der KI und werden mit veröffentlichten
-        Nährwerttabellen abgeglichen, wenn es einen Treffer gibt. Details:{" "}
-        <a className="text-primary underline underline-offset-2" href="/de/data-sources">
-          woher die Zahlen kommen
-        </a>
-        .
+        Nährwerttabellen abgeglichen, wenn es einen Treffer gibt.
       </p>
       <LegalH2>Gesundheit</LegalH2>
       <p>
@@ -240,11 +228,7 @@ function Es() {
       <LegalH2>Salida de IA</LegalH2>
       <p>
         Los borradores salen de la IA y se contrastan con tablas nutricionales
-        publicadas si hay coincidencia. Detalle:{" "}
-        <a className="text-primary underline underline-offset-2" href="/es/data-sources">
-          de donde salen los numeros
-        </a>
-        .
+        publicadas si hay coincidencia.
       </p>
       <LegalH2>Salud</LegalH2>
       <p>

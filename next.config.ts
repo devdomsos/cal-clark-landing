@@ -8,8 +8,8 @@ const ENGLISH_ROOT_PATHS = [
   "/cookies",
   "/support",
   "/delete-account",
-  "/data-sources",
   "/imprint",
+  "/citations",
   "/waitlist/confirm",
 ];
 
@@ -22,6 +22,7 @@ const nextConfig: NextConfig = {
   },
   // English lives at the site root. Serve it from the prerendered /en pages so
   // every page stays static (no middleware, no per-request render).
+  // /data-sources is deleted. Do not add a rewrite or redirect for it.
   async rewrites() {
     return {
       beforeFiles: [

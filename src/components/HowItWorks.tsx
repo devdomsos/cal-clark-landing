@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, m, useInView } from "framer-motion";
 import { DESKTOP_QUERY, useMediaQuery } from "@/lib/useMediaQuery";
@@ -9,7 +8,6 @@ import { Reveal } from "./Section";
 import { CameraScreen, DiaryScreen, MealScreen, PhoneFrame } from "./phone/AppScreens";
 import type { Locale } from "@/lib/i18n/config";
 import { getMessages, type Messages } from "@/lib/i18n/messages";
-import { legalHref } from "@/lib/legal";
 
 function StepScreen({ step, locale, t, animate }: { step: number; locale: Locale; t: Messages; animate: boolean }) {
   if (step === 0) return <CameraScreen t={t} />;
@@ -106,10 +104,7 @@ export function HowItWorks({ locale }: { locale: Locale }) {
             {t.how.alt}
           </p>
           <p className="text-sm text-white/50">
-            {t.how.sourcesNote}{" "}
-            <Link href={legalHref(locale, "data-sources")} className="text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">
-              {t.how.sourcesLink}
-            </Link>
+            {t.how.sourcesNote}
           </p>
         </div>
       </div>

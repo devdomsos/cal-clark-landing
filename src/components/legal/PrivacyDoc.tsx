@@ -67,11 +67,8 @@ function PrivacyEn() {
         the log. OpenRouter passes it to an AI model from Google (Gemini) or,
         if that model is down, OpenAI. We do not send your name or email with
         it. We then check food names against published US government nutrition tables
-        that we keep on those servers. Your photos never go to USDA. Details:{" "}
-        <Link href="/data-sources" className="text-primary underline underline-offset-2">
-          where the numbers come from
-        </Link>
-        . The app names these companies and asks for your permission before
+        that we keep on those servers. Your photos never go to USDA.
+        The app names these companies and asks for your permission before
         the first meal is sent. If you say no, AI drafts stay off; search,
         barcode, and manual logging still work.
       </p>
@@ -219,11 +216,8 @@ function PrivacyPl() {
         przekazuje je do modelu AI firmy Google (Gemini), a gdy ten nie działa,
         do OpenAI. Nie wysyłamy przy tym imienia ani e-maila. Nazwy dań sprawdzamy
         potem z opublikowanymi tabelami żywieniowymi rządu USA, które trzymamy
-        na tych serwerach. Zdjęć do USDA nie wysyłamy. Szczegóły:{" "}
-        <Link href="/pl/data-sources" className="text-primary underline underline-offset-2">
-          skąd biorą się liczby
-        </Link>
-        . Aplikacja podaje nazwy tych firm i prosi o zgodę przed wysłaniem
+        na tych serwerach. Zdjęć do USDA nie wysyłamy.
+        Aplikacja podaje nazwy tych firm i prosi o zgodę przed wysłaniem
         pierwszego posiłku. Bez zgody szkice AI są wyłączone; wyszukiwanie,
         kod kreskowy i ręczny wpis działają dalej.
       </p>
@@ -355,11 +349,8 @@ function PrivacyDe() {
         (Gemini) weiter, und wenn das ausfällt, an OpenAI. Name und E-Mail
         senden wir nicht mit.
         Namen gleichen wir mit veröffentlichten US-Nährwerttabellen auf diesen
-        Servern ab. Fotos gehen nicht an das USDA. Details:{" "}
-        <Link href="/de/data-sources" className="text-primary underline underline-offset-2">
-          woher die Zahlen kommen
-        </Link>
-        . Die App nennt diese Firmen und fragt nach deiner Einwilligung, bevor
+        Servern ab. Fotos gehen nicht an das USDA.
+        Die App nennt diese Firmen und fragt nach deiner Einwilligung, bevor
         die erste Mahlzeit gesendet wird. Ohne Einwilligung bleiben KI-Entwürfe
         aus; Suche, Strichcode und manuelles Eintragen funktionieren weiter.
       </p>
@@ -486,11 +477,8 @@ function PrivacyEs() {
         registro. OpenRouter la pasa a un modelo de IA de Google (Gemini) o, si
         falla, de OpenAI. No enviamos tu nombre ni tu correo. Los nombres
         se contrastan con tablas nutricionales publicadas del gobierno de
-        EE. UU. en esos servidores. Tus fotos no van al USDA. Detalle:{" "}
-        <Link href="/es/data-sources" className="text-primary underline underline-offset-2">
-          de dónde salen los números
-        </Link>
-        . La app nombra estas empresas y pide tu permiso antes de enviar la
+        EE. UU. en esos servidores. Tus fotos no van al USDA.
+        La app nombra estas empresas y pide tu permiso antes de enviar la
         primera comida. Sin permiso, los borradores con IA quedan desactivados;
         la búsqueda, el código de barras y el registro manual siguen
         funcionando.

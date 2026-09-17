@@ -71,11 +71,7 @@ function En() {
       <LegalH2>A scan looked wrong</LegalH2>
       <p>
         Edit grams or items, then save. A photo cannot weigh oil in a sauce.
-        You confirm the draft. See{" "}
-        <Link className="text-primary underline underline-offset-2" href={legalHref("en", "data-sources")}>
-          where the numbers come from
-        </Link>
-        .
+        You confirm the draft.
       </p>
       <LegalH2>Delete your account</LegalH2>
       <p>
@@ -131,11 +127,7 @@ function Pl() {
       <LegalH2>Skan wyszedł krzywo</LegalH2>
       <p>
         Zmień gramy albo składniki i zapisz. Zdjęcie nie zważy oleju w sosie.
-        Ty potwierdzasz szkic. Zobacz{" "}
-        <Link className="text-primary underline underline-offset-2" href={legalHref("pl", "data-sources")}>
-          skąd biorą się liczby
-        </Link>
-        .
+        Ty potwierdzasz szkic.
       </p>
       <LegalH2>Usuń konto</LegalH2>
       <p>
@@ -192,11 +184,7 @@ function De() {
       <LegalH2>Scan lag daneben</LegalH2>
       <p>
         Gramm oder Zutaten ändern, dann speichern. Ein Foto wiegt kein Öl in
-        der Soße. Du bestätigst den Entwurf. Siehe{" "}
-        <Link className="text-primary underline underline-offset-2" href={legalHref("de", "data-sources")}>
-          woher die Zahlen kommen
-        </Link>
-        .
+        der Soße. Du bestätigst den Entwurf.
       </p>
       <LegalH2>Konto löschen</LegalH2>
       <p>
@@ -252,11 +240,7 @@ function Es() {
       <LegalH2>El análisis salió mal</LegalH2>
       <p>
         Edita gramos o ingredientes y guarda. Una foto no pesa el aceite.
-        Tú confirmas el borrador. Ver{" "}
-        <Link className="text-primary underline underline-offset-2" href={legalHref("es", "data-sources")}>
-          de dónde salen los números
-        </Link>
-        .
+        Tú confirmas el borrador.
       </p>
       <LegalH2>Borrar la cuenta</LegalH2>
       <p>

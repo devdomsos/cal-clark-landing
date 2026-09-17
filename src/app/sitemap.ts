@@ -9,13 +9,18 @@ const LEGAL: LegalPath[] = [
   "cookies",
   "support",
   "delete-account",
-  "data-sources",
   "imprint",
 ];
+/** Science page. Indexed, but not in Header/Footer/LEGAL_NAV. */
+const EXTRA = ["citations"] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const pages = ["/", ...LEGAL.map((path) => `/${path}`)];
+  const pages = [
+    "/",
+    ...LEGAL.map((path) => `/${path}`),
+    ...EXTRA.map((path) => `/${path}`),
+  ];
   return pages.flatMap((path) =>
     LOCALES.map((locale) => ({
       url: `${SITE}${localePath(locale, path)}`,
