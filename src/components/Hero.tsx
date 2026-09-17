@@ -11,7 +11,7 @@ export function Hero({ locale }: { locale: Locale }) {
         className="pointer-events-none absolute -top-40 right-[-20%] -z-10 h-[780px] w-[780px] rounded-full bg-[radial-gradient(circle,rgba(191,219,254,0.7),rgba(245,243,238,0)_65%)] lg:right-[-5%]"
         aria-hidden="true"
       />
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 pb-20 pt-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 lg:px-8 lg:pb-28 lg:pt-14">
+      <div className="mx-auto grid max-w-7xl min-w-0 items-center gap-14 px-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pb-20 pt-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 lg:px-8 lg:pb-28 lg:pt-14">
         <div className="max-w-2xl">
           <p className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-foreground/70">
             <span className="relative flex h-2 w-2">
@@ -20,7 +20,7 @@ export function Hero({ locale }: { locale: Locale }) {
             </span>
             {t.hero.eyebrow}
           </p>
-          <h1 className="display text-[2.6rem] text-foreground sm:text-6xl lg:text-[4.6rem]">
+          <h1 className="display text-[2.15rem] text-foreground sm:text-6xl lg:text-[4.6rem]">
             <span className="block text-balance">{t.hero.h1Line1}</span>{" "}
             <span className="block text-balance text-foreground/40">{t.hero.h1Line2}</span>
           </h1>

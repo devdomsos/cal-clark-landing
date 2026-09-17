@@ -27,7 +27,7 @@ function Step({ index, title, body, onActive, locale, t, isDesktop }: { index: n
   return (
     <div ref={ref} className="flex flex-col justify-center py-10 lg:min-h-[78vh] lg:py-0">
       <span className="mb-6 font-mono text-sm tracking-widest text-white/40">0{index + 1}</span>
-      <h3 className="display max-w-lg text-4xl text-white sm:text-5xl lg:text-6xl">{title}</h3>
+      <h3 className="display max-w-lg text-3xl text-white sm:text-5xl lg:text-6xl">{title}</h3>
       <p className="mt-5 max-w-md text-lg leading-relaxed text-white/60">{body}</p>
       <div ref={mobileRef} className="mt-10 flex w-full justify-center lg:hidden">
         <PhoneFrame width={{ base: 280 }} shadow={false}>
@@ -50,10 +50,10 @@ export function HowItWorks({ locale }: { locale: Locale }) {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_40%_at_25%_30%,rgba(59,130,246,0.18),transparent_70%)]"
         aria-hidden="true"
       />
-      <div className="relative mx-auto max-w-7xl px-5 pb-24 pt-24 lg:px-8 lg:pb-32 lg:pt-32">
+      <div className="relative mx-auto max-w-7xl px-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pb-24 pt-24 lg:px-8 lg:pb-32 lg:pt-32">
         <Reveal className="max-w-3xl">
           <p className="mb-4 text-sm font-medium text-white/50">{t.how.eyebrow}</p>
-          <h2 className="display text-5xl text-white sm:text-7xl">{t.how.title}</h2>
+          <h2 className="display text-4xl text-white sm:text-7xl">{t.how.title}</h2>
         </Reveal>
 
         <div className="mt-10 grid gap-10 lg:mt-0 lg:grid-cols-2 lg:gap-20">

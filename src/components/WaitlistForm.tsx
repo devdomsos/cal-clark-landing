@@ -38,10 +38,10 @@ export function WaitlistForm({
   }
 
   return (
-    <form id={id} action={formAction} className={className}>
+    <form id={id} action={formAction} className={`relative ${className}`}>
       <input type="hidden" name="locale" value={locale} />
       <input type="hidden" name="source" value={id ?? "waitlist"} />
-      <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+      <div aria-hidden="true" className="pointer-events-none absolute h-0 w-0 overflow-hidden opacity-0">
         <label>
           Company
           <input type="text" name="company" tabIndex={-1} autoComplete="off" defaultValue="" />

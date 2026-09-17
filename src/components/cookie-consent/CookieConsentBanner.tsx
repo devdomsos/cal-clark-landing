@@ -71,15 +71,15 @@ export function CookieConsentBanner() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-x-0 bottom-0 z-[100] p-4 sm:p-5"
+      className="pointer-events-none fixed inset-x-0 bottom-0 z-[100] p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:p-5"
       role="dialog"
       aria-modal="false"
       aria-labelledby="cookie-consent-title"
     >
-      <div className="pointer-events-auto mx-auto max-w-2xl rounded-3xl border border-border bg-surface shadow-[0_24px_48px_-16px_rgba(3,7,18,0.25)]">
-        <div className="p-5 sm:p-6">
+      <div className="pointer-events-auto mx-auto max-h-[min(70vh,32rem)] max-w-2xl overflow-y-auto rounded-2xl border border-border bg-surface shadow-[0_24px_48px_-16px_rgba(3,7,18,0.25)] sm:rounded-3xl">
+        <div className="p-4 sm:p-6">
           <div className="mb-2 flex items-start justify-between gap-4">
-            <h2 id="cookie-consent-title" className="text-lg font-bold tracking-tight text-foreground">
+            <h2 id="cookie-consent-title" className="text-base font-bold tracking-tight text-foreground sm:text-lg">
               {copy.bannerTitle}
             </h2>
             {showPreferences && hasChoice ? (

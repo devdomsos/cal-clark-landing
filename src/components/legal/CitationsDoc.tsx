@@ -195,7 +195,7 @@ export function CitationsDoc({ locale }: { locale: LegalLocale }) {
   const homeHref = homePath(locale);
 
   return (
-    <main className="mx-auto max-w-2xl px-5 py-16">
+    <main className="mx-auto w-full min-w-0 max-w-2xl px-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pb-16 pt-8 sm:py-16">
       <HtmlLang locale={locale} />
       <div className="flex items-center justify-between gap-4">
         <Link href={homeHref} className="focus-ring">
@@ -208,10 +208,10 @@ export function CitationsDoc({ locale }: { locale: LegalLocale }) {
           {HOME_LABEL[locale]}
         </Link>
       </p>
-      <h1 className="mt-3 text-3xl font-bold tracking-tight text-foreground">
+      <h1 className="mt-3 text-pretty text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
         {c.title}
       </h1>
-      <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+      <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground">
         {c.intro}
       </p>
       <p className="mt-3 text-sm text-muted-foreground">{c.updated}</p>
@@ -224,7 +224,7 @@ export function CitationsDoc({ locale }: { locale: LegalLocale }) {
           <a
             key={section.id}
             href={`#${section.id}`}
-            className="focus-ring rounded-full border border-border bg-surface px-3.5 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+            className="focus-ring max-w-full rounded-full border border-border bg-surface px-3.5 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
           >
             {c.sections[section.id].nav}
           </a>
@@ -277,10 +277,10 @@ export function CitationsDoc({ locale }: { locale: LegalLocale }) {
                       {index + 1}
                     </span>
                     <div className="min-w-0">
-                      <h3 className="text-base font-semibold text-foreground">
+                      <h3 className="text-pretty text-base font-semibold text-foreground">
                         {source.title}
                       </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      <p className="mt-2 text-pretty text-sm leading-relaxed text-muted-foreground">
                         {source.citation}
                       </p>
                       <a

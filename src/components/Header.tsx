@@ -52,7 +52,7 @@ export function Header({ locale }: { locale: Locale }) {
             : "bg-transparent"
         }`}
       >
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 lg:h-[72px] lg:px-8">
+        <div className="mx-auto flex h-16 max-w-7xl min-w-0 items-center justify-between gap-3 px-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] lg:h-[72px] lg:px-8">
           <Link
             href={home}
             className="focus-ring shrink-0"
@@ -92,7 +92,7 @@ export function Header({ locale }: { locale: Locale }) {
             </a>
           </div>
 
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex min-w-0 shrink-0 items-center gap-1.5 lg:hidden">
             <LanguageSelect />
             <button
               type="button"

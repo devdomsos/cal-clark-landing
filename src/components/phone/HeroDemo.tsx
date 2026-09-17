@@ -54,8 +54,8 @@ export function HeroDemo({ locale }: { locale: Locale }) {
           : `+${fmt(locale, MEAL.kcal)} kcal`;
 
   return (
-    <div ref={ref} className="relative mx-auto flex w-full flex-col items-center">
-      <PhoneFrame width={{ base: 330, lg: 360 }}>
+    <div ref={ref} className="relative mx-auto flex w-full min-w-0 max-w-full flex-col items-center">
+      <PhoneFrame width={{ base: 280, lg: 360 }}>
         <AnimatePresence initial={false} mode="popLayout">
           {screen === "camera" && (
             <m.div key="camera" className="absolute inset-0" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: 1.04 }} transition={{ duration: 0.45, ease }}>

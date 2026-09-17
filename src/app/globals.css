@@ -50,11 +50,19 @@
   }
 }
 
+html {
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   font-feature-settings: "cv11", "ss01";
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 * {
@@ -87,8 +95,15 @@ body {
 
 .display {
   letter-spacing: -0.045em;
-  line-height: 0.98;
+  line-height: 1.08;
   font-weight: 650;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 640px) {
+  .display {
+    line-height: 1.02;
+  }
 }
 
 .no-scrollbar {

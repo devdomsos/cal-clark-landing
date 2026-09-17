@@ -33,7 +33,7 @@ type Props = {
 export function LegalShell({ locale, path, title, updated, children, references }: Props) {
   const homeHref = homePath(locale);
   return (
-    <main className="mx-auto max-w-3xl px-5 py-16">
+    <main className="mx-auto w-full min-w-0 max-w-3xl px-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pb-16 pt-8 sm:py-16">
       <HtmlLang locale={locale} />
       <div className="flex items-center justify-between gap-4">
         <Link href={homeHref} className="focus-ring">
@@ -46,7 +46,7 @@ export function LegalShell({ locale, path, title, updated, children, references 
           {HOME_LABEL[locale]}
         </Link>
       </p>
-      <h1 className="mt-3 text-3xl font-bold tracking-tight text-foreground">{title}</h1>
+      <h1 className="mt-3 text-pretty text-2xl font-bold tracking-tight text-foreground sm:text-3xl">{title}</h1>
       <p className="mt-2 text-sm text-muted-foreground">{updated}</p>
       <div className="legal-prose mt-8 flex flex-col gap-4 text-sm leading-relaxed text-muted-foreground">
         {children}
