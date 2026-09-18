@@ -33,9 +33,12 @@ function En() {
   return (
     <>
       <p>
-        calclark.app does not run ads and does not drop advertising cookies.
-        No Meta pixel, no TikTok pixel. Analytics cookies load only if you
-        say yes in the cookie banner. If we add a tool, this page will name it.
+        calclark.app drops no advertising cookie until you say yes in the
+        cookie banner. No Meta pixel, no TikTok pixel. Two optional partners
+        exist, both off until you allow them: AppsFlyer (which link or
+        campaign brought you to the app) and Google Advertising Products
+        (only while we run Google ad campaigns). The banner lists every
+        partner and what it does. If we add a tool, this page will name it.
       </p>
       <LegalH2>Cookieless measurement</LegalH2>
       <p>
@@ -91,9 +94,12 @@ function Pl() {
   return (
     <>
       <p>
-        calclark.app nie serwuje reklam i nie stawia cookies reklamowych. Nie
-        ma piksela Meta ani TikToka. Cookies analityczne ładują się tylko, gdy
-        zgodzisz się w banerze cookies. Jeśli dodamy narzędzie, ta strona je
+        calclark.app nie stawia cookies reklamowych, dopóki nie zgodzisz się
+        w banerze cookies. Nie ma piksela Meta ani TikToka. Są dwaj opcjonalni
+        partnerzy, obaj wyłączeni do czasu Twojej zgody: AppsFlyer (który link
+        lub kampania przyprowadziły Cię do aplikacji) oraz Google Advertising
+        Products (tylko gdy prowadzimy kampanie Google). Baner wymienia
+        każdego partnera i to, co robi. Jeśli dodamy narzędzie, ta strona je
         wymieni.
       </p>
       <LegalH2>Pomiar bez cookies</LegalH2>
@@ -148,9 +154,13 @@ function De() {
   return (
     <>
       <p>
-        calclark.app zeigt keine Werbung und setzt keine Werbe-Cookies. Kein
-        Meta-Pixel, kein TikTok-Pixel. Analyse-Cookies laden nur, wenn du im
-        Cookie-Banner zustimmst. Kommt ein Werkzeug dazu, steht es hier.
+        calclark.app setzt keine Werbe-Cookies, bis du im Cookie-Banner
+        zustimmst. Kein Meta-Pixel, kein TikTok-Pixel. Es gibt zwei optionale
+        Partner, beide aus, bis du sie erlaubst: AppsFlyer (welcher Link oder
+        welche Kampagne dich zur App gebracht hat) und Google Advertising
+        Products (nur, solange wir Google-Kampagnen schalten). Der Banner
+        nennt jeden Partner und was er tut. Kommt ein Werkzeug dazu, steht es
+        hier.
       </p>
       <LegalH2>Messung ohne Cookies</LegalH2>
       <p>
@@ -205,10 +215,13 @@ function Es() {
   return (
     <>
       <p>
-        calclark.app no pone anuncios y no deja cookies de publicidad. No hay
-        píxel de Meta ni de TikTok. Las cookies de analítica solo se cargan si
-        aceptas en el banner de cookies. Si añadimos una herramienta, esta
-        página la nombrará.
+        calclark.app no deja cookies de publicidad hasta que aceptas en el
+        banner de cookies. No hay píxel de Meta ni de TikTok. Hay dos socios
+        opcionales, ambos apagados hasta que los permitas: AppsFlyer (qué
+        enlace o campaña te trajo a la app) y Google Advertising Products
+        (solo mientras hacemos campañas de Google). El banner nombra a cada
+        socio y lo que hace. Si añadimos una herramienta, esta página la
+        nombrará.
       </p>
       <LegalH2>Medición sin cookies</LegalH2>
       <p>

@@ -10,30 +10,33 @@ import {
   type ReactNode,
 } from "react";
 import {
-  ACCEPT_ALL,
-  ESSENTIAL_ONLY,
+  acceptAllChoices,
+  rejectAllChoices,
+  type ConsentChoices,
+} from "@/lib/consent/catalog";
+import {
   applyConsentScripts,
   readConsent,
   saveConsent,
-  type ConsentPreferences,
   type StoredConsent,
 } from "@/lib/cookieConsent";
-import { CookieConsentBanner } from "./CookieConsentBanner";
+import { CookieConsentBanner, type ConsentView } from "./CookieConsentBanner";
 
-// Ported from jastado-landing. Module-level stores + useSyncExternalStore keep
-// the server render and first client render identical (banner hidden), then
-// show the banner after hydration only when no choice is saved.
+// Module-level stores + useSyncExternalStore keep the server render and first
+// client render identical (banner hidden), then show the banner after
+// hydration only when no current-version choice is saved.
 
 type CookieConsentContextValue = {
-  preferences: ConsentPreferences | null;
+  choices: ConsentChoices | null;
+  savedAt: string | null;
   hasChoice: boolean;
-  showPreferences: boolean;
+  view: ConsentView;
+  setView: (view: ConsentView) => void;
   acceptAll: () => void;
-  rejectNonEssential: () => void;
-  saveCustomPreferences: (preferences: ConsentPreferences) => void;
+  rejectAll: () => void;
+  saveChoices: (choices: ConsentChoices) => void;
   openPreferences: () => void;
-  closePreferences: () => void;
-  backToSummary: () => void;
+  close: () => void;
 };
 
 const CookieConsentContext = createContext<CookieConsentContextValue | null>(null);
@@ -43,7 +46,7 @@ const uiListeners = new Set<() => void>();
 
 let consentSnapshot: StoredConsent | null = typeof document !== "undefined" ? readConsent() : null;
 let showBannerUi = typeof document !== "undefined" ? consentSnapshot === null : false;
-let showPreferencesUi = false;
+let viewUi: ConsentView = "notice";
 
 function notifyConsent() {
   consentListeners.forEach((listener) => listener());
@@ -67,77 +70,66 @@ function subscribeUi(listener: () => void) {
   };
 }
 
-function commitPreferences(preferences: ConsentPreferences) {
-  consentSnapshot = saveConsent(preferences);
-  applyConsentScripts(preferences);
+function commit(choices: ConsentChoices) {
+  consentSnapshot = saveConsent(choices);
+  applyConsentScripts(consentSnapshot);
   notifyConsent();
-  showPreferencesUi = false;
   showBannerUi = false;
+  viewUi = "notice";
   notifyUi();
 }
 
 export function CookieConsentProvider({ children }: { children: ReactNode }) {
   const stored = useSyncExternalStore(subscribeConsent, () => consentSnapshot, () => null);
   const showBanner = useSyncExternalStore(subscribeUi, () => showBannerUi, () => false);
-  const showPreferences = useSyncExternalStore(subscribeUi, () => showPreferencesUi, () => false);
+  const view = useSyncExternalStore(subscribeUi, () => viewUi, () => "notice" as ConsentView);
 
-  const preferences = useMemo<ConsentPreferences | null>(
-    () => (stored ? { essential: true, analytics: stored.analytics } : null),
+  const choices = useMemo<ConsentChoices | null>(
+    () => (stored ? { purposes: stored.purposes, partners: stored.partners } : null),
     [stored],
   );
   const hasChoice = stored !== null;
 
   useEffect(() => {
-    if (preferences) applyConsentScripts(preferences);
-  }, [preferences]);
+    if (choices) applyConsentScripts(choices);
+  }, [choices]);
 
-  const acceptAll = useCallback(() => commitPreferences(ACCEPT_ALL), []);
-  const rejectNonEssential = useCallback(() => commitPreferences(ESSENTIAL_ONLY), []);
-  const saveCustomPreferences = useCallback(
-    (next: ConsentPreferences) => commitPreferences({ ...next, essential: true }),
-    [],
-  );
+  const acceptAll = useCallback(() => commit(acceptAllChoices()), []);
+  const rejectAll = useCallback(() => commit(rejectAllChoices()), []);
+  const saveChoices = useCallback((next: ConsentChoices) => commit(next), []);
+
+  const setView = useCallback((next: ConsentView) => {
+    viewUi = next;
+    notifyUi();
+  }, []);
 
   const openPreferences = useCallback(() => {
-    showPreferencesUi = true;
+    viewUi = "manage";
     showBannerUi = true;
     notifyUi();
   }, []);
 
-  const closePreferences = useCallback(() => {
-    showPreferencesUi = false;
+  const close = useCallback(() => {
+    // Without a saved choice the notice stays; the X only exists after one.
     showBannerUi = consentSnapshot === null;
-    notifyUi();
-  }, []);
-
-  const backToSummary = useCallback(() => {
-    showPreferencesUi = false;
+    viewUi = "notice";
     notifyUi();
   }, []);
 
   const value = useMemo(
     () => ({
-      preferences,
+      choices,
+      savedAt: stored?.ts ?? null,
       hasChoice,
-      showPreferences,
+      view,
+      setView,
       acceptAll,
-      rejectNonEssential,
-      saveCustomPreferences,
+      rejectAll,
+      saveChoices,
       openPreferences,
-      closePreferences,
-      backToSummary,
+      close,
     }),
-    [
-      preferences,
-      hasChoice,
-      showPreferences,
-      acceptAll,
-      rejectNonEssential,
-      saveCustomPreferences,
-      openPreferences,
-      closePreferences,
-      backToSummary,
-    ],
+    [choices, stored, hasChoice, view, setView, acceptAll, rejectAll, saveChoices, openPreferences, close],
   );
 
   return (

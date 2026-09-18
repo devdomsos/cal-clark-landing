@@ -1,0 +1,151 @@
+{
+  "title": "Cookies & calories - we count both 🍪",
+  "settingsRow": "Privacy & cookie preferences",
+  "settingsRowDescription": "Choose what we and our partners may track",
+  "intro": "With your agreement, we and {partnersLink} use cookies or similar technologies to store, access, and process personal data like your use of this app, IP addresses and device identifiers. Some partners do not ask for your consent to process your data and rely on their legitimate business interest. You can withdraw your consent or object to data processing based on legitimate interest at any time under \"Manage preferences\" or in our {privacyLink}. Selecting \"Accept all\" means you will receive personalised advertising while respecting your choice to opt in or out of Apple's App Tracking Transparency framework.",
+  "introWeb": "With your agreement, we and {partnersLink} use cookies or similar technologies to store, access, and process personal data like your visit on this website, IP addresses and cookie identifiers. Some partners do not ask for your consent to process your data and rely on their legitimate business interest. You can withdraw your consent or object to data processing based on legitimate interest at any time under \"Manage preferences\" or in our {privacyLink}. Selecting \"Accept all\" means you will receive personalised advertising while respecting your choice to opt in or out of Apple's App Tracking Transparency framework.",
+  "partnersLink": "our {count} partners",
+  "privacyPolicy": "Privacy Policy",
+  "purposesHeading": "We and our partners process data for the following purposes",
+  "manageButton": "Manage preferences",
+  "rejectAll": "Reject all",
+  "acceptAll": "Accept all",
+  "saveAndExit": "Save and exit",
+  "vendors": "Partners",
+  "close": "Close",
+  "back": "Back",
+  "alwaysOn": "Always on",
+  "legitimateInterest": "Legitimate interest",
+  "consentBasis": "Consent",
+  "manage": {
+    "title": "Manage preferences",
+    "intro": "Cal Clark and our partners use cookies and app technologies as listed below. Switch a toggle on to allow your data to be used for that purpose. When you are done, tap \"Save and exit\".",
+    "skip": "To skip this step, tap Accept all or Reject all.",
+    "featuresIntro": "By giving consent to the purposes above, you also allow this app and its partners to run the following data processing:",
+    "featuresIntroWeb": "By giving consent to the purposes above, you also allow this website and its partners to run the following data processing:",
+    "featuresAnd": "and"
+  },
+  "partnersScreen": {
+    "title": "Select partners",
+    "intro": "You can set your consent preferences for every partner listed below individually. Tap a partner name to see what it does, what data it collects and how it uses it.",
+    "all": "All partners",
+    "required": "Required - cannot be switched off",
+    "purposesLabel": "Purposes",
+    "featuresLabel": "Also used for",
+    "privacyLink": "Partner privacy policy",
+    "userInfo": "View user information",
+    "userId": "User ID",
+    "consentDate": "Choice saved",
+    "consentVersion": "Notice version",
+    "noChoice": "No choice saved yet"
+  },
+  "att": {
+    "usageDescription": "Allowing tracking lets us measure which ads and links bring people to Cal Clark. We never sell your data."
+  },
+  "purposes": {
+    "store_access": {
+      "title": "Store and/or access information on a device",
+      "description": "Cookies, device identifiers, or other information can be stored or accessed on your device for the purposes presented to you."
+    },
+    "create_ad_profiles": {
+      "title": "Create profiles for personalised advertising",
+      "description": "Information about your activity in this app (such as forms you submit, content you look at) can be stored and combined with other information about you (for example, information from your previous activity in this app and other apps or websites you have used) or similar users. This is then used to build or improve a profile about you (that might include possible interests and personal aspects). Your profile can be used (also later) to present advertising that appears more relevant based on your possible interests by this and other entities."
+    },
+    "use_ad_profiles": {
+      "title": "Use profiles to select personalised advertising",
+      "description": "Advertising presented to you in this app can be based on your advertising profiles, which can reflect your activity in this app or other apps or websites (like the forms you submit, content you look at), possible interests and personal aspects."
+    },
+    "develop_improve": {
+      "title": "Develop and improve services",
+      "description": "Information about your activity in this app, such as your interaction with ads or content, can be very helpful to improve products and services and to build new products and services based on user interactions, the type of audience, etc. This specific purpose does not include the development or improvement of user profiles and identifiers."
+    },
+    "understand_audiences": {
+      "title": "Understand audiences through statistics or combinations of data from different sources",
+      "description": "Reports can be generated based on the combination of data sets (like user profiles, statistics, market research, analytics data) regarding your interactions and those of other users with advertising or content to identify common characteristics (for example, to determine which target audiences are more receptive to an ad campaign or to certain contents)."
+    },
+    "measure_ad_performance": {
+      "title": "Measure advertising performance",
+      "description": "Information regarding which advertising is presented to you and how you interact with it can be used to determine how well an ad has worked for you or other users and whether the goals of the advertising were reached. For instance, whether you saw an ad, whether you tapped on it, whether it led you to install an app, etc. This is very helpful to understand the relevance of advertising campaigns."
+    },
+    "limited_data_ads": {
+      "title": "Use limited data to select advertising",
+      "description": "Advertising presented to you in this app can be based on limited data, such as the app you are using, your non-precise location, your device type or which content you are (or have been) interacting with (for example, to limit the number of times an ad is presented to you)."
+    },
+    "functional": {
+      "title": "Functional",
+      "description": "Technologies that make the app work the way you expect: keeping you signed in, remembering your language and settings, sending you the emails you asked for, and reporting crashes so we can fix them."
+    },
+    "create_content_profiles": {
+      "title": "Create profiles to personalise content",
+      "description": "Information about your activity in this app (for instance, forms you submit, content you look at) can be stored and combined with other information about you (such as your previous activity in this app or other apps or websites) or similar users. This is then used to build or improve a profile about you (which might for example include possible interests and personal aspects). Your profile can be used (also later) to present content that appears more relevant based on your possible interests, such as by adapting the order in which content is shown to you, so that it is even easier for you to find content that matches your interests."
+    },
+    "measure_content": {
+      "title": "Measure content performance",
+      "description": "Information regarding which content is presented to you and how you interact with it can be used to determine whether the content (for example, a screen, a tip, or a feature) has reached its intended audience and matched your interests. For instance, whether you read a tip, whether you finished onboarding, or which features you used. This is very helpful to understand the relevance of the content that is shown to you."
+    },
+    "use_content_profiles": {
+      "title": "Use profiles to select personalised content",
+      "description": "Content presented to you in this app can be based on your content personalisation profiles, which can reflect your activity in this app or other apps or websites (like the forms you submit, content you look at), possible interests and personal aspects, such as by adapting the order in which content is shown to you, to make it easier for you to find content that matches your interests."
+    },
+    "social": {
+      "title": "Social",
+      "description": "Sharing features and social media buttons. When you share a meal or a result, the platform you share to can set its own cookies and learn that you used the feature."
+    },
+    "required": {
+      "title": "Required",
+      "description": "Strictly necessary to make the app work: signing you in, processing your purchases, keeping the service secure, and remembering the choices you make in this notice. These cannot be switched off."
+    }
+  },
+  "features": {
+    "deliver_content": {
+      "title": "Deliver and present advertising and content",
+      "description": "Certain information (like an IP address or device capabilities) is used to ensure the technical compatibility of the content or advertising, and to facilitate the transmission of the content or ad to your device. Tapping a link might normally send you to another screen or page. To achieve this, 1) your device sends a request to a server linked to the app, 2) the server answers back (\"here is what you asked for\"), using technical information automatically included in the request sent by your device, to properly display the information you asked for. Technically, such exchange of information is necessary to deliver the content that appears on your screen."
+    },
+    "security": {
+      "title": "Ensure security, prevent and detect fraud, and fix errors",
+      "description": "Your data can be used to monitor for and prevent unusual and possibly fraudulent activity (for example, regarding advertising, ad clicks by bots), and ensure systems and processes work properly and securely. It can also be used to correct any problems you, the publisher or the advertiser may encounter in the delivery of content and ads and in your interaction with them. For example, an advertising intermediary delivers ads from various advertisers to its network of partnering apps. It notices a large increase in clicks on ads relating to one advertiser, and uses data regarding the source of the clicks to determine that 80% of the clicks come from bots rather than humans."
+    },
+    "identify_devices": {
+      "title": "Identify devices based on information transmitted automatically",
+      "description": "Your device might be distinguished from other devices based on information it automatically sends when accessing the Internet (for instance, the IP address of your Internet connection or the type of device you are using) in support of the purposes exposed in this notice."
+    },
+    "link_devices": {
+      "title": "Link different devices",
+      "description": "In support of the purposes explained in this notice, your device might be considered as likely linked to other devices that belong to you or your household (for instance because you are logged in to the same service on both your phone and your computer, or because you may use the same Internet connection on both devices)."
+    },
+    "match_data": {
+      "title": "Match and combine data from other data sources",
+      "description": "Information about your activity on this service may be matched and combined with other information relating to you and originating from various sources (for instance your activity on a separate online service, your use of a loyalty card in-store, or your answers to a survey), in support of the purposes explained in this notice."
+    },
+    "save_choices": {
+      "title": "Save and communicate privacy choices",
+      "description": "The choices you make regarding the purposes and entities listed in this notice are saved and made available to those entities in the form of digital signals (such as a string of characters). This is necessary in order to enable both this service and those entities to respect such choices. When you are offered a choice between consenting to the use of profiles for personalised advertising or not consenting, the choice you make is saved and made available to advertising providers, so that advertising presented to you respects that choice."
+    }
+  },
+  "partners": {
+    "appsflyer": {
+      "description": "Tells us which link, campaign or store listing brought you to Cal Clark, so we know what works. Uses a device identifier, your IP address and the events \"install\", \"sign-up\" and \"purchase\". On iOS it only uses the advertising identifier if you allow tracking in Apple's prompt."
+    },
+    "clerk": {
+      "description": "Signs you in and keeps you signed in. Stores your email address, sign-in method and session. The app cannot work without it."
+    },
+    "google_ads": {
+      "description": "Measures and personalises the Google ads that bring people to Cal Clark. Only active while we run Google ad campaigns. Uses your device identifier and the events \"install\" and \"purchase\"."
+    },
+    "posthog": {
+      "description": "Anonymous usage statistics: which screens you open, whether onboarding finishes, whether a scan succeeds. Hosted in the EU. Never receives your meal photos or health data. We use this to fix confusing screens and decide what to build next."
+    },
+    "revenuecat": {
+      "description": "Handles your subscription and free trial with the App Store or Google Play. Stores your purchase receipts and an anonymous customer ID. Required for Pro to work."
+    },
+    "resend": {
+      "description": "Sends the emails you asked for: sign-in codes, waitlist confirmations, account notices. Stores your email address and delivery status."
+    },
+    "sentry": {
+      "description": "Crash and error reports so we can fix bugs. Personal data is masked; screen recordings only run after a crash and hide all text and images."
+    },
+    "vercel": {
+      "description": "Hosts calclark.app and counts page views without cookies or identifiers."
+    }
+  }
+}
