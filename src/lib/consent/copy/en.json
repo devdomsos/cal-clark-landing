@@ -1,5 +1,7 @@
 {
   "title": "Cookies & calories - we count both 🍪",
+  "miniTitle": "Cookies & calories 🍪",
+  "mini": "We and {partnersLink} use cookies and similar tech to run the app, measure it and show relevant ads. You can change this any time in Settings. {privacyLink}",
   "settingsRow": "Privacy & cookie preferences",
   "settingsRowDescription": "Choose what we and our partners may track",
   "intro": "With your agreement, we and {partnersLink} use cookies or similar technologies to store, access, and process personal data like your use of this app, IP addresses and device identifiers. Some partners do not ask for your consent to process your data and rely on their legitimate business interest. You can withdraw your consent or object to data processing based on legitimate interest at any time under \"Manage preferences\" or in our {privacyLink}. Selecting \"Accept all\" means you will receive personalised advertising while respecting your choice to opt in or out of Apple's App Tracking Transparency framework.",

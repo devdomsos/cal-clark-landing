@@ -1,5 +1,7 @@
 {
   "title": "Cookies & Kalorien - wir zählen beides 🍪",
+  "miniTitle": "Cookies & Kalorien 🍪",
+  "mini": "Wir und {partnersLink} nutzen Cookies und ähnliche Technik, um die App zu betreiben, zu messen und passende Werbung zu zeigen. Du kannst das jederzeit in den Einstellungen ändern. {privacyLink}",
   "settingsRow": "Datenschutz & Cookie-Einstellungen",
   "settingsRowDescription": "Wähle, was wir und unsere Partner erfassen dürfen",
   "intro": "Mit deiner Zustimmung verwenden wir und {partnersLink} Cookies oder ähnliche Technologien, um personenbezogene Daten wie deine Nutzung dieser App, IP-Adressen und Gerätekennungen zu speichern, abzurufen und zu verarbeiten. Einige Partner bitten nicht um deine Einwilligung und stützen sich auf ihr berechtigtes Geschäftsinteresse. Du kannst deine Einwilligung jederzeit unter „Einstellungen verwalten“ oder in unserer {privacyLink} widerrufen oder der Verarbeitung auf Grundlage des berechtigten Interesses widersprechen. Mit „Alle akzeptieren“ erhältst du personalisierte Werbung, wobei deine Entscheidung im Rahmen von Apples App Tracking Transparency respektiert wird.",

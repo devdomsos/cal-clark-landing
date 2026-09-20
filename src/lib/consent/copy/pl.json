@@ -1,5 +1,7 @@
 {
   "title": "Ciasteczka i kalorie - liczymy jedno i drugie 🍪",
+  "miniTitle": "Ciasteczka i kalorie 🍪",
+  "mini": "My i {partnersLink} używamy plików cookie i podobnych technologii, aby aplikacja działała, mierzyć jej użycie i pokazywać dopasowane reklamy. Możesz to zmienić w każdej chwili w Ustawieniach. {privacyLink}",
   "settingsRow": "Prywatność i ustawienia cookies",
   "settingsRowDescription": "Wybierz, co możemy śledzić my i nasi partnerzy",
   "intro": "Za Twoją zgodą my i {partnersLink} używamy plików cookie lub podobnych technologii, aby przechowywać, uzyskiwać dostęp i przetwarzać dane osobowe, takie jak sposób korzystania z aplikacji, adresy IP i identyfikatory urządzenia. Niektórzy partnerzy nie proszą o zgodę na przetwarzanie danych i opierają się na swoim uzasadnionym interesie. W każdej chwili możesz wycofać zgodę lub sprzeciwić się przetwarzaniu opartemu na uzasadnionym interesie w sekcji „Zarządzaj preferencjami” lub w naszej {privacyLink}. Wybór „Akceptuj wszystko” oznacza, że będziesz otrzymywać spersonalizowane reklamy, z poszanowaniem Twojej decyzji w ramach systemu App Tracking Transparency firmy Apple.",
