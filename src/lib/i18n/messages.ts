@@ -396,7 +396,7 @@ const PL: Messages = {
     left: "zostało",
     weeklyBudget: "Budżet tygodniowy",
     weeklyLeft: "pozostało {calories} kcal",
-    carbs: "Węgle",
+    carbs: "Węgl.",
     protein: "Białko",
     fats: "Tłuszcze",
     recentlyLogged: "Ostatnio dodane",
@@ -463,11 +463,11 @@ const PL: Messages = {
       },
       {
         title: "Zobacz, co jest na talerzu",
-        body: "Każdy składnik z kaloriami, białkiem, węglami i tłuszczem. Porcję zmienisz jednym dotknięciem.",
+        body: "Każdy składnik z kaloriami, białkiem, węglowodanami i tłuszczem. Porcję zmienisz jednym dotknięciem.",
       },
       {
         title: "Trzymaj się planu cały dzień",
-        body: "Widzisz, co już zjedzone i ile zostało na dziś - kalorie i makro obok siebie.",
+        body: "Widzisz, co już zjedzone i ile zostało na dziś - kalorie i makroskładniki obok siebie.",
       },
     ],
     alt: "Bez zdjęcia? Opisz posiłek, zeskanuj kod kreskowy albo wybierz zapisany posiłek.",
@@ -553,7 +553,7 @@ const PL: Messages = {
       },
       {
         q: "Ile to kosztuje?",
-        a: "Każde konto zaczyna od 3 dni za darmo. Potem Cal Clark to plan roczny płatny przez Apple albo Google. Kwota na ekranie płatności to kwota, którą płacisz. Anulujesz w ustawieniach sklepu w telefonie; usunięcie aplikacji nie anuluje. Więcej na stronie Pomoc.",
+        a: "Każde konto zaczyna się od 3 dni za darmo. Potem Cal Clark to plan roczny płatny przez Apple albo Google. Kwota na ekranie płatności to kwota, którą płacisz. Anulujesz w ustawieniach sklepu w telefonie; usunięcie aplikacji nie anuluje. Więcej na stronie Pomoc.",
       },
       {
         q: "Czy są reklamy?",
@@ -862,7 +862,7 @@ const ES: Messages = {
     placeholder: "tu@email.com",
     submit: "Únete a la lista",
     pending: "Apuntando…",
-    success: "Casi listo. Revisa tu correo y toca el enlace para confirmar tu email. Te avisaremos cuando Cal Clark esté disponible.",
+    success: "Casi listo. Revisa tu correo y toca el enlace para confirmar tu dirección. Te avisaremos cuando Cal Clark esté disponible.",
     already: "Ya estás en la lista. Te avisaremos cuando Cal Clark esté disponible.",
     invalid: "Eso no parece un correo válido.",
     error: "Algo ha fallado en nuestro lado. Prueba en un momento.",
@@ -922,7 +922,7 @@ const ES: Messages = {
   goals: {
     eyebrow: "Tu objetivo",
     title: "Tu objetivo. A tu manera.",
-    sub: "Cal Clark fija objetivos de calorías y macros para tu meta y te ayuda a cumplirlos día a día.",
+    sub: "Cal Clark fija objetivos de calorías y macros para tu objetivo y te ayuda a cumplirlos día a día.",
     items: [
       {
         title: "Pierde peso",
@@ -991,7 +991,7 @@ const ES: Messages = {
       },
       {
         q: "¿Cal Clark sirve para mi objetivo?",
-        a: "Tanto si quieres perder peso, ganar masa o mantener tu peso, Cal Clark fija objetivos de calorías y macros para tu meta al registrarte. Puedes cambiar tu objetivo más tarde en Ajustes.",
+        a: "Si quieres perder peso, ganar masa o mantener tu peso, Cal Clark fija objetivos de calorías y macros para tu objetivo al registrarte. Puedes cambiar tu objetivo más tarde en Ajustes.",
       },
       {
         q: "¿Qué idiomas tiene?",

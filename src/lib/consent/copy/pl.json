@@ -69,7 +69,7 @@
     },
     "limited_data_ads": {
       "title": "Używanie ograniczonych danych do wyboru reklam",
-      "description": "Reklamy wyświetlane Ci w tej aplikacji mogą być oparte na ograniczonych danych, takich jak używana aplikacja, przybliżona lokalizacja, typ urządzenia lub treści, z którymi wchodzisz (lub wchodziłeś) w interakcję (np. aby ograniczyć liczbę wyświetleń danej reklamy)."
+      "description": "Reklamy wyświetlane Ci w tej aplikacji mogą być oparte na ograniczonych danych, takich jak używana aplikacja, przybliżona lokalizacja, typ urządzenia lub treści, z którymi wchodzisz w interakcję (teraz lub wcześniej) (np. aby ograniczyć liczbę wyświetleń danej reklamy)."
     },
     "functional": {
       "title": "Funkcjonalne",
@@ -99,7 +99,7 @@
   "features": {
     "deliver_content": {
       "title": "Dostarczanie i prezentowanie reklam i treści",
-      "description": "Niektóre informacje (np. adres IP lub możliwości urządzenia) są używane, aby zapewnić techniczną zgodność treści lub reklamy i ułatwić ich przesłanie na Twoje urządzenie. Dotknięcie linku zwykle przenosi na inny ekran lub stronę. Aby to osiągnąć, 1) Twoje urządzenie wysyła żądanie do serwera powiązanego z aplikacją, 2) serwer odpowiada („oto, o co prosiłeś”), używając informacji technicznych automatycznie dołączonych do żądania, aby poprawnie wyświetlić żądane informacje. Technicznie taka wymiana informacji jest niezbędna do dostarczenia treści, które widzisz na ekranie."
+      "description": "Niektóre informacje (np. adres IP lub możliwości urządzenia) są używane, aby zapewnić techniczną zgodność treści lub reklamy i ułatwić ich przesłanie na Twoje urządzenie. Dotknięcie linku zwykle przenosi na inny ekran lub stronę. Aby to osiągnąć, 1) Twoje urządzenie wysyła żądanie do serwera powiązanego z aplikacją, 2) serwer odpowiada („oto, o co prosisz”), używając informacji technicznych automatycznie dołączonych do żądania, aby poprawnie wyświetlić żądane informacje. Technicznie taka wymiana informacji jest niezbędna do dostarczenia treści, które widzisz na ekranie."
     },
     "security": {
       "title": "Zapewnianie bezpieczeństwa, zapobieganie oszustwom i ich wykrywanie oraz naprawa błędów",
@@ -111,7 +111,7 @@
     },
     "link_devices": {
       "title": "Łączenie różnych urządzeń",
-      "description": "W celach opisanych w tej informacji Twoje urządzenie może być uznane za prawdopodobnie powiązane z innymi urządzeniami należącymi do Ciebie lub Twojego gospodarstwa domowego (np. dlatego, że jesteś zalogowany do tej samej usługi na telefonie i komputerze albo korzystasz z tego samego połączenia internetowego na obu urządzeniach)."
+      "description": "W celach opisanych w tej informacji Twoje urządzenie może być uznane za prawdopodobnie powiązane z innymi urządzeniami należącymi do Ciebie lub Twojego gospodarstwa domowego (np. dlatego, że logujesz się do tej samej usługi na telefonie i komputerze albo korzystasz z tego samego połączenia internetowego na obu urządzeniach)."
     },
     "match_data": {
       "title": "Dopasowywanie i łączenie danych z innych źródeł",
