@@ -138,7 +138,7 @@
       "description": "Estadísticas de uso anónimas: qué pantallas abres, si terminas la configuración inicial, si un escaneo funciona. Alojado en la UE. Nunca recibe tus fotos de comida ni datos de salud. Lo usamos para arreglar pantallas confusas y decidir qué construir después."
     },
     "revenuecat": {
-      "description": "Gestiona tu suscripción y la prueba gratuita con la App Store o Google Play. Guarda tus recibos de compra y un ID de cliente anónimo. Necesario para que Pro funcione."
+      "description": "Gestiona tu suscripción y la prueba gratuita con la App Store o Google Play. Guarda tus recibos de compra y un ID de cliente anónimo. Necesario para que Premium funcione."
     },
     "resend": {
       "description": "Envía los correos que pediste: códigos de inicio de sesión, confirmaciones de la lista de espera, avisos de la cuenta. Guarda tu correo electrónico y el estado de entrega."

@@ -8,6 +8,49 @@ Claude Code loads these same rules through [`CLAUDE.md`](CLAUDE.md).
 Stack-specific facts live in [`.cursor/rules/project.mdc`](.cursor/rules/project.mdc).
 Fill that file after you copy this kit. Do not invent a second always-on manual.
 
+## Never explain the system to users (hard rule)
+
+Anything a user can read must never explain how the product works underneath.
+That covers in-app copy, toasts, alerts, error messages, API responses, emails,
+store listings and the website. Explaining *how* something is decided -
+thresholds, how many accounts, what triggers what, time windows, what we key on
+- is an instruction manual for abusing it.
+
+**Tell the user what to do. Never tell them how we decide.**
+
+Real example, the barcode confirm screen (2026-09-21):
+
+| Wrong - ships the recipe | Right |
+|---|---|
+| "Someone else added this product. Confirm it and it becomes the shared answer for everyone." | "Check these details against your packet." |
+| "Thanks - enough people agree, so this is now the shared answer." | "Product saved. Thanks for adding it." |
+| "It is saved for your scans straight away." | *(nothing - just save it)* |
+| "You have submitted a lot of products today. Please try again tomorrow." | "Too many requests. Please try again later." |
+| "Too many signups from this network." | "Too many requests. Please try again later." |
+
+The first line told an attacker: make a few fake accounts, confirm each other,
+and your numbers go live for every user. The second told them exactly when it
+had worked. The rate-limit lines gave away the time window and that we limit
+by IP address.
+
+The same goes for **API responses**. Do not return fields that expose internal
+state to the caller - anyone can read them with a network proxy. Removed for
+this reason: `promoted`, `agreeing` (vote counts), and the `RateLimit-Limit` /
+`RateLimit-Remaining` headers (a script's exact budget). `Retry-After` on a 429
+is fine.
+
+Before writing any user-facing sentence or response field, ask: **could
+someone use this to game, abuse or reverse-engineer the product?** If yes,
+rewrite it.
+
+Code comments, internal docs and this private repo may explain everything -
+comments are stripped from the production bundle. i18n JSON, API responses and
+headers ship as they are.
+
+On this site that includes the waitlist: do not say how many signups we allow,
+per what window, or that it is per network or per address. "Something went
+wrong. Please try again later." is enough.
+
 ## General guidelines
 
 - Never use the em dash. Use a plain ASCII hyphen `-`, a comma, a semicolon, or a sentence break.

@@ -52,7 +52,7 @@ function PrivacyEn() {
           drafted names and macros, grams you edit, saved meals.
         </li>
         <li>
-          Purchases: whether you have Pro, through Apple or Google. We never see
+          Purchases: whether you have Premium, through Apple or Google. We never see
           your card number.
         </li>
         <li>
@@ -200,7 +200,7 @@ function PrivacyPl() {
           które zmieniasz, zapisane posiłki.
         </li>
         <li>
-          Zakupy: czy masz Pro, przez Apple albo Google. Numeru karty nie
+          Zakupy: czy masz Premium, przez Apple albo Google. Numeru karty nie
           widzimy.
         </li>
         <li>
@@ -338,7 +338,7 @@ function PrivacyDe() {
         <li>Konto: E-Mail sowie Anmeldung mit Apple oder Google.</li>
         <li>Profil: Name, Geschlecht, Geburtstag, Größe, Gewicht, Zielgewicht, Aktivität, Ziel, Einheiten, Sprache, optionale Erinnerungen.</li>
         <li>Mahlzeiten: Fotos, Beschreibungen, Strichcodes, entworfene Namen und Makros, Gramme, gespeicherte Gerichte.</li>
-        <li>Käufe: ob du Pro hast, über Apple oder Google. Die Kartennummer sehen wir nicht.</li>
+        <li>Käufe: ob du Premium hast, über Apple oder Google. Die Kartennummer sehen wir nicht.</li>
         <li>Diagnose: Absturzberichte, Fotos und Text verborgen. In manchen App-Versionen einfache Nutzungszahlen in der EU. Nie für Werbung.</li>
       </LegalList>
       <LegalH2>Fotos und KI</LegalH2>
@@ -467,7 +467,7 @@ function PrivacyEs() {
         <li>Cuenta: correo e inicio de sesión con Apple o Google.</li>
         <li>Perfil: nombre, sexo, fecha de nacimiento, altura, peso, peso objetivo, actividad, objetivo, unidades, idioma, recordatorios opcionales.</li>
         <li>Comidas: fotos, descripciones, códigos de barras, nombres y macros del borrador, gramos, comidas guardadas.</li>
-        <li>Compras: si tienes Pro, a través de Apple o Google. No vemos el número de tarjeta.</li>
+        <li>Compras: si tienes Premium, a través de Apple o Google. No vemos el número de tarjeta.</li>
         <li>Diagnóstico: informes de fallos, con fotos y texto ocultos. En algunas versiones de la app, estadísticas básicas de uso en la UE. Nunca para anuncios.</li>
       </LegalList>
       <LegalH2>Fotos e IA</LegalH2>

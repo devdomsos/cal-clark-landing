@@ -138,7 +138,7 @@
       "description": "Anonymous usage statistics: which screens you open, whether onboarding finishes, whether a scan succeeds. Hosted in the EU. Never receives your meal photos or health data. We use this to fix confusing screens and decide what to build next."
     },
     "revenuecat": {
-      "description": "Handles your subscription and free trial with the App Store or Google Play. Stores your purchase receipts and an anonymous customer ID. Required for Pro to work."
+      "description": "Handles your subscription and free trial with the App Store or Google Play. Stores your purchase receipts and an anonymous customer ID. Required for Premium to work."
     },
     "resend": {
       "description": "Sends the emails you asked for: sign-in codes, waitlist confirmations, account notices. Stores your email address and delivery status."

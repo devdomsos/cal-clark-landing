@@ -138,7 +138,7 @@
       "description": "Anonimowe statystyki użycia: które ekrany otwierasz, czy ukończono wprowadzenie, czy skan się udał. Hostowany w UE. Nigdy nie otrzymuje zdjęć posiłków ani danych zdrowotnych. Używamy tego, aby poprawiać niejasne ekrany i decydować, co budować dalej."
     },
     "revenuecat": {
-      "description": "Obsługuje subskrypcję i bezpłatny okres próbny w App Store lub Google Play. Przechowuje paragony zakupów i anonimowy identyfikator klienta. Wymagany do działania Pro."
+      "description": "Obsługuje subskrypcję i bezpłatny okres próbny w App Store lub Google Play. Przechowuje paragony zakupów i anonimowy identyfikator klienta. Wymagany do działania Premium."
     },
     "resend": {
       "description": "Wysyła e-maile, o które prosisz: kody logowania, potwierdzenia listy oczekujących, powiadomienia o koncie. Przechowuje adres e-mail i status dostarczenia."

@@ -138,7 +138,7 @@
       "description": "Anonyme Nutzungsstatistiken: welche Bildschirme du öffnest, ob das Onboarding abgeschlossen wird, ob ein Scan gelingt. In der EU gehostet. Erhält nie deine Essensfotos oder Gesundheitsdaten. Wir nutzen das, um verwirrende Bildschirme zu verbessern und zu entscheiden, was wir als Nächstes bauen."
     },
     "revenuecat": {
-      "description": "Verwaltet dein Abo und die kostenlose Testphase mit dem App Store oder Google Play. Speichert deine Kaufbelege und eine anonyme Kunden-ID. Erforderlich, damit Pro funktioniert."
+      "description": "Verwaltet dein Abo und die kostenlose Testphase mit dem App Store oder Google Play. Speichert deine Kaufbelege und eine anonyme Kunden-ID. Erforderlich, damit Premium funktioniert."
     },
     "resend": {
       "description": "Sendet die E-Mails, die du angefordert hast: Anmeldecodes, Warteliste-Bestätigungen, Kontohinweise. Speichert deine E-Mail-Adresse und den Zustellstatus."

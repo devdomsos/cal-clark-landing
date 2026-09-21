@@ -41,7 +41,7 @@ function En() {
       <LegalH2>Subscription</LegalH2>
       <LegalList>
         <li>The first 3 AI scans (photo or description) are free.</li>
-        <li>After that, further AI scans need Cal Clark Pro.</li>
+        <li>After that, further AI scans need Cal Clark Premium.</li>
         <li>Price and period are shown on the payment screen before you pay. The billed amount is the yearly or monthly price on screen, not a weekly equivalent.</li>
         <li>Payment is through the App Store or Google Play. Cancel in your Apple or Google subscription settings. Deleting the app does not cancel the subscription.</li>
         <li>Refunds follow Apple or Google rules.</li>
@@ -104,7 +104,7 @@ function Pl() {
       <LegalH2>Subskrypcja</LegalH2>
       <LegalList>
         <li>Pierwsze 3 skany AI (zdjęcie lub opis) są darmowe.</li>
-        <li>Kolejne skany AI wymagają Cal Clark Pro.</li>
+        <li>Kolejne skany AI wymagają Cal Clark Premium.</li>
         <li>Cenę i okres widzisz na ekranie płatności przed zakupem. Kwota na fakturze to cena roczna albo miesięczna z ekranu, nie ekwiwalent tygodniowy.</li>
         <li>Płaci Apple albo Google Play. Anulujesz w ustawieniach subskrypcji Apple lub Google. Usunięcie aplikacji nie anuluje subskrypcji.</li>
         <li>Zwroty według zasad Apple lub Google.</li>
@@ -166,7 +166,7 @@ function De() {
       <LegalH2>Abo</LegalH2>
       <LegalList>
         <li>Die ersten 3 KI-Scans (Foto oder Text) sind kostenlos.</li>
-        <li>Weitere KI-Scans brauchen Cal Clark Pro.</li>
+        <li>Weitere KI-Scans brauchen Cal Clark Premium.</li>
         <li>Preis und Zeitraum siehst du vor dem Kauf. Abgerechnet wird der Jahres- oder Monatspreis auf dem Schirm, kein Wochen-Aequivalent.</li>
         <li>Zahlung ueber App Store oder Google Play. Kuendigung in den Abo-Einstellungen von Apple oder Google. Deinstallieren kuendigt nicht.</li>
       </LegalList>
@@ -221,7 +221,7 @@ function Es() {
       <LegalH2>Suscripcion</LegalH2>
       <LegalList>
         <li>Los 3 primeros analisis de IA (foto o texto) son gratis.</li>
-        <li>Los siguientes necesitan Cal Clark Pro.</li>
+        <li>Los siguientes necesitan Cal Clark Premium.</li>
         <li>Precio y periodo se ven en la pantalla de pago. Se factura el importe anual o mensual, no un equivalente semanal.</li>
         <li>Pago por App Store o Google Play. Cancela en los ajustes de suscripcion de Apple o Google. Borrar la app no cancela.</li>
       </LegalList>
