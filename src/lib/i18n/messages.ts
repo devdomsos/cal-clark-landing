@@ -341,6 +341,18 @@ const EN: Messages = {
         a: "Your food diary is private to your account. We never sell your meal photos or your profile, and you can delete your account at any time. Details are in our privacy policy.",
       },
       {
+        q: "How do referral codes work?",
+        a: "Every Cal Clark account has its own code in the app under Settings, Invite friends. A friend who enters your code when signing up gets a discount on Premium. You get a free month of Cal Clark for every friend who subscribes with your code. Refunded purchases do not count, the number of free months per year is limited, and we may cancel rewards if the program is misused.",
+      },
+      {
+        q: "Can I add a referral code after signing up?",
+        a: "No. A code can only be entered while you sign up, before your first purchase. Each account can use one code, and you cannot use your own.",
+      },
+      {
+        q: "I'm a creator. Can we work together?",
+        a: "Yes. We work with creators and influencers and give partners their own code. Write to support@calclark.app with links to your profiles.",
+      },
+      {
         q: "When can I download it?",
         a: "Join the waitlist and we'll email you as soon as Cal Clark is live on iOS and Android.",
       },
@@ -562,6 +574,18 @@ const PL: Messages = {
       {
         q: "Czy moje dane są prywatne?",
         a: "Twój dziennik jest prywatny i przypisany do Twojego konta. Nigdy nie sprzedajemy zdjęć posiłków ani profilu, a konto możesz usunąć w każdej chwili. Szczegóły są w polityce prywatności.",
+      },
+      {
+        q: "Jak działają kody polecające?",
+        a: "Każde konto Cal Clark ma własny kod w aplikacji: Ustawienia, Zaproś znajomych. Znajomy, który wpisze Twój kod przy rejestracji, dostaje zniżkę na Premium. Ty dostajesz darmowy miesiąc Cal Clark za każdego znajomego, który wykupi subskrypcję z Twoim kodem. Zwrócone zakupy się nie liczą, liczba darmowych miesięcy w roku jest ograniczona, a przy nadużyciach możemy anulować nagrody.",
+      },
+      {
+        q: "Czy mogę dodać kod polecający po rejestracji?",
+        a: "Nie. Kod można wpisać tylko podczas rejestracji, przed pierwszym zakupem. Na jedno konto przypada jeden kod i nie możesz użyć własnego.",
+      },
+      {
+        q: "Tworzę treści. Możemy współpracować?",
+        a: "Tak. Współpracujemy z twórcami i influencerami, a partnerzy dostają własny kod. Napisz na support@calclark.app i dodaj linki do swoich profili.",
       },
       {
         q: "Kiedy będzie do pobrania?",
@@ -787,6 +811,18 @@ const DE: Messages = {
         a: "Dein Ernährungstagebuch ist privat und gehört zu deinem Konto. Wir verkaufen nie deine Essensfotos oder dein Profil, und du kannst dein Konto jederzeit löschen. Details stehen in der Datenschutzerklärung.",
       },
       {
+        q: "Wie funktionieren Empfehlungscodes?",
+        a: "Jedes Cal Clark Konto hat einen eigenen Code in der App unter Einstellungen, Freunde einladen. Wer deinen Code bei der Anmeldung eingibt, bekommt einen Rabatt auf Premium. Für jeden Freund, der mit deinem Code ein Abo abschließt, bekommst du einen Gratismonat Cal Clark. Erstattete Käufe zählen nicht, die Zahl der Gratismonate pro Jahr ist begrenzt, und bei Missbrauch können wir Prämien stornieren.",
+      },
+      {
+        q: "Kann ich einen Code nach der Anmeldung hinzufügen?",
+        a: "Nein. Ein Code kann nur während der Anmeldung eingegeben werden, vor dem ersten Kauf. Pro Konto gilt ein Code, und deinen eigenen kannst du nicht nutzen.",
+      },
+      {
+        q: "Ich bin Creator. Können wir zusammenarbeiten?",
+        a: "Ja. Wir arbeiten mit Creatorn und Influencern und geben Partnern einen eigenen Code. Schreib an support@calclark.app mit Links zu deinen Profilen.",
+      },
+      {
         q: "Wann kann ich die App laden?",
         a: "Trag dich in die Warteliste ein. Wir schreiben dir, sobald Cal Clark für iOS und Android verfügbar ist.",
       },
@@ -1008,6 +1044,18 @@ const ES: Messages = {
       {
         q: "¿Mis datos son privados?",
         a: "Tu diario de comidas es privado y va ligado a tu cuenta. Nunca vendemos tus fotos de comida ni tu perfil, y puedes borrar tu cuenta cuando quieras. Los detalles están en la política de privacidad.",
+      },
+      {
+        q: "¿Cómo funcionan los códigos de invitación?",
+        a: "Cada cuenta de Cal Clark tiene su propio código en la app, en Ajustes, Invita a amigos. Quien escriba tu código al registrarse recibe un descuento en Premium. Tú consigues un mes gratis de Cal Clark por cada amigo que se suscriba con tu código. Las compras reembolsadas no cuentan, el número de meses gratis al año es limitado y podemos anular recompensas si se hace un mal uso del programa.",
+      },
+      {
+        q: "¿Puedo añadir un código después de registrarme?",
+        a: "No. El código solo se puede escribir durante el registro, antes de la primera compra. Cada cuenta puede usar un código y no puedes usar el tuyo.",
+      },
+      {
+        q: "Creo contenido. ¿Podemos colaborar?",
+        a: "Sí. Trabajamos con creadores e influencers, y cada partner recibe su propio código. Escribe a support@calclark.app con enlaces a tus perfiles.",
       },
       {
         q: "¿Cuándo puedo descargarla?",
