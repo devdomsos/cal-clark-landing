@@ -342,7 +342,7 @@ const EN: Messages = {
       },
       {
         q: "How do referral codes work?",
-        a: "Every Cal Clark account has its own code in the app under Settings, Invite friends. A friend who enters your code when signing up gets a discount on Premium. You get a free month of Cal Clark for every friend who subscribes with your code. Refunded purchases do not count, the number of free months per year is limited, and we may cancel rewards if the program is misused.",
+        a: "Every Cal Clark account has its own code in the app under Settings, Invite friends. Friends enter your code when they sign up. You get a free month of Cal Clark for every friend who subscribes with your code. Refunded purchases do not count, the number of free months per year is limited, and we may cancel rewards if the program is misused.",
       },
       {
         q: "Can I add a referral code after signing up?",
@@ -577,7 +577,7 @@ const PL: Messages = {
       },
       {
         q: "Jak działają kody polecające?",
-        a: "Każde konto Cal Clark ma własny kod w aplikacji: Ustawienia, Zaproś znajomych. Znajomy, który wpisze Twój kod przy rejestracji, dostaje zniżkę na Premium. Ty dostajesz darmowy miesiąc Cal Clark za każdego znajomego, który wykupi subskrypcję z Twoim kodem. Zwrócone zakupy się nie liczą, liczba darmowych miesięcy w roku jest ograniczona, a przy nadużyciach możemy anulować nagrody.",
+        a: "Każde konto Cal Clark ma własny kod w aplikacji: Ustawienia, Zaproś znajomych. Znajomi wpisują Twój kod przy rejestracji. Ty dostajesz darmowy miesiąc Cal Clark za każdego znajomego, który wykupi subskrypcję z Twoim kodem. Zwrócone zakupy się nie liczą, liczba darmowych miesięcy w roku jest ograniczona, a przy nadużyciach możemy anulować nagrody.",
       },
       {
         q: "Czy mogę dodać kod polecający po rejestracji?",
@@ -812,7 +812,7 @@ const DE: Messages = {
       },
       {
         q: "Wie funktionieren Empfehlungscodes?",
-        a: "Jedes Cal Clark Konto hat einen eigenen Code in der App unter Einstellungen, Freunde einladen. Wer deinen Code bei der Anmeldung eingibt, bekommt einen Rabatt auf Premium. Für jeden Freund, der mit deinem Code ein Abo abschließt, bekommst du einen Gratismonat Cal Clark. Erstattete Käufe zählen nicht, die Zahl der Gratismonate pro Jahr ist begrenzt, und bei Missbrauch können wir Prämien stornieren.",
+        a: "Jedes Cal Clark Konto hat einen eigenen Code in der App unter Einstellungen, Freunde einladen. Freunde geben deinen Code bei der Anmeldung ein. Für jeden Freund, der mit deinem Code ein Abo abschließt, bekommst du einen Gratismonat Cal Clark. Erstattete Käufe zählen nicht, die Zahl der Gratismonate pro Jahr ist begrenzt, und bei Missbrauch können wir Prämien stornieren.",
       },
       {
         q: "Kann ich einen Code nach der Anmeldung hinzufügen?",
@@ -1047,7 +1047,7 @@ const ES: Messages = {
       },
       {
         q: "¿Cómo funcionan los códigos de invitación?",
-        a: "Cada cuenta de Cal Clark tiene su propio código en la app, en Ajustes, Invita a amigos. Quien escriba tu código al registrarse recibe un descuento en Premium. Tú consigues un mes gratis de Cal Clark por cada amigo que se suscriba con tu código. Las compras reembolsadas no cuentan, el número de meses gratis al año es limitado y podemos anular recompensas si se hace un mal uso del programa.",
+        a: "Cada cuenta de Cal Clark tiene su propio código en la app, en Ajustes, Invita a amigos. Tus amigos escriben tu código al registrarse. Tú consigues un mes gratis de Cal Clark por cada amigo que se suscriba con tu código. Las compras reembolsadas no cuentan, el número de meses gratis al año es limitado y podemos anular recompensas si se hace un mal uso del programa.",
       },
       {
         q: "¿Puedo añadir un código después de registrarme?",

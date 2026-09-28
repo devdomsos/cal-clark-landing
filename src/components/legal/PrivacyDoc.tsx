@@ -72,6 +72,22 @@ function PrivacyEn() {
         the first meal is sent. If you say no, AI drafts stay off; search,
         barcode, and manual logging still work.
       </p>
+      <LegalH2>Referral codes</LegalH2>
+      <p>
+        Every account has its own referral code. If you enter a code when you sign up, or friends sign up with your code, we store:
+      </p>
+      <LegalList>
+        <li>your code, and the code you entered at sign-up, with the date;</li>
+        <li>which accounts signed up with your code, and whether they subscribed or got a refund;</li>
+        <li>the free months you earn;</li>
+        <li>for partners: the partner agreement, commissions, statements and payout details.</li>
+      </LegalList>
+      <p>
+        We use this to give rewards, pay partners and prevent misuse of the program. The owner of a code never learns who used it: they only see totals. We send the code you entered to RevenueCat, which runs subscriptions for us, so it is stored there with your purchases.
+      </p>
+      <p>
+        If you delete your account, we delete your code and the record of the code you entered. Existing reward and payment records may be kept with an internal account ID only, as long as we need them for accounting and to prevent misuse.
+      </p>
       <LegalH2>Who processes data for us</LegalH2>
       <LegalList>
         <li>Clerk - so you can sign in with Apple, Google, or email.</li>
@@ -79,7 +95,7 @@ function PrivacyEn() {
         <li>Cloudflare - private photo storage.</li>
         <li>OpenRouter (USA) - routes a meal photo or description to the AI model.</li>
         <li>Google (Gemini) and OpenAI (USA) - the AI models that draft the meal. They receive the photo or text, not your name or email.</li>
-        <li>Apple, Google, and RevenueCat - payments. We never see your card number.</li>
+        <li>Apple, Google, and RevenueCat - payments and subscriptions, including the referral code you entered. We never see your card number.</li>
         <li>
           Open Food Facts and FatSecret - packaged product labels. FatSecret
           nutrition information is provided by the fatsecret Platform API.
@@ -153,6 +169,7 @@ function PrivacyEn() {
         <li>Account, meals, and the paid plan: the contract to run Cal Clark.</li>
         <li>Health-related profile (height, weight, goal, activity) and your diary: your explicit consent, given in the app before you enter them. Withdraw it by deleting the account.</li>
         <li>Meal photos and descriptions sent to AI: your explicit consent, asked before the first meal is sent. Withdraw it by not starting AI scans or by deleting the account.</li>
+        <li>Referral codes and rewards: the contract (the referral program you use). Preventing misuse: legitimate interest. Partner payout records: legal obligation (tax and accounting).</li>
         <li>Waitlist email: your request to be notified.</li>
         <li>Security, invoices Apple or Google keep, and legal holds: legal obligation or legitimate interest in running a lawful service.</li>
       </LegalList>
@@ -221,6 +238,22 @@ function PrivacyPl() {
         pierwszego posiłku. Bez zgody szkice AI są wyłączone; wyszukiwanie,
         kod kreskowy i ręczny wpis działają dalej.
       </p>
+      <LegalH2>Kody polecające</LegalH2>
+      <p>
+        Każde konto ma własny kod polecający. Jeśli wpiszesz kod przy rejestracji albo znajomi zarejestrują się z Twoim kodem, zapisujemy:
+      </p>
+      <LegalList>
+        <li>Twój kod oraz kod wpisany przy rejestracji, z datą;</li>
+        <li>które konta zarejestrowały się z Twoim kodem i czy wykupiły subskrypcję lub dostały zwrot;</li>
+        <li>zdobyte darmowe miesiące;</li>
+        <li>w przypadku partnerów: umowę partnerską, prowizje, zestawienia i dane do wypłat.</li>
+      </LegalList>
+      <p>
+        Używamy tych danych, żeby przyznawać nagrody, rozliczać partnerów i zapobiegać nadużyciom programu. Właściciel kodu nie dowiaduje się, kto go użył: widzi tylko sumy. Wpisany kod przekazujemy RevenueCat, który obsługuje dla nas subskrypcje, więc jest tam zapisany razem z Twoimi zakupami.
+      </p>
+      <p>
+        Gdy usuniesz konto, usuwamy Twój kod i informację o kodzie wpisanym przy rejestracji. Istniejące zapisy nagród i płatności mogą zostać zachowane tylko z wewnętrznym identyfikatorem konta, tak długo, jak są potrzebne do rozliczeń i zapobiegania nadużyciom.
+      </p>
       <LegalH2>Komu przekazujemy dane</LegalH2>
       <LegalList>
         <li>Clerk - logowanie Apple, Google albo e-mailem.</li>
@@ -228,7 +261,7 @@ function PrivacyPl() {
         <li>Cloudflare - prywatne przechowywanie zdjęć.</li>
         <li>OpenRouter (USA) - przekazuje zdjęcie albo opis posiłku do modelu AI.</li>
         <li>Google (Gemini) i OpenAI (USA) - modele AI, które robią szkic posiłku. Dostają zdjęcie albo tekst, bez imienia i e-maila.</li>
-        <li>Apple, Google i RevenueCat - płatności. Numeru karty nie widzimy.</li>
+        <li>Apple, Google i RevenueCat - płatności i subskrypcje, w tym wpisany kod polecający. Numeru karty nie widzimy.</li>
         <li>
           Open Food Facts i FatSecret - etykiety opakowań. Informacje żywieniowe
           FatSecret pochodzą z fatsecret Platform API.
@@ -300,6 +333,7 @@ function PrivacyPl() {
         <li>Konto, posiłki i plan płatny: umowa o świadczenie Cal Clark.</li>
         <li>Dane o zdrowiu w profilu (wzrost, waga, cel, aktywność) i dziennik: Twoja wyraźna zgoda, wyrażona w aplikacji przed ich wpisaniem. Cofniesz ją, usuwając konto.</li>
         <li>Zdjęcia i opisy posiłków wysyłane do AI: Twoja wyraźna zgoda, o którą pytamy przed pierwszym wysłaniem. Cofniesz ją, nie uruchamiając skanów AI albo usuwając konto.</li>
+        <li>Kody polecające i nagrody: umowa (program poleceń, z którego korzystasz). Zapobieganie nadużyciom: prawnie uzasadniony interes. Rozliczenia z partnerami: obowiązek prawny (podatki i księgowość).</li>
         <li>E-mail z listy: Twoja prośba o powiadomienie.</li>
         <li>Bezpieczeństwo i obowiązki prawne: obowiązek prawny albo prawnie uzasadniony interes.</li>
       </LegalList>
@@ -354,6 +388,22 @@ function PrivacyDe() {
         die erste Mahlzeit gesendet wird. Ohne Einwilligung bleiben KI-Entwürfe
         aus; Suche, Strichcode und manuelles Eintragen funktionieren weiter.
       </p>
+      <LegalH2>Empfehlungscodes</LegalH2>
+      <p>
+        Jedes Konto hat einen eigenen Empfehlungscode. Wenn du bei der Anmeldung einen Code eingibst oder sich Freunde mit deinem Code anmelden, speichern wir:
+      </p>
+      <LegalList>
+        <li>deinen Code und den Code, den du bei der Anmeldung eingegeben hast, mit Datum;</li>
+        <li>welche Konten sich mit deinem Code angemeldet haben und ob sie ein Abo abgeschlossen oder eine Erstattung bekommen haben;</li>
+        <li>die Gratismonate, die du bekommst;</li>
+        <li>bei Partnern: die Partnervereinbarung, Provisionen, Abrechnungen und Auszahlungsdaten.</li>
+      </LegalList>
+      <p>
+        Wir nutzen diese Daten, um Prämien zu vergeben, Partner zu bezahlen und Missbrauch des Programms zu verhindern. Wer einen Code besitzt, erfährt nie, wer ihn genutzt hat, und sieht nur Summen. Den eingegebenen Code geben wir an RevenueCat weiter, das für uns die Abos verwaltet; dort wird er mit deinen Käufen gespeichert.
+      </p>
+      <p>
+        Wenn du dein Konto löschst, löschen wir deinen Code und die Angabe, welchen Code du eingegeben hast. Bestehende Einträge zu Prämien und Zahlungen können nur mit einer internen Konto-ID erhalten bleiben, solange wir sie für die Buchhaltung und gegen Missbrauch brauchen.
+      </p>
       <LegalH2>Auftragsverarbeiter</LegalH2>
       <LegalList>
         <li>Clerk - Anmeldung mit Apple, Google oder E-Mail.</li>
@@ -361,7 +411,7 @@ function PrivacyDe() {
         <li>Cloudflare - private Fotospeicherung.</li>
         <li>OpenRouter (USA) - leitet Foto oder Text der Mahlzeit an das KI-Modell weiter.</li>
         <li>Google (Gemini) und OpenAI (USA) - KI-Modelle, die den Entwurf erstellen. Sie erhalten Foto oder Text, nicht Name oder E-Mail.</li>
-        <li>Apple, Google und RevenueCat - Zahlungen. Die Kartennummer sehen wir nicht.</li>
+        <li>Apple, Google und RevenueCat - Zahlungen und Abos, auch der eingegebene Empfehlungscode. Die Kartennummer sehen wir nicht.</li>
         <li>Open Food Facts und FatSecret - Packungsetiketten. FatSecret-Nährwerte stammen von der fatsecret Platform API.</li>
         <li>Sentry - Absturzberichte, Fotos und Text verborgen.</li>
         <li>Resend - verschickt die E-Mail, mit der du deine Eintragung in die Warteliste auf calclark.app bestätigst.</li>
@@ -429,6 +479,7 @@ function PrivacyDe() {
         <li>Konto, Mahlzeiten und der bezahlte Plan: Vertrag über Cal Clark.</li>
         <li>Gesundheitsdaten im Profil (Größe, Gewicht, Ziel, Aktivität) und das Tagebuch: deine ausdrückliche Einwilligung, die du in der App vor der Eingabe gibst. Widerruf durch Kontolöschung.</li>
         <li>Speisefotos und Beschreibungen für die KI: deine ausdrückliche Einwilligung, abgefragt vor dem ersten Senden. Widerruf, indem du keine KI-Scans mehr startest oder das Konto löschst.</li>
+        <li>Empfehlungscodes und Prämien: Vertrag (das Empfehlungsprogramm, das du nutzt). Schutz vor Missbrauch: berechtigtes Interesse. Abrechnungen mit Partnern: rechtliche Pflicht (Steuern und Buchhaltung).</li>
         <li>Wartelisten-Mail: deine Bitte um Nachricht.</li>
         <li>Sicherheit und gesetzliche Pflichten: rechtliche Pflicht oder berechtigtes Interesse.</li>
       </LegalList>
@@ -483,6 +534,22 @@ function PrivacyEs() {
         la búsqueda, el código de barras y el registro manual siguen
         funcionando.
       </p>
+      <LegalH2>Códigos de invitación</LegalH2>
+      <p>
+        Cada cuenta tiene su propio código de invitación. Si escribes un código al registrarte, o tus amigos se registran con tu código, guardamos:
+      </p>
+      <LegalList>
+        <li>tu código y el código que escribiste al registrarte, con la fecha;</li>
+        <li>qué cuentas se registraron con tu código y si se suscribieron o recibieron un reembolso;</li>
+        <li>los meses gratis que consigues;</li>
+        <li>en el caso de partners: el acuerdo de partner, las comisiones, las liquidaciones y los datos de pago.</li>
+      </LegalList>
+      <p>
+        Usamos estos datos para dar recompensas, pagar a los partners y evitar el mal uso del programa. El dueño de un código nunca sabe quién lo usó: solo ve totales. Enviamos el código que escribiste a RevenueCat, que gestiona las suscripciones por nosotros, y allí se guarda con tus compras.
+      </p>
+      <p>
+        Si borras tu cuenta, borramos tu código y el dato del código que escribiste. Los registros de recompensas y pagos que ya existen pueden conservarse solo con un identificador interno de cuenta, mientras los necesitemos para la contabilidad y para evitar abusos.
+      </p>
       <LegalH2>Encargados</LegalH2>
       <LegalList>
         <li>Clerk - inicio de sesión con Apple, Google o correo.</li>
@@ -490,7 +557,7 @@ function PrivacyEs() {
         <li>Cloudflare - almacenamiento privado de fotos.</li>
         <li>OpenRouter (EE. UU.) - envía la foto o la descripción al modelo de IA.</li>
         <li>Google (Gemini) y OpenAI (EE. UU.) - modelos de IA que esbozan la comida. Reciben la foto o el texto, no tu nombre ni tu correo.</li>
-        <li>Apple, Google y RevenueCat - pagos. No vemos el número de tarjeta.</li>
+        <li>Apple, Google y RevenueCat - pagos y suscripciones, incluido el código de invitación que escribiste. No vemos el número de tarjeta.</li>
         <li>Open Food Facts y FatSecret - etiquetas de envases. Información nutricional de FatSecret: fatsecret Platform API.</li>
         <li>Sentry - informes de fallos, con fotos y texto ocultos.</li>
         <li>Resend - envía el correo que confirma tu registro en la lista de espera de calclark.app.</li>
@@ -558,6 +625,7 @@ function PrivacyEs() {
         <li>Cuenta, comidas y el plan de pago: el contrato de Cal Clark.</li>
         <li>Datos de salud del perfil (altura, peso, objetivo, actividad) y el diario: tu consentimiento explícito, dado en la app antes de introducirlos. Lo retiras al borrar la cuenta.</li>
         <li>Fotos y descripciones de comidas enviadas a la IA: tu consentimiento explícito, pedido antes del primer envío. Lo retiras al dejar de iniciar escaneos con IA o al borrar la cuenta.</li>
+        <li>Códigos de invitación y recompensas: el contrato (el programa de invitaciones que usas). Evitar abusos: interés legítimo. Liquidaciones con partners: obligación legal (impuestos y contabilidad).</li>
         <li>Correo de la lista: tu petición de aviso.</li>
         <li>Seguridad y obligaciones legales: obligación legal o interés legítimo.</li>
       </LegalList>
