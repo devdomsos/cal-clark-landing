@@ -3,6 +3,7 @@ import {
   LegalH2,
   LegalList,
   LegalShell,
+  OperatorDetails,
   type LegalLocale,
 } from "./LegalShell";
 
@@ -28,7 +29,7 @@ function PrivacyEn() {
       path="privacy"
       references="privacy"
       title="Privacy policy"
-      updated="Last updated: 16 September 2026. Not a substitute for counsel. The legal entity name and registered address will be printed here before store listing."
+      updated="Last updated: 28 September 2026"
     >
       <p>
         This policy describes how Cal Clark handles information in the mobile
@@ -36,10 +37,8 @@ function PrivacyEn() {
         account, and run a paid plan. We do not sell meal photos or profiles.
       </p>
       <LegalH2>Who is responsible</LegalH2>
-      <p>
-        Controller: to be published here (legal name and address) before App
-        Store or Google Play listing. Contact: <Contact />.
-      </p>
+      <p>The controller of your personal data is:</p>
+      <OperatorDetails locale="en" />
       <LegalH2>What we collect</LegalH2>
       <LegalList>
         <li>Account: email, and Apple or Google sign-in.</li>
@@ -192,7 +191,7 @@ function PrivacyPl() {
       path="privacy"
       references="privacy"
       title="Polityka prywatności"
-      updated="Ostatnia aktualizacja: 16 września 2026. To nie zastępuje porady prawnej. Nazwa i adres podmiotu pojawią się tu przed listą w sklepach."
+      updated="Ostatnia aktualizacja: 28 września 2026"
     >
       <p>
         Ta strona opisuje, jak Cal Clark przetwarza dane w aplikacji i na
@@ -201,10 +200,8 @@ function PrivacyPl() {
         profili.
       </p>
       <LegalH2>Kto odpowiada</LegalH2>
-      <p>
-        Administrator: nazwa i adres siedziby zostaną dopisane przed publikacją
-        w App Store i Google Play. Kontakt: <Contact />.
-      </p>
+      <p>Administratorem Twoich danych osobowych jest:</p>
+      <OperatorDetails locale="pl" />
       <LegalH2>Jakie dane zbieramy</LegalH2>
       <LegalList>
         <li>Konto: e-mail oraz logowanie Apple albo Google.</li>
@@ -355,7 +352,7 @@ function PrivacyDe() {
       path="privacy"
       references="privacy"
       title="Datenschutz"
-      updated="Stand: 16. September 2026. Kein Rechtsrat. Firmenname und Sitz stehen hier, bevor die App in den Stores ist."
+      updated="Stand: 28. September 2026"
     >
       <p>
         Diese Seite beschreibt, wie Cal Clark Daten in der App und auf
@@ -363,10 +360,8 @@ function PrivacyDe() {
         zum bezahlten Plan nötig ist. Speisefotos und Profile verkaufen wir nicht.
       </p>
       <LegalH2>Verantwortlicher</LegalH2>
-      <p>
-        Wird vor dem Eintrag in App Store und Google Play mit Name und Anschrift ergänzt.
-        Kontakt: <Contact />.
-      </p>
+      <p>Verantwortlich für die Verarbeitung deiner Daten ist:</p>
+      <OperatorDetails locale="de" />
       <LegalH2>Welche Daten</LegalH2>
       <LegalList>
         <li>Konto: E-Mail sowie Anmeldung mit Apple oder Google.</li>
@@ -501,7 +496,7 @@ function PrivacyEs() {
       path="privacy"
       references="privacy"
       title="Política de privacidad"
-      updated="Última actualización: 16 de septiembre de 2026. No sustituye asesoramiento legal. El nombre y domicilio de la entidad se publicarán aquí antes de las tiendas."
+      updated="Última actualización: 28 de septiembre de 2026"
     >
       <p>
         Esta página describe cómo Cal Clark trata datos en la app y en
@@ -509,10 +504,8 @@ function PrivacyEs() {
         la cuenta y el plan de pago. No vendemos fotos ni perfiles.
       </p>
       <LegalH2>Responsable</LegalH2>
-      <p>
-        Se publicará el nombre y domicilio legales antes de App Store y Google
-        Play. Contacto: <Contact />.
-      </p>
+      <p>El responsable del tratamiento de tus datos es:</p>
+      <OperatorDetails locale="es" />
       <LegalH2>Qué datos</LegalH2>
       <LegalList>
         <li>Cuenta: correo e inicio de sesión con Apple o Google.</li>

@@ -25,11 +25,14 @@ const RING_DOTS = [
   { cx: 36.32, cy: 12.41, r: 3.26 },
 ] as const;
 
-/** Same pear-in-ring lockup as the Cal Clark app icon. */
-export function LogoMark({ className = "" }: { className?: string }) {
+/**
+ * Same pear-in-ring lockup as the Cal Clark app icon. `crop` trims the empty
+ * margin around the ring so the mark can sit tight against the wordmark.
+ */
+export function LogoMark({ className = "", crop = false }: { className?: string; crop?: boolean }) {
   return (
     <svg
-      viewBox="0 0 100 100"
+      viewBox={crop ? "14 14 72 72" : "0 0 100 100"}
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
@@ -49,11 +52,14 @@ export function LogoMark({ className = "" }: { className?: string }) {
   );
 }
 
-export function Logo({ className = "" }: { className?: string }) {
+/** Mark + wordmark. Everything scales with the font size set in `className`. */
+export function Logo({ className = "text-[26px]" }: { className?: string }) {
   return (
-    <span className={`inline-flex items-center gap-2 text-foreground ${className}`}>
-      <LogoMark className="h-8 w-8 shrink-0" />
-      <span className="text-lg font-semibold tracking-tight">Cal Clark</span>
+    <span
+      className={`inline-flex items-center gap-[0.14em] font-bold leading-none tracking-[-0.05em] text-foreground ${className}`}
+    >
+      <LogoMark crop className="h-[1.1em] w-[1.1em] shrink-0" />
+      <span className="whitespace-nowrap">Cal Clark</span>
     </span>
   );
 }

@@ -50,3 +50,25 @@ export const LEGAL_NAV: {
     label: { en: "Imprint", pl: "Nota prawna", de: "Impressum", es: "Aviso legal" },
   },
 ];
+
+/**
+ * The trader behind Cal Clark. Apple (EU DSA trader status) and Google Play
+ * check these against the developer account, so they must match what is
+ * filed there character for character. Empty fields are not printed — never
+ * fill one with a guess. The operator is a private individual living in
+ * Germany (2026-09-28); German Impressum rules (DDG § 5) apply.
+ */
+export const OPERATOR = {
+  name: "Dominik Sosnowski",
+  /**
+   * Postal address, one line per entry. Planned: a rented German Impressum
+   * address (c/o service), not the home address.
+   */
+  address: [] as string[],
+  /**
+   * VAT ID (USt-IdNr.). DDG § 5 requires it on the imprint only if one exists.
+   * Empty on purpose: individual on Apple and Google, no VAT ID (2026-09-28).
+   */
+  vatId: "",
+  email: "support@calclark.app",
+};

@@ -5,6 +5,7 @@ import { LanguageSelect } from "@/components/LanguageSelect";
 import { HtmlLang } from "@/components/HtmlLang";
 import {
   LEGAL_NAV,
+  OPERATOR,
   legalHref,
   type LegalLocale,
   type LegalPath,
@@ -88,5 +89,36 @@ export function LegalMail() {
     <a className="text-primary underline underline-offset-2" href="mailto:support@calclark.app">
       support@calclark.app
     </a>
+  );
+}
+
+const OPERATOR_LABELS: Record<LegalLocale, { address: string; vatId: string; email: string }> = {
+  en: { address: "Address", vatId: "VAT ID", email: "Email" },
+  pl: { address: "Adres", vatId: "Numer VAT UE", email: "E-mail" },
+  de: { address: "Anschrift", vatId: "USt-IdNr.", email: "E-Mail" },
+  es: { address: "Domicilio", vatId: "NIF-IVA", email: "Correo" },
+};
+
+/** Name, address, VAT ID and email of the operator. Empty fields are skipped. */
+export function OperatorDetails({ locale }: { locale: LegalLocale }) {
+  const l = OPERATOR_LABELS[locale];
+  return (
+    <p>
+      <span className="font-semibold text-foreground">{OPERATOR.name}</span>
+      {OPERATOR.address.length > 0 && (
+        <>
+          <br />
+          {l.address}: {OPERATOR.address.join(", ")}
+        </>
+      )}
+      {OPERATOR.vatId && (
+        <>
+          <br />
+          {l.vatId}: {OPERATOR.vatId}
+        </>
+      )}
+      <br />
+      {l.email}: <LegalMail />
+    </p>
   );
 }

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, m } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { Logo, LogoMark } from "./Logo";
+import { Logo } from "./Logo";
 import { LanguageSelect } from "./LanguageSelect";
 import { homePath, type Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
@@ -59,12 +59,7 @@ export function Header({ locale }: { locale: Locale }) {
             onClick={() => setOpen(false)}
             aria-label="Cal Clark"
           >
-            <span className="lg:hidden">
-              <LogoMark className="h-9 w-9 text-foreground" />
-            </span>
-            <span className="hidden lg:block">
-              <Logo />
-            </span>
+            <Logo className="text-[26px] lg:text-[32px]" />
           </Link>
 
           <nav

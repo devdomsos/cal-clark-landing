@@ -1,15 +1,17 @@
+import Link from "next/link";
 import {
   LegalH2,
   LegalList,
   LegalShell,
+  OperatorDetails,
   type LegalLocale,
 } from "./LegalShell";
 
 const TITLES: Record<LegalLocale, { title: string; updated: string }> = {
-  en: { title: "Terms of use", updated: "Last updated: 11 September 2026" },
-  pl: { title: "Regulamin", updated: "Ostatnia aktualizacja: 11 września 2026" },
-  de: { title: "Nutzungsbedingungen", updated: "Stand: 11. September 2026" },
-  es: { title: "Términos de uso", updated: "Última actualización: 11 de septiembre de 2026" },
+  en: { title: "Terms of use", updated: "Last updated: 28 September 2026" },
+  pl: { title: "Regulamin", updated: "Ostatnia aktualizacja: 28 września 2026" },
+  de: { title: "Nutzungsbedingungen", updated: "Stand: 28. September 2026" },
+  es: { title: "Términos de uso", updated: "Última actualización: 28 de septiembre de 2026" },
 };
 
 export function TermsDoc({ locale }: { locale: LegalLocale }) {
@@ -31,6 +33,9 @@ function En() {
         Cal Clark is a photo calorie tracker. Numbers are drafts you can edit.
         They are not medical advice.
       </p>
+      <LegalH2>Provider</LegalH2>
+      <p>Cal Clark is provided by:</p>
+      <OperatorDetails locale="en" />
       <LegalH2>Age</LegalH2>
       <p>You must be at least 16. Cal Clark is not for children.</p>
       <LegalH2>Account</LegalH2>
@@ -72,9 +77,9 @@ function En() {
       <LegalH2>Complaints</LegalH2>
       <p>
         Write to support@calclark.app. Cancel and refunds: see{" "}
-        <a className="text-primary underline underline-offset-2" href="/support">
+        <Link className="text-primary underline underline-offset-2" href="/support">
           support
-        </a>
+        </Link>
         .
       </p>
       <LegalH2>Contact</LegalH2>
@@ -94,6 +99,9 @@ function Pl() {
         Cal Clark to licznik kalorii ze zdjęcia. Liczby to szkic, który możesz
         poprawić. To nie porada medyczna.
       </p>
+      <LegalH2>Usługodawca</LegalH2>
+      <p>Usługę Cal Clark świadczy:</p>
+      <OperatorDetails locale="pl" />
       <LegalH2>Wiek</LegalH2>
       <p>Musisz mieć co najmniej 16 lat. Cal Clark nie jest dla dzieci.</p>
       <LegalH2>Konto</LegalH2>
@@ -135,9 +143,9 @@ function Pl() {
       <LegalH2>Reklamacje</LegalH2>
       <p>
         Pisz na support@calclark.app. Anulowanie i zwroty:{" "}
-        <a className="text-primary underline underline-offset-2" href="/pl/support">
+        <Link className="text-primary underline underline-offset-2" href="/pl/support">
           pomoc
-        </a>
+        </Link>
         .
       </p>
       <LegalH2>Kontakt</LegalH2>
@@ -157,6 +165,9 @@ function De() {
         Cal Clark ist ein Kalorienzaehler per Foto. Zahlen sind Entwuerfe, die
         du aendern kannst. Kein medizinischer Rat.
       </p>
+      <LegalH2>Anbieter</LegalH2>
+      <p>Cal Clark wird angeboten von:</p>
+      <OperatorDetails locale="de" />
       <LegalH2>Alter</LegalH2>
       <p>Du musst mindestens 16 sein. Cal Clark ist nicht fuer Kinder.</p>
       <LegalH2>Konto</LegalH2>
@@ -190,9 +201,9 @@ function De() {
       <LegalH2>Beschwerden</LegalH2>
       <p>
         Schreib an support@calclark.app. Kuendigung und Erstattung:{" "}
-        <a className="text-primary underline underline-offset-2" href="/de/support">
+        <Link className="text-primary underline underline-offset-2" href="/de/support">
           Hilfe
-        </a>
+        </Link>
         .
       </p>
       <LegalH2>Kontakt</LegalH2>
@@ -212,6 +223,9 @@ function Es() {
         Cal Clark es un contador de calorias por foto. Las cifras son un
         borrador que puedes editar. No son consejo medico.
       </p>
+      <LegalH2>Titular</LegalH2>
+      <p>Cal Clark es un servicio de:</p>
+      <OperatorDetails locale="es" />
       <LegalH2>Edad</LegalH2>
       <p>Debes tener al menos 16 años. Cal Clark no es para menores.</p>
       <LegalH2>Cuenta</LegalH2>
@@ -244,9 +258,9 @@ function Es() {
       <LegalH2>Reclamaciones</LegalH2>
       <p>
         Escribe a support@calclark.app. Cancelacion y reembolsos:{" "}
-        <a className="text-primary underline underline-offset-2" href="/es/support">
+        <Link className="text-primary underline underline-offset-2" href="/es/support">
           ayuda
-        </a>
+        </Link>
         .
       </p>
       <LegalH2>Contacto</LegalH2>

@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/i18n/config";
+import { OPERATOR } from "@/lib/legal";
 import { FlagIcon } from "@/components/FlagIcon";
 import { ExternalLink, Shield } from "lucide-react";
 
@@ -152,7 +153,7 @@ function dpa(locale: Locale): SourceDoc {
       hrefLabel: "bfdi.bund.de",
       article: "DSGVO Art. 77 · BDSG",
       excerpt:
-        "Du kannst dich bei der zuständigen Aufsichtsbehörde beschweren. Für nicht-öffentliche Stellen ist das in der Regel der Landesbeauftragte für Datenschutz des Bundeslands, in dem der Verantwortliche niedergelassen ist. Der Bundesbeauftragte (BfDI) ist für Bundesbehörden zuständig. Bis der Firmensitz veröffentlicht ist, nenne in der Beschwerde Cal Clark und support@calclark.app.",
+        `Du kannst dich bei der zuständigen Aufsichtsbehörde beschweren. Für nicht-öffentliche Stellen ist das in der Regel der Landesbeauftragte für Datenschutz des Bundeslands, in dem der Verantwortliche niedergelassen ist. Der Bundesbeauftragte (BfDI) ist für Bundesbehörden zuständig. Verantwortlicher ist ${OPERATOR.name} (siehe Impressum).`,
     };
   }
   if (locale === "es") {
@@ -266,7 +267,7 @@ function imprintLaw(locale: Locale): SourceDoc {
       hrefLabel: "gesetze-im-internet.de · DDG",
       article: "DDG § 5 Anbieterkennzeichnung",
       excerpt:
-        "Diensteanbieter haben für geschäftsmäßige, in der Regel gegen Entgelt angebotene digitale Dienste u. a. Namen, Anschrift und elektronische Kontaktaufnahme leicht erkennbar zu halten. Der Firmenname und die ladungsfähige Anschrift von Cal Clark werden hier ergänzt, bevor die App in den Stores steht. Bis dahin: support@calclark.app.",
+        `Diensteanbieter haben für geschäftsmäßige, in der Regel gegen Entgelt angebotene digitale Dienste u. a. Namen, Anschrift und elektronische Kontaktaufnahme leicht erkennbar zu halten. Anbieter von Cal Clark: ${OPERATOR.name}, support@calclark.app.`,
     };
   }
   if (locale === "pl") {
@@ -279,7 +280,7 @@ function imprintLaw(locale: Locale): SourceDoc {
       hrefLabel: "ISAP · u.ś.u.d.e.",
       article: "Dane usługodawcy",
       excerpt:
-        "Usługodawca podaje m.in. nazwę, siedzibę i adres elektroniczny. Nazwa podmiotu i adres Cal Clark pojawią się tutaj przed listą w sklepach. Do tego czasu: support@calclark.app.",
+        `Usługodawca podaje m.in. nazwę, siedzibę i adres elektroniczny. Usługodawca Cal Clark: ${OPERATOR.name}, support@calclark.app.`,
     };
   }
   if (locale === "es") {
@@ -292,7 +293,7 @@ function imprintLaw(locale: Locale): SourceDoc {
       hrefLabel: "BOE · LSSI-CE",
       article: "Ley 34/2002 art. 10",
       excerpt:
-        "El prestador debe facilitar nombre, domicilio y correo electrónico de forma permanente y fácil. El nombre y domicilio de Cal Clark se publicarán aquí antes de las tiendas. Hasta entonces: support@calclark.app.",
+        `El prestador debe facilitar nombre, domicilio y correo electrónico de forma permanente y fácil. Titular de Cal Clark: ${OPERATOR.name}, support@calclark.app.`,
     };
   }
   return {
@@ -303,7 +304,7 @@ function imprintLaw(locale: Locale): SourceDoc {
     hrefLabel: "support@calclark.app",
     article: "Operator",
     excerpt:
-      "Legal entity name, register number, and registered address will be printed here before App Store or Google Play listing. We will not invent them. Until then, contact support@calclark.app.",
+      `Cal Clark is operated by ${OPERATOR.name}. Contact: support@calclark.app.`,
   };
 }
 
